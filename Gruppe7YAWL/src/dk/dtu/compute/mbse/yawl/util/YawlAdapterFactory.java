@@ -92,12 +92,20 @@ public class YawlAdapterFactory extends AdapterFactoryImpl {
 				return createTransitionAdapter();
 			}
 			@Override
-			public Adapter caseTransitionType(TransitionType object) {
-				return createTransitionTypeAdapter();
+			public Adapter caseSplitTransition(SplitTransition object) {
+				return createSplitTransitionAdapter();
 			}
 			@Override
 			public Adapter caseArc(Arc object) {
 				return createArcAdapter();
+			}
+			@Override
+			public Adapter caseArcType(ArcType object) {
+				return createArcTypeAdapter();
+			}
+			@Override
+			public Adapter caseJoinTransition(JoinTransition object) {
+				return createJoinTransitionAdapter();
 			}
 			@Override
 			public Adapter casePetriNetType(PetriNetType object) {
@@ -220,16 +228,16 @@ public class YawlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.compute.mbse.yawl.TransitionType <em>Transition Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link dk.dtu.compute.mbse.yawl.SplitTransition <em>Split Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.compute.mbse.yawl.TransitionType
+	 * @see dk.dtu.compute.mbse.yawl.SplitTransition
 	 * @generated
 	 */
-	public Adapter createTransitionTypeAdapter() {
+	public Adapter createSplitTransitionAdapter() {
 		return null;
 	}
 
@@ -244,6 +252,34 @@ public class YawlAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createArcAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dk.dtu.compute.mbse.yawl.ArcType <em>Arc Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dk.dtu.compute.mbse.yawl.ArcType
+	 * @generated
+	 */
+	public Adapter createArcTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dk.dtu.compute.mbse.yawl.JoinTransition <em>Join Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dk.dtu.compute.mbse.yawl.JoinTransition
+	 * @generated
+	 */
+	public Adapter createJoinTransitionAdapter() {
 		return null;
 	}
 

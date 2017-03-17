@@ -15,7 +15,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//PType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Transition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="arctype" eType="#//TransitionType"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="splitTransition" eType="#//SplitTransition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joinTransition" eType="#//JoinTransition"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TType">
@@ -23,7 +25,7 @@
     <eLiterals name="OR" value="1"/>
     <eLiterals name="XOR" value="2"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TransitionType" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">
+  <eClassifiers xsi:type="ecore:EClass" name="SplitTransition" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//TType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Arc" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Arc">
@@ -34,7 +36,10 @@
     <eLiterals name="NORMAL"/>
     <eLiterals name="RESET" value="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ArcType">
+  <eClassifiers xsi:type="ecore:EClass" name="ArcType" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//AType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JoinTransition" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//TType"/>
   </eClassifiers>
 </ecore:EPackage>

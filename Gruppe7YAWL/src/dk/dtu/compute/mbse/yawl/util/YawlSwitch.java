@@ -111,9 +111,11 @@ public class YawlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case YawlPackage.TRANSITION_TYPE: {
-				TransitionType transitionType = (TransitionType)theEObject;
-				T result = caseTransitionType(transitionType);
+			case YawlPackage.SPLIT_TRANSITION: {
+				SplitTransition splitTransition = (SplitTransition)theEObject;
+				T result = caseSplitTransition(splitTransition);
+				if (result == null) result = caseAttribute(splitTransition);
+				if (result == null) result = caseLabel(splitTransition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -123,6 +125,22 @@ public class YawlSwitch<T> extends Switch<T> {
 				if (result == null) result = casePnmlcoremodel_Arc(arc);
 				if (result == null) result = caseObject(arc);
 				if (result == null) result = caseID(arc);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case YawlPackage.ARC_TYPE: {
+				ArcType arcType = (ArcType)theEObject;
+				T result = caseArcType(arcType);
+				if (result == null) result = caseAttribute(arcType);
+				if (result == null) result = caseLabel(arcType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case YawlPackage.JOIN_TRANSITION: {
+				JoinTransition joinTransition = (JoinTransition)theEObject;
+				T result = caseJoinTransition(joinTransition);
+				if (result == null) result = caseAttribute(joinTransition);
+				if (result == null) result = caseLabel(joinTransition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -191,17 +209,17 @@ public class YawlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Transition Type</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Split Transition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Transition Type</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Split Transition</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTransitionType(TransitionType object) {
+	public T caseSplitTransition(SplitTransition object) {
 		return null;
 	}
 
@@ -217,6 +235,36 @@ public class YawlSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseArc(Arc object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Arc Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Arc Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseArcType(ArcType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Join Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Join Transition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJoinTransition(JoinTransition object) {
 		return null;
 	}
 

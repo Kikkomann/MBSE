@@ -61,8 +61,10 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 			case YawlPackage.PLACE: return createPlace();
 			case YawlPackage.PLACE_TYPE: return createPlaceType();
 			case YawlPackage.TRANSITION: return createTransition();
-			case YawlPackage.TRANSITION_TYPE: return createTransitionType();
+			case YawlPackage.SPLIT_TRANSITION: return createSplitTransition();
 			case YawlPackage.ARC: return createArc();
+			case YawlPackage.ARC_TYPE: return createArcType();
+			case YawlPackage.JOIN_TRANSITION: return createJoinTransition();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,6 +82,8 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 				return createPTypeFromString(eDataType, initialValue);
 			case YawlPackage.TTYPE:
 				return createTTypeFromString(eDataType, initialValue);
+			case YawlPackage.ATYPE:
+				return createATypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -97,6 +101,8 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 				return convertPTypeToString(eDataType, instanceValue);
 			case YawlPackage.TTYPE:
 				return convertTTypeToString(eDataType, instanceValue);
+			case YawlPackage.ATYPE:
+				return convertATypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -147,9 +153,9 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TransitionType createTransitionType() {
-		TransitionTypeImpl transitionType = new TransitionTypeImpl();
-		return transitionType;
+	public SplitTransition createSplitTransition() {
+		SplitTransitionImpl splitTransition = new SplitTransitionImpl();
+		return splitTransition;
 	}
 
 	/**
@@ -160,6 +166,26 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 	public Arc createArc() {
 		ArcImpl arc = new ArcImpl();
 		return arc;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ArcType createArcType() {
+		ArcTypeImpl arcType = new ArcTypeImpl();
+		return arcType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JoinTransition createJoinTransition() {
+		JoinTransitionImpl joinTransition = new JoinTransitionImpl();
+		return joinTransition;
 	}
 
 	/**
@@ -199,6 +225,26 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 	 * @generated
 	 */
 	public String convertTTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AType createATypeFromString(EDataType eDataType, String initialValue) {
+		AType result = AType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertATypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

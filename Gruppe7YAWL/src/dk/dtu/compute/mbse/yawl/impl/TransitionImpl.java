@@ -2,8 +2,9 @@
  */
 package dk.dtu.compute.mbse.yawl.impl;
 
+import dk.dtu.compute.mbse.yawl.JoinTransition;
+import dk.dtu.compute.mbse.yawl.SplitTransition;
 import dk.dtu.compute.mbse.yawl.Transition;
-import dk.dtu.compute.mbse.yawl.TransitionType;
 import dk.dtu.compute.mbse.yawl.YawlPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,22 +23,31 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.dtu.compute.mbse.yawl.impl.TransitionImpl#getNeweclass5 <em>Neweclass5</em>}</li>
+ *   <li>{@link dk.dtu.compute.mbse.yawl.impl.TransitionImpl#getSplitTransition <em>Split Transition</em>}</li>
+ *   <li>{@link dk.dtu.compute.mbse.yawl.impl.TransitionImpl#getJoinTransition <em>Join Transition</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.TransitionImpl implements Transition {
 	/**
-	 * The cached value of the '{@link #getNeweclass5() <em>Neweclass5</em>}' containment reference.
+	 * The cached value of the '{@link #getSplitTransition() <em>Split Transition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNeweclass5()
+	 * @see #getSplitTransition()
 	 * @generated
 	 * @ordered
 	 */
-	protected TransitionType neweclass5;
-
+	protected SplitTransition splitTransition;
+	/**
+	 * The cached value of the '{@link #getJoinTransition() <em>Join Transition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJoinTransition()
+	 * @generated
+	 * @ordered
+	 */
+	protected JoinTransition joinTransition;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,8 +72,8 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TransitionType getNeweclass5() {
-		return neweclass5;
+	public SplitTransition getSplitTransition() {
+		return splitTransition;
 	}
 
 	/**
@@ -71,11 +81,11 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetNeweclass5(TransitionType newNeweclass5, NotificationChain msgs) {
-		TransitionType oldNeweclass5 = neweclass5;
-		neweclass5 = newNeweclass5;
+	public NotificationChain basicSetSplitTransition(SplitTransition newSplitTransition, NotificationChain msgs) {
+		SplitTransition oldSplitTransition = splitTransition;
+		splitTransition = newSplitTransition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, YawlPackage.TRANSITION__NEWECLASS5, oldNeweclass5, newNeweclass5);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, YawlPackage.TRANSITION__SPLIT_TRANSITION, oldSplitTransition, newSplitTransition);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -86,18 +96,61 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNeweclass5(TransitionType newNeweclass5) {
-		if (newNeweclass5 != neweclass5) {
+	public void setSplitTransition(SplitTransition newSplitTransition) {
+		if (newSplitTransition != splitTransition) {
 			NotificationChain msgs = null;
-			if (neweclass5 != null)
-				msgs = ((InternalEObject)neweclass5).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__NEWECLASS5, null, msgs);
-			if (newNeweclass5 != null)
-				msgs = ((InternalEObject)newNeweclass5).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__NEWECLASS5, null, msgs);
-			msgs = basicSetNeweclass5(newNeweclass5, msgs);
+			if (splitTransition != null)
+				msgs = ((InternalEObject)splitTransition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__SPLIT_TRANSITION, null, msgs);
+			if (newSplitTransition != null)
+				msgs = ((InternalEObject)newSplitTransition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__SPLIT_TRANSITION, null, msgs);
+			msgs = basicSetSplitTransition(newSplitTransition, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, YawlPackage.TRANSITION__NEWECLASS5, newNeweclass5, newNeweclass5));
+			eNotify(new ENotificationImpl(this, Notification.SET, YawlPackage.TRANSITION__SPLIT_TRANSITION, newSplitTransition, newSplitTransition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JoinTransition getJoinTransition() {
+		return joinTransition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetJoinTransition(JoinTransition newJoinTransition, NotificationChain msgs) {
+		JoinTransition oldJoinTransition = joinTransition;
+		joinTransition = newJoinTransition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, YawlPackage.TRANSITION__JOIN_TRANSITION, oldJoinTransition, newJoinTransition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJoinTransition(JoinTransition newJoinTransition) {
+		if (newJoinTransition != joinTransition) {
+			NotificationChain msgs = null;
+			if (joinTransition != null)
+				msgs = ((InternalEObject)joinTransition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__JOIN_TRANSITION, null, msgs);
+			if (newJoinTransition != null)
+				msgs = ((InternalEObject)newJoinTransition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__JOIN_TRANSITION, null, msgs);
+			msgs = basicSetJoinTransition(newJoinTransition, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, YawlPackage.TRANSITION__JOIN_TRANSITION, newJoinTransition, newJoinTransition));
 	}
 
 	/**
@@ -108,8 +161,10 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case YawlPackage.TRANSITION__NEWECLASS5:
-				return basicSetNeweclass5(null, msgs);
+			case YawlPackage.TRANSITION__SPLIT_TRANSITION:
+				return basicSetSplitTransition(null, msgs);
+			case YawlPackage.TRANSITION__JOIN_TRANSITION:
+				return basicSetJoinTransition(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -122,8 +177,10 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case YawlPackage.TRANSITION__NEWECLASS5:
-				return getNeweclass5();
+			case YawlPackage.TRANSITION__SPLIT_TRANSITION:
+				return getSplitTransition();
+			case YawlPackage.TRANSITION__JOIN_TRANSITION:
+				return getJoinTransition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -136,8 +193,11 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case YawlPackage.TRANSITION__NEWECLASS5:
-				setNeweclass5((TransitionType)newValue);
+			case YawlPackage.TRANSITION__SPLIT_TRANSITION:
+				setSplitTransition((SplitTransition)newValue);
+				return;
+			case YawlPackage.TRANSITION__JOIN_TRANSITION:
+				setJoinTransition((JoinTransition)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -151,8 +211,11 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case YawlPackage.TRANSITION__NEWECLASS5:
-				setNeweclass5((TransitionType)null);
+			case YawlPackage.TRANSITION__SPLIT_TRANSITION:
+				setSplitTransition((SplitTransition)null);
+				return;
+			case YawlPackage.TRANSITION__JOIN_TRANSITION:
+				setJoinTransition((JoinTransition)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -166,8 +229,10 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case YawlPackage.TRANSITION__NEWECLASS5:
-				return neweclass5 != null;
+			case YawlPackage.TRANSITION__SPLIT_TRANSITION:
+				return splitTransition != null;
+			case YawlPackage.TRANSITION__JOIN_TRANSITION:
+				return joinTransition != null;
 		}
 		return super.eIsSet(featureID);
 	}

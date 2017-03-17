@@ -12,7 +12,8 @@ package dk.dtu.compute.mbse.yawl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link dk.dtu.compute.mbse.yawl.Transition#getNeweclass5 <em>Neweclass5</em>}</li>
+ *   <li>{@link dk.dtu.compute.mbse.yawl.Transition#getSplitTransition <em>Split Transition</em>}</li>
+ *   <li>{@link dk.dtu.compute.mbse.yawl.Transition#getJoinTransition <em>Join Transition</em>}</li>
  * </ul>
  *
  * @see dk.dtu.compute.mbse.yawl.YawlPackage#getTransition()
@@ -21,29 +22,55 @@ package dk.dtu.compute.mbse.yawl;
  */
 public interface Transition extends org.pnml.tools.epnk.pnmlcoremodel.Transition {
 	/**
-	 * Returns the value of the '<em><b>Neweclass5</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Split Transition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Neweclass5</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Split Transition</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Neweclass5</em>' containment reference.
-	 * @see #setNeweclass5(TransitionType)
-	 * @see dk.dtu.compute.mbse.yawl.YawlPackage#getTransition_Neweclass5()
+	 * @return the value of the '<em>Split Transition</em>' containment reference.
+	 * @see #setSplitTransition(SplitTransition)
+	 * @see dk.dtu.compute.mbse.yawl.YawlPackage#getTransition_SplitTransition()
 	 * @model containment="true"
 	 * @generated
 	 */
-	TransitionType getNeweclass5();
+	SplitTransition getSplitTransition();
 
 	/**
-	 * Sets the value of the '{@link dk.dtu.compute.mbse.yawl.Transition#getNeweclass5 <em>Neweclass5</em>}' containment reference.
+	 * Sets the value of the '{@link dk.dtu.compute.mbse.yawl.Transition#getSplitTransition <em>Split Transition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Neweclass5</em>' containment reference.
-	 * @see #getNeweclass5()
+	 * @param value the new value of the '<em>Split Transition</em>' containment reference.
+	 * @see #getSplitTransition()
 	 * @generated
 	 */
-	void setNeweclass5(TransitionType value);
+	void setSplitTransition(SplitTransition value);
+
+	/**
+	 * Returns the value of the '<em><b>Join Transition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Join Transition</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Join Transition</em>' containment reference.
+	 * @see #setJoinTransition(JoinTransition)
+	 * @see dk.dtu.compute.mbse.yawl.YawlPackage#getTransition_JoinTransition()
+	 * @model containment="true"
+	 * @generated
+	 */
+	JoinTransition getJoinTransition();
+
+	/**
+	 * Sets the value of the '{@link dk.dtu.compute.mbse.yawl.Transition#getJoinTransition <em>Join Transition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Join Transition</em>' containment reference.
+	 * @see #getJoinTransition()
+	 * @generated
+	 */
+	void setJoinTransition(JoinTransition value);
 
 } // Transition

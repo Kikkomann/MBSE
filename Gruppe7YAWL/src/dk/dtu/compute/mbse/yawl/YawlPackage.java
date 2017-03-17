@@ -297,13 +297,22 @@ public interface YawlPackage extends EPackage {
 	int TRANSITION__IN = PnmlcoremodelPackage.TRANSITION__IN;
 
 	/**
-	 * The feature id for the '<em><b>Neweclass5</b></em>' containment reference.
+	 * The feature id for the '<em><b>Split Transition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__NEWECLASS5 = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 0;
+	int TRANSITION__SPLIT_TRANSITION = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Join Transition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__JOIN_TRANSITION = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
@@ -312,17 +321,44 @@ public interface YawlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_FEATURE_COUNT = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 1;
+	int TRANSITION_FEATURE_COUNT = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.compute.mbse.yawl.impl.TransitionTypeImpl <em>Transition Type</em>}' class.
+	 * The meta object id for the '{@link dk.dtu.compute.mbse.yawl.impl.SplitTransitionImpl <em>Split Transition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.compute.mbse.yawl.impl.TransitionTypeImpl
-	 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getTransitionType()
+	 * @see dk.dtu.compute.mbse.yawl.impl.SplitTransitionImpl
+	 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getSplitTransition()
 	 * @generated
 	 */
-	int TRANSITION_TYPE = 4;
+	int SPLIT_TRANSITION = 4;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT_TRANSITION__TOOLSPECIFIC = PnmlcoremodelPackage.ATTRIBUTE__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT_TRANSITION__GRAPHICS = PnmlcoremodelPackage.ATTRIBUTE__GRAPHICS;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT_TRANSITION__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -331,16 +367,16 @@ public interface YawlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_TYPE__TEXT = 0;
+	int SPLIT_TRANSITION__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Transition Type</em>' class.
+	 * The number of structural features of the '<em>Split Transition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_TYPE_FEATURE_COUNT = 1;
+	int SPLIT_TRANSITION_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link dk.dtu.compute.mbse.yawl.impl.ArcImpl <em>Arc</em>}' class.
@@ -416,13 +452,132 @@ public interface YawlPackage extends EPackage {
 	int ARC__TARGET = PnmlcoremodelPackage.ARC__TARGET;
 
 	/**
+	 * The feature id for the '<em><b>Arctype</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__ARCTYPE = PnmlcoremodelPackage.ARC_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Arc</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARC_FEATURE_COUNT = PnmlcoremodelPackage.ARC_FEATURE_COUNT + 0;
+	int ARC_FEATURE_COUNT = PnmlcoremodelPackage.ARC_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link dk.dtu.compute.mbse.yawl.impl.ArcTypeImpl <em>Arc Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dk.dtu.compute.mbse.yawl.impl.ArcTypeImpl
+	 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getArcType()
+	 * @generated
+	 */
+	int ARC_TYPE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_TYPE__TOOLSPECIFIC = PnmlcoremodelPackage.ATTRIBUTE__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_TYPE__GRAPHICS = PnmlcoremodelPackage.ATTRIBUTE__GRAPHICS;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_TYPE__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_TYPE__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Arc Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_TYPE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link dk.dtu.compute.mbse.yawl.impl.JoinTransitionImpl <em>Join Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dk.dtu.compute.mbse.yawl.impl.JoinTransitionImpl
+	 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getJoinTransition()
+	 * @generated
+	 */
+	int JOIN_TRANSITION = 7;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_TRANSITION__TOOLSPECIFIC = PnmlcoremodelPackage.ATTRIBUTE__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_TRANSITION__GRAPHICS = PnmlcoremodelPackage.ATTRIBUTE__GRAPHICS;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_TRANSITION__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_TRANSITION__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Join Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_TRANSITION_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link dk.dtu.compute.mbse.yawl.PType <em>PType</em>}' enum.
@@ -432,7 +587,7 @@ public interface YawlPackage extends EPackage {
 	 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getPType()
 	 * @generated
 	 */
-	int PTYPE = 6;
+	int PTYPE = 8;
 
 	/**
 	 * The meta object id for the '{@link dk.dtu.compute.mbse.yawl.TType <em>TType</em>}' enum.
@@ -442,7 +597,18 @@ public interface YawlPackage extends EPackage {
 	 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getTType()
 	 * @generated
 	 */
-	int TTYPE = 7;
+	int TTYPE = 9;
+
+
+	/**
+	 * The meta object id for the '{@link dk.dtu.compute.mbse.yawl.AType <em>AType</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dk.dtu.compute.mbse.yawl.AType
+	 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getAType()
+	 * @generated
+	 */
+	int ATYPE = 10;
 
 
 	/**
@@ -508,36 +674,47 @@ public interface YawlPackage extends EPackage {
 	EClass getTransition();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dk.dtu.compute.mbse.yawl.Transition#getNeweclass5 <em>Neweclass5</em>}'.
+	 * Returns the meta object for the containment reference '{@link dk.dtu.compute.mbse.yawl.Transition#getSplitTransition <em>Split Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Neweclass5</em>'.
-	 * @see dk.dtu.compute.mbse.yawl.Transition#getNeweclass5()
+	 * @return the meta object for the containment reference '<em>Split Transition</em>'.
+	 * @see dk.dtu.compute.mbse.yawl.Transition#getSplitTransition()
 	 * @see #getTransition()
 	 * @generated
 	 */
-	EReference getTransition_Neweclass5();
+	EReference getTransition_SplitTransition();
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.compute.mbse.yawl.TransitionType <em>Transition Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link dk.dtu.compute.mbse.yawl.Transition#getJoinTransition <em>Join Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Transition Type</em>'.
-	 * @see dk.dtu.compute.mbse.yawl.TransitionType
+	 * @return the meta object for the containment reference '<em>Join Transition</em>'.
+	 * @see dk.dtu.compute.mbse.yawl.Transition#getJoinTransition()
+	 * @see #getTransition()
 	 * @generated
 	 */
-	EClass getTransitionType();
+	EReference getTransition_JoinTransition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link dk.dtu.compute.mbse.yawl.TransitionType#getText <em>Text</em>}'.
+	 * Returns the meta object for class '{@link dk.dtu.compute.mbse.yawl.SplitTransition <em>Split Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Split Transition</em>'.
+	 * @see dk.dtu.compute.mbse.yawl.SplitTransition
+	 * @generated
+	 */
+	EClass getSplitTransition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dk.dtu.compute.mbse.yawl.SplitTransition#getText <em>Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see dk.dtu.compute.mbse.yawl.TransitionType#getText()
-	 * @see #getTransitionType()
+	 * @see dk.dtu.compute.mbse.yawl.SplitTransition#getText()
+	 * @see #getSplitTransition()
 	 * @generated
 	 */
-	EAttribute getTransitionType_Text();
+	EAttribute getSplitTransition_Text();
 
 	/**
 	 * Returns the meta object for class '{@link dk.dtu.compute.mbse.yawl.Arc <em>Arc</em>}'.
@@ -548,6 +725,59 @@ public interface YawlPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getArc();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link dk.dtu.compute.mbse.yawl.Arc#getArctype <em>Arctype</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Arctype</em>'.
+	 * @see dk.dtu.compute.mbse.yawl.Arc#getArctype()
+	 * @see #getArc()
+	 * @generated
+	 */
+	EReference getArc_Arctype();
+
+	/**
+	 * Returns the meta object for class '{@link dk.dtu.compute.mbse.yawl.ArcType <em>Arc Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Arc Type</em>'.
+	 * @see dk.dtu.compute.mbse.yawl.ArcType
+	 * @generated
+	 */
+	EClass getArcType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dk.dtu.compute.mbse.yawl.ArcType#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see dk.dtu.compute.mbse.yawl.ArcType#getText()
+	 * @see #getArcType()
+	 * @generated
+	 */
+	EAttribute getArcType_Text();
+
+	/**
+	 * Returns the meta object for class '{@link dk.dtu.compute.mbse.yawl.JoinTransition <em>Join Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Join Transition</em>'.
+	 * @see dk.dtu.compute.mbse.yawl.JoinTransition
+	 * @generated
+	 */
+	EClass getJoinTransition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dk.dtu.compute.mbse.yawl.JoinTransition#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see dk.dtu.compute.mbse.yawl.JoinTransition#getText()
+	 * @see #getJoinTransition()
+	 * @generated
+	 */
+	EAttribute getJoinTransition_Text();
 
 	/**
 	 * Returns the meta object for enum '{@link dk.dtu.compute.mbse.yawl.PType <em>PType</em>}'.
@@ -568,6 +798,16 @@ public interface YawlPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getTType();
+
+	/**
+	 * Returns the meta object for enum '{@link dk.dtu.compute.mbse.yawl.AType <em>AType</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>AType</em>'.
+	 * @see dk.dtu.compute.mbse.yawl.AType
+	 * @generated
+	 */
+	EEnum getAType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -648,22 +888,30 @@ public interface YawlPackage extends EPackage {
 		EClass TRANSITION = eINSTANCE.getTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Neweclass5</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Split Transition</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSITION__NEWECLASS5 = eINSTANCE.getTransition_Neweclass5();
+		EReference TRANSITION__SPLIT_TRANSITION = eINSTANCE.getTransition_SplitTransition();
 
 		/**
-		 * The meta object literal for the '{@link dk.dtu.compute.mbse.yawl.impl.TransitionTypeImpl <em>Transition Type</em>}' class.
+		 * The meta object literal for the '<em><b>Join Transition</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.compute.mbse.yawl.impl.TransitionTypeImpl
-		 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getTransitionType()
 		 * @generated
 		 */
-		EClass TRANSITION_TYPE = eINSTANCE.getTransitionType();
+		EReference TRANSITION__JOIN_TRANSITION = eINSTANCE.getTransition_JoinTransition();
+
+		/**
+		 * The meta object literal for the '{@link dk.dtu.compute.mbse.yawl.impl.SplitTransitionImpl <em>Split Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.dtu.compute.mbse.yawl.impl.SplitTransitionImpl
+		 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getSplitTransition()
+		 * @generated
+		 */
+		EClass SPLIT_TRANSITION = eINSTANCE.getSplitTransition();
 
 		/**
 		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
@@ -671,7 +919,7 @@ public interface YawlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TRANSITION_TYPE__TEXT = eINSTANCE.getTransitionType_Text();
+		EAttribute SPLIT_TRANSITION__TEXT = eINSTANCE.getSplitTransition_Text();
 
 		/**
 		 * The meta object literal for the '{@link dk.dtu.compute.mbse.yawl.impl.ArcImpl <em>Arc</em>}' class.
@@ -682,6 +930,50 @@ public interface YawlPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ARC = eINSTANCE.getArc();
+
+		/**
+		 * The meta object literal for the '<em><b>Arctype</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ARC__ARCTYPE = eINSTANCE.getArc_Arctype();
+
+		/**
+		 * The meta object literal for the '{@link dk.dtu.compute.mbse.yawl.impl.ArcTypeImpl <em>Arc Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.dtu.compute.mbse.yawl.impl.ArcTypeImpl
+		 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getArcType()
+		 * @generated
+		 */
+		EClass ARC_TYPE = eINSTANCE.getArcType();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ARC_TYPE__TEXT = eINSTANCE.getArcType_Text();
+
+		/**
+		 * The meta object literal for the '{@link dk.dtu.compute.mbse.yawl.impl.JoinTransitionImpl <em>Join Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.dtu.compute.mbse.yawl.impl.JoinTransitionImpl
+		 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getJoinTransition()
+		 * @generated
+		 */
+		EClass JOIN_TRANSITION = eINSTANCE.getJoinTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOIN_TRANSITION__TEXT = eINSTANCE.getJoinTransition_Text();
 
 		/**
 		 * The meta object literal for the '{@link dk.dtu.compute.mbse.yawl.PType <em>PType</em>}' enum.
@@ -702,6 +994,16 @@ public interface YawlPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum TTYPE = eINSTANCE.getTType();
+
+		/**
+		 * The meta object literal for the '{@link dk.dtu.compute.mbse.yawl.AType <em>AType</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.dtu.compute.mbse.yawl.AType
+		 * @see dk.dtu.compute.mbse.yawl.impl.YawlPackageImpl#getAType()
+		 * @generated
+		 */
+		EEnum ATYPE = eINSTANCE.getAType();
 
 	}
 

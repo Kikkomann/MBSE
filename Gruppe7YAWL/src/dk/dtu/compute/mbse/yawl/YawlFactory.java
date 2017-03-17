@@ -58,13 +58,13 @@ public interface YawlFactory extends EFactory {
 	Transition createTransition();
 
 	/**
-	 * Returns a new object of class '<em>Transition Type</em>'.
+	 * Returns a new object of class '<em>Split Transition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Transition Type</em>'.
+	 * @return a new object of class '<em>Split Transition</em>'.
 	 * @generated
 	 */
-	TransitionType createTransitionType();
+	SplitTransition createSplitTransition();
 
 	/**
 	 * Returns a new object of class '<em>Arc</em>'.
@@ -74,6 +74,24 @@ public interface YawlFactory extends EFactory {
 	 * @generated
 	 */
 	Arc createArc();
+
+	/**
+	 * Returns a new object of class '<em>Arc Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Arc Type</em>'.
+	 * @generated
+	 */
+	ArcType createArcType();
+
+	/**
+	 * Returns a new object of class '<em>Join Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Join Transition</em>'.
+	 * @generated
+	 */
+	JoinTransition createJoinTransition();
 
 	/**
 	 * Returns the package supported by this factory.
