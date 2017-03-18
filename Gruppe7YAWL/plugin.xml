@@ -11,7 +11,7 @@
 		name="YAWL Nets"
     	point="org.pnml.tools.epnk.pntd">
     	<type
-			class="dk.dtu.compute.mbse.yawl.impl.YAWLNetImpl"
+			class="yawl.impl.YAWLNetImpl"
     	    description="YAWL Nets" />
 	</extension>
 
@@ -19,7 +19,7 @@
       <!-- @generated yawl -->
       <package
             uri="http://se.compute.dtu.dk/mbse/yawl"
-            class="dk.dtu.compute.mbse.yawl.YawlPackage"
+            class="yawl.YawlPackage"
             genModel="model/yawl.genmodel"/>
    </extension>
 

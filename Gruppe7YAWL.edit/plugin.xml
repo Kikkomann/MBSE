@@ -10,7 +10,7 @@
       <!-- @generated yawl -->
       <factory
             uri="http://se.compute.dtu.dk/mbse/yawl"
-            class="dk.dtu.compute.mbse.yawl.provider.YawlItemProviderAdapterFactory"
+            class="yawl.provider.YawlItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
