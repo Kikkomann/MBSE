@@ -19,16 +19,6 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum PType implements Enumerator {
 	/**
-	 * The '<em><b>NORMAL</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NORMAL_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	NORMAL(0, "NORMAL", "NORMAL"),
-
-	/**
 	 * The '<em><b>START</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -47,21 +37,6 @@ public enum PType implements Enumerator {
 	 * @ordered
 	 */
 	END(2, "END", "END");
-
-	/**
-	 * The '<em><b>NORMAL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>NORMAL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #NORMAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NORMAL_VALUE = 0;
 
 	/**
 	 * The '<em><b>START</b></em>' literal value.
@@ -101,7 +76,6 @@ public enum PType implements Enumerator {
 	 */
 	private static final PType[] VALUES_ARRAY =
 		new PType[] {
-			NORMAL,
 			START,
 			END,
 		};
@@ -160,7 +134,6 @@ public enum PType implements Enumerator {
 	 */
 	public static PType get(int value) {
 		switch (value) {
-			case NORMAL_VALUE: return NORMAL;
 			case START_VALUE: return START;
 			case END_VALUE: return END;
 		}

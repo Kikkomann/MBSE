@@ -40,7 +40,7 @@ public interface YawlPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://se.compute.dtu.dk/mbse/yawl";
+	String eNS_URI = "http://group7.dtu.dk/mbse/yawl";
 
 	/**
 	 * The package namespace name.
@@ -151,13 +151,13 @@ public interface YawlPackage extends EPackage {
 	int PLACE__IN = PnmlcoremodelPackage.PLACE__IN;
 
 	/**
-	 * The feature id for the '<em><b>Placetype</b></em>' containment reference.
+	 * The feature id for the '<em><b>Place Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__PLACETYPE = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 0;
+	int PLACE__PLACE_TYPE = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Place</em>' class.
@@ -297,22 +297,22 @@ public interface YawlPackage extends EPackage {
 	int TRANSITION__IN = PnmlcoremodelPackage.TRANSITION__IN;
 
 	/**
-	 * The feature id for the '<em><b>Split Transition</b></em>' containment reference.
+	 * The feature id for the '<em><b>Split Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__SPLIT_TRANSITION = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 0;
+	int TRANSITION__SPLIT_TYPE = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Join Transition</b></em>' containment reference.
+	 * The feature id for the '<em><b>Join Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__JOIN_TRANSITION = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 1;
+	int TRANSITION__JOIN_TYPE = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
@@ -452,13 +452,13 @@ public interface YawlPackage extends EPackage {
 	int ARC__TARGET = PnmlcoremodelPackage.ARC__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Arctype</b></em>' containment reference.
+	 * The feature id for the '<em><b>Arc Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARC__ARCTYPE = PnmlcoremodelPackage.ARC_FEATURE_COUNT + 0;
+	int ARC__ARC_TYPE = PnmlcoremodelPackage.ARC_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Arc</em>' class.
@@ -632,15 +632,15 @@ public interface YawlPackage extends EPackage {
 	EClass getPlace();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link yawl.Place#getPlacetype <em>Placetype</em>}'.
+	 * Returns the meta object for the containment reference '{@link yawl.Place#getPlaceType <em>Place Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Placetype</em>'.
-	 * @see yawl.Place#getPlacetype()
+	 * @return the meta object for the containment reference '<em>Place Type</em>'.
+	 * @see yawl.Place#getPlaceType()
 	 * @see #getPlace()
 	 * @generated
 	 */
-	EReference getPlace_Placetype();
+	EReference getPlace_PlaceType();
 
 	/**
 	 * Returns the meta object for class '{@link yawl.PlaceType <em>Place Type</em>}'.
@@ -674,26 +674,26 @@ public interface YawlPackage extends EPackage {
 	EClass getTransition();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link yawl.Transition#getSplitTransition <em>Split Transition</em>}'.
+	 * Returns the meta object for the containment reference '{@link yawl.Transition#getSplitType <em>Split Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Split Transition</em>'.
-	 * @see yawl.Transition#getSplitTransition()
+	 * @return the meta object for the containment reference '<em>Split Type</em>'.
+	 * @see yawl.Transition#getSplitType()
 	 * @see #getTransition()
 	 * @generated
 	 */
-	EReference getTransition_SplitTransition();
+	EReference getTransition_SplitType();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link yawl.Transition#getJoinTransition <em>Join Transition</em>}'.
+	 * Returns the meta object for the containment reference '{@link yawl.Transition#getJoinType <em>Join Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Join Transition</em>'.
-	 * @see yawl.Transition#getJoinTransition()
+	 * @return the meta object for the containment reference '<em>Join Type</em>'.
+	 * @see yawl.Transition#getJoinType()
 	 * @see #getTransition()
 	 * @generated
 	 */
-	EReference getTransition_JoinTransition();
+	EReference getTransition_JoinType();
 
 	/**
 	 * Returns the meta object for class '{@link yawl.SplitTransition <em>Split Transition</em>}'.
@@ -727,15 +727,15 @@ public interface YawlPackage extends EPackage {
 	EClass getArc();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link yawl.Arc#getArctype <em>Arctype</em>}'.
+	 * Returns the meta object for the containment reference '{@link yawl.Arc#getArcType <em>Arc Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Arctype</em>'.
-	 * @see yawl.Arc#getArctype()
+	 * @return the meta object for the containment reference '<em>Arc Type</em>'.
+	 * @see yawl.Arc#getArcType()
 	 * @see #getArc()
 	 * @generated
 	 */
-	EReference getArc_Arctype();
+	EReference getArc_ArcType();
 
 	/**
 	 * Returns the meta object for class '{@link yawl.ArcType <em>Arc Type</em>}'.
@@ -852,12 +852,12 @@ public interface YawlPackage extends EPackage {
 		EClass PLACE = eINSTANCE.getPlace();
 
 		/**
-		 * The meta object literal for the '<em><b>Placetype</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Place Type</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PLACE__PLACETYPE = eINSTANCE.getPlace_Placetype();
+		EReference PLACE__PLACE_TYPE = eINSTANCE.getPlace_PlaceType();
 
 		/**
 		 * The meta object literal for the '{@link yawl.impl.PlaceTypeImpl <em>Place Type</em>}' class.
@@ -888,20 +888,20 @@ public interface YawlPackage extends EPackage {
 		EClass TRANSITION = eINSTANCE.getTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Split Transition</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Split Type</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSITION__SPLIT_TRANSITION = eINSTANCE.getTransition_SplitTransition();
+		EReference TRANSITION__SPLIT_TYPE = eINSTANCE.getTransition_SplitType();
 
 		/**
-		 * The meta object literal for the '<em><b>Join Transition</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Join Type</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSITION__JOIN_TRANSITION = eINSTANCE.getTransition_JoinTransition();
+		EReference TRANSITION__JOIN_TYPE = eINSTANCE.getTransition_JoinType();
 
 		/**
 		 * The meta object literal for the '{@link yawl.impl.SplitTransitionImpl <em>Split Transition</em>}' class.
@@ -932,12 +932,12 @@ public interface YawlPackage extends EPackage {
 		EClass ARC = eINSTANCE.getArc();
 
 		/**
-		 * The meta object literal for the '<em><b>Arctype</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Arc Type</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ARC__ARCTYPE = eINSTANCE.getArc_Arctype();
+		EReference ARC__ARC_TYPE = eINSTANCE.getArc_ArcType();
 
 		/**
 		 * The meta object literal for the '{@link yawl.impl.ArcTypeImpl <em>Arc Type</em>}' class.

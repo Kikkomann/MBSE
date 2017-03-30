@@ -8,7 +8,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: yawl,
- yawl.functions,
+ yawl.helpers,
  yawl.impl,
  yawl.util
 Require-Bundle: org.eclipse.core.runtime,

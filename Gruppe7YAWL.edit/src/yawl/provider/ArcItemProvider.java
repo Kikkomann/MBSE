@@ -64,7 +64,7 @@ public class ArcItemProvider extends org.pnml.tools.epnk.pnmlcoremodel.provider.
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(YawlPackage.Literals.ARC__ARCTYPE);
+			childrenFeatures.add(YawlPackage.Literals.ARC__ARC_TYPE);
 		}
 		return childrenFeatures;
 	}
@@ -120,7 +120,7 @@ public class ArcItemProvider extends org.pnml.tools.epnk.pnmlcoremodel.provider.
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Arc.class)) {
-			case YawlPackage.ARC__ARCTYPE:
+			case YawlPackage.ARC__ARC_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -140,7 +140,7 @@ public class ArcItemProvider extends org.pnml.tools.epnk.pnmlcoremodel.provider.
 
 		newChildDescriptors.add
 			(createChildParameter
-				(YawlPackage.Literals.ARC__ARCTYPE,
+				(YawlPackage.Literals.ARC__ARC_TYPE,
 				 YawlFactory.eINSTANCE.createArcType()));
 	}
 

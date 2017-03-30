@@ -22,22 +22,21 @@ import yawl.YawlPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link yawl.impl.PlaceImpl#getPlacetype <em>Placetype</em>}</li>
+ *   <li>{@link yawl.impl.PlaceImpl#getPlaceType <em>Place Type</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl implements Place {
 	/**
-	 * The cached value of the '{@link #getPlacetype() <em>Placetype</em>}' containment reference.
+	 * The cached value of the '{@link #getPlaceType() <em>Place Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPlacetype()
+	 * @see #getPlaceType()
 	 * @generated
 	 * @ordered
 	 */
-	protected PlaceType placetype;
-
+	protected PlaceType placeType;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,8 +61,8 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PlaceType getPlacetype() {
-		return placetype;
+	public PlaceType getPlaceType() {
+		return placeType;
 	}
 
 	/**
@@ -71,11 +70,11 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPlacetype(PlaceType newPlacetype, NotificationChain msgs) {
-		PlaceType oldPlacetype = placetype;
-		placetype = newPlacetype;
+	public NotificationChain basicSetPlaceType(PlaceType newPlaceType, NotificationChain msgs) {
+		PlaceType oldPlaceType = placeType;
+		placeType = newPlaceType;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, YawlPackage.PLACE__PLACETYPE, oldPlacetype, newPlacetype);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, YawlPackage.PLACE__PLACE_TYPE, oldPlaceType, newPlaceType);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -86,18 +85,18 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPlacetype(PlaceType newPlacetype) {
-		if (newPlacetype != placetype) {
+	public void setPlaceType(PlaceType newPlaceType) {
+		if (newPlaceType != placeType) {
 			NotificationChain msgs = null;
-			if (placetype != null)
-				msgs = ((InternalEObject)placetype).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - YawlPackage.PLACE__PLACETYPE, null, msgs);
-			if (newPlacetype != null)
-				msgs = ((InternalEObject)newPlacetype).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - YawlPackage.PLACE__PLACETYPE, null, msgs);
-			msgs = basicSetPlacetype(newPlacetype, msgs);
+			if (placeType != null)
+				msgs = ((InternalEObject)placeType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - YawlPackage.PLACE__PLACE_TYPE, null, msgs);
+			if (newPlaceType != null)
+				msgs = ((InternalEObject)newPlaceType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - YawlPackage.PLACE__PLACE_TYPE, null, msgs);
+			msgs = basicSetPlaceType(newPlaceType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, YawlPackage.PLACE__PLACETYPE, newPlacetype, newPlacetype));
+			eNotify(new ENotificationImpl(this, Notification.SET, YawlPackage.PLACE__PLACE_TYPE, newPlaceType, newPlaceType));
 	}
 
 	/**
@@ -108,8 +107,8 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case YawlPackage.PLACE__PLACETYPE:
-				return basicSetPlacetype(null, msgs);
+			case YawlPackage.PLACE__PLACE_TYPE:
+				return basicSetPlaceType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -122,8 +121,8 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case YawlPackage.PLACE__PLACETYPE:
-				return getPlacetype();
+			case YawlPackage.PLACE__PLACE_TYPE:
+				return getPlaceType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -136,8 +135,8 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case YawlPackage.PLACE__PLACETYPE:
-				setPlacetype((PlaceType)newValue);
+			case YawlPackage.PLACE__PLACE_TYPE:
+				setPlaceType((PlaceType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -151,8 +150,8 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case YawlPackage.PLACE__PLACETYPE:
-				setPlacetype((PlaceType)null);
+			case YawlPackage.PLACE__PLACE_TYPE:
+				setPlaceType((PlaceType)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -166,8 +165,8 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case YawlPackage.PLACE__PLACETYPE:
-				return placetype != null;
+			case YawlPackage.PLACE__PLACE_TYPE:
+				return placeType != null;
 		}
 		return super.eIsSet(featureID);
 	}

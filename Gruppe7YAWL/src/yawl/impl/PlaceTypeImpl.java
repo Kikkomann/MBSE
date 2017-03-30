@@ -36,7 +36,7 @@ public class PlaceTypeImpl extends AttributeImpl implements PlaceType {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final PType TEXT_EDEFAULT = PType.NORMAL;
+	protected static final PType TEXT_EDEFAULT = PType.START;
 
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.

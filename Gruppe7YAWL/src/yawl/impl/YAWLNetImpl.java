@@ -39,7 +39,8 @@ public class YAWLNetImpl extends PetriNetTypeImpl implements YAWLNet {
 
 	@Override
 	public String toString() {
-		return "http://se.compute.dtu.dk/mbse/yawl";
+		//TODO gamle URI: return "http://se.compute.dtu.dk/mbse/yawl";
+		return "http://group7.dtu.dk/mbse/yawl";
 	}
 
 } //YAWLNetImpl

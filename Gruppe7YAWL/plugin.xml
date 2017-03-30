@@ -15,21 +15,13 @@
     	    description="YAWL Nets" />
 	</extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated yawl -->
-      <package
-            uri="http://se.compute.dtu.dk/mbse/yawl"
-            class="yawl.YawlPackage"
-            genModel="model/yawl.genmodel"/>
-   </extension>
-   
     <extension
          point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider
             cache="true">
          <!-- TODO this should be refering to the URI of your YAWL net model -->
          <package
-               namespaceUri="http://se.compute.dtu.dk/mbse/yawl">
+               namespaceUri="http://group7.dtu.dk/mbse/yawl">
          </package>
          <constraints categories="org.pnml.tools.epnk.validation">
             <constraint
@@ -50,7 +42,7 @@
                <!-- TODO the class the constraint refers to: the Arc of your YWAL Ecore model,
                     the class name and the URI of the packake separated by a colon -->
                <target
-                     class="Arc:http://se.compute.dtu.dk/mbse/yawl">
+                     class="Arc:http://group7.dtu.dk/mbse/yawl">
                   <!-- since this is a live constraint, you need to tell the
                        validator when to check the constraint: in terms of events here
                        we use set events on the following features -->
@@ -65,28 +57,21 @@
                      <!-- TODO the feature "type" is the reference to the Attribute defining the type
                           of the arc) -->
                      <feature
-                           name="type">
+                           name="arcType">
                      </feature>
                   </event>
                </target>
-               <!-- The actual OCL constraint follows
-               
-                    TODO you might need to change self.type->size() which says that
-                    you cannot set the type of an arc for arcs running from a tarnsition
-                    to a place -->
+               <!-- The actual OCL constraint follows -->
               <![CDATA[
                  ( self.source.oclIsKindOf(pnmlcoremodel::PlaceNode) and
                    self.target.oclIsKindOf(pnmlcoremodel::TransitionNode) )
                  or
                  ( self.source.oclIsKindOf(pnmlcoremodel::TransitionNode) and
                    self.target.oclIsKindOf(pnmlcoremodel::PlaceNode) and
-                   self.arctype->size() = 0 )
+                   ( self.arcType->size() = 0) )
                ]]>
             </constraint>
             
-             <!-- TODO the class attribute of the constraint should be the fully qualified name
-                      of the Java class implementing the constraint, checking start and
-                      end places -->
             <constraint
                   lang="Java"
                   class="yawl.constraints.StartEndCondition"
@@ -95,9 +80,7 @@
                   name="One start and end place"
                   id="Group7YAWL.validation.one-start-and-end-place"
                   statusCode="402">
-               <!-- TODO the class here needs to refer to Ecore class of the YAWL Petri net type
-                    (name and URI of the package separated by a colon) -->
-               <target class="YAWLNet:http://se.compute.dtu.dk/mbse/yawl"/>
+               <target class="YAWLNet:http://group7.dtu.dk/mbse/yawl"/>
                <description>
                   A YAWL net must have one start and end place.
                </description>
@@ -109,6 +92,14 @@
             </constraints>
             
          </constraintProvider>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated yawl -->
+      <package
+            uri="http://group7.dtu.dk/mbse/yawl"
+            class="yawl.YawlPackage"
+            genModel="model/yawl.genmodel"/>
    </extension>
 
 </plugin>

@@ -8,10 +8,10 @@ import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 
-import yawl.PType;
 import yawl.Place;
 import yawl.YAWLNet;
-import yawl.functions.YAWLFunctions;
+import yawl.helpers.PlaceType;
+import yawl.helpers.YAWLFunctions;
 
 /**
  * This is a constraint saying that a YAWL net should have exactly one start
@@ -34,13 +34,13 @@ public class StartEndCondition extends AbstractModelConstraint {
 					EObject content = iterator.next();
 					if (content instanceof Place) {
 						Place place = (Place) content;
-						PType type = YAWLFunctions.getType(place);
-						if (type.equals(PType.START)) {
+						PlaceType type = YAWLFunctions.getType(place);
+						if (type.equals(PlaceType.START)) {
 							startCount++;
 							if (startCount > 1) {
 								break;
 							}
-						} else if (type.equals(PType.END)) {
+						} else if (type.equals(PlaceType.END)) {
 							endCount++;
 							if (endCount > 1) {
 								break;
@@ -52,14 +52,10 @@ public class StartEndCondition extends AbstractModelConstraint {
 					// if there is not exactly one start place and exactly one
 					// end place, return a failure status.
 					return ctx.createFailureStatus(new Object[] { container });
-
 				}
-
 			}
-
 		}
 		// otherwise return a success status
 		return ctx.createSuccessStatus();
 	}
-
 }

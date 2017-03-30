@@ -10,8 +10,8 @@ import org.pnml.tools.epnk.gmf.extensions.graphics.figures.ArcFigure;
 import org.pnml.tools.epnk.pnmlcoremodel.Arc;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 
-import yawl.AType;
-import yawl.functions.YAWLFunctions;
+import yawl.helpers.ArcType;
+import yawl.helpers.YAWLFunctions;
 
 /**
  * The figure defining implementing the graphical appearance of arcs in the
@@ -22,7 +22,7 @@ import yawl.functions.YAWLFunctions;
  */
 public class Group7ArcFigure extends ArcFigure {
 
-	private AType arcType;
+	private ArcType arcType;
 	
 	public Group7ArcFigure(Arc arc) {
 		super(arc);
@@ -32,7 +32,7 @@ public class Group7ArcFigure extends ArcFigure {
 
 	@Override
 	public void update() {
-		AType oldArcType = arcType;
+		ArcType oldArcType = arcType;
 		arcType = YAWLFunctions.getType(arc);
 		if (arcType != oldArcType) {
 			setGraphics();
@@ -46,11 +46,11 @@ public class Group7ArcFigure extends ArcFigure {
 	}
 
 	private void setGraphics() {
-		if (arcType == AType.NORMAL) {
+		if (arcType == ArcType.NORMAL) {
 			this.setTargetDecoration(new ArrowHeadDecoration());
 			this.setSourceDecoration(null);
 			this.setLineStyle(SWT.LINE_SOLID);
-		} else if (arcType == AType.RESET) {
+		} else if (arcType == ArcType.RESET) {
 			this.setTargetDecoration(new DoubleArrowHeadDecoration());
 			this.setSourceDecoration(null);
 			this.setLineStyle(SWT.LINE_DASH);

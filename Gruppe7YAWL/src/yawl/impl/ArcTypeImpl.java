@@ -36,7 +36,7 @@ public class ArcTypeImpl extends AttributeImpl implements ArcType {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final AType TEXT_EDEFAULT = AType.NORMAL;
+	protected static final AType TEXT_EDEFAULT = AType.RESET;
 
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.

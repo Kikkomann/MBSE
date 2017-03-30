@@ -20,22 +20,21 @@ import yawl.YawlPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link yawl.impl.ArcImpl#getArctype <em>Arctype</em>}</li>
+ *   <li>{@link yawl.impl.ArcImpl#getArcType <em>Arc Type</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl implements Arc {
 	/**
-	 * The cached value of the '{@link #getArctype() <em>Arctype</em>}' containment reference.
+	 * The cached value of the '{@link #getArcType() <em>Arc Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getArctype()
+	 * @see #getArcType()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArcType arctype;
-
+	protected ArcType arcType;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,8 +59,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArcType getArctype() {
-		return arctype;
+	public ArcType getArcType() {
+		return arcType;
 	}
 
 	/**
@@ -69,11 +68,11 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetArctype(ArcType newArctype, NotificationChain msgs) {
-		ArcType oldArctype = arctype;
-		arctype = newArctype;
+	public NotificationChain basicSetArcType(ArcType newArcType, NotificationChain msgs) {
+		ArcType oldArcType = arcType;
+		arcType = newArcType;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, YawlPackage.ARC__ARCTYPE, oldArctype, newArctype);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, YawlPackage.ARC__ARC_TYPE, oldArcType, newArcType);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -84,18 +83,18 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setArctype(ArcType newArctype) {
-		if (newArctype != arctype) {
+	public void setArcType(ArcType newArcType) {
+		if (newArcType != arcType) {
 			NotificationChain msgs = null;
-			if (arctype != null)
-				msgs = ((InternalEObject)arctype).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - YawlPackage.ARC__ARCTYPE, null, msgs);
-			if (newArctype != null)
-				msgs = ((InternalEObject)newArctype).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - YawlPackage.ARC__ARCTYPE, null, msgs);
-			msgs = basicSetArctype(newArctype, msgs);
+			if (arcType != null)
+				msgs = ((InternalEObject)arcType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - YawlPackage.ARC__ARC_TYPE, null, msgs);
+			if (newArcType != null)
+				msgs = ((InternalEObject)newArcType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - YawlPackage.ARC__ARC_TYPE, null, msgs);
+			msgs = basicSetArcType(newArcType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, YawlPackage.ARC__ARCTYPE, newArctype, newArctype));
+			eNotify(new ENotificationImpl(this, Notification.SET, YawlPackage.ARC__ARC_TYPE, newArcType, newArcType));
 	}
 
 	/**
@@ -106,8 +105,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case YawlPackage.ARC__ARCTYPE:
-				return basicSetArctype(null, msgs);
+			case YawlPackage.ARC__ARC_TYPE:
+				return basicSetArcType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -120,8 +119,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case YawlPackage.ARC__ARCTYPE:
-				return getArctype();
+			case YawlPackage.ARC__ARC_TYPE:
+				return getArcType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -134,8 +133,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case YawlPackage.ARC__ARCTYPE:
-				setArctype((ArcType)newValue);
+			case YawlPackage.ARC__ARC_TYPE:
+				setArcType((ArcType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -149,8 +148,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case YawlPackage.ARC__ARCTYPE:
-				setArctype((ArcType)null);
+			case YawlPackage.ARC__ARC_TYPE:
+				setArcType((ArcType)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -164,8 +163,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case YawlPackage.ARC__ARCTYPE:
-				return arctype != null;
+			case YawlPackage.ARC__ARC_TYPE:
+				return arcType != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated yawl -->
       <factory
-            uri="http://se.compute.dtu.dk/mbse/yawl"
+            uri="http://group7.dtu.dk/mbse/yawl"
             class="yawl.provider.YawlItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

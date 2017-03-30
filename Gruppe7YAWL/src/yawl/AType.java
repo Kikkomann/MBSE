@@ -19,16 +19,6 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum AType implements Enumerator {
 	/**
-	 * The '<em><b>NORMAL</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NORMAL_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	NORMAL(0, "NORMAL", "NORMAL"),
-
-	/**
 	 * The '<em><b>RESET</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -37,21 +27,6 @@ public enum AType implements Enumerator {
 	 * @ordered
 	 */
 	RESET(1, "RESET", "RESET");
-
-	/**
-	 * The '<em><b>NORMAL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>NORMAL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #NORMAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NORMAL_VALUE = 0;
 
 	/**
 	 * The '<em><b>RESET</b></em>' literal value.
@@ -76,7 +51,6 @@ public enum AType implements Enumerator {
 	 */
 	private static final AType[] VALUES_ARRAY =
 		new AType[] {
-			NORMAL,
 			RESET,
 		};
 
@@ -134,7 +108,6 @@ public enum AType implements Enumerator {
 	 */
 	public static AType get(int value) {
 		switch (value) {
-			case NORMAL_VALUE: return NORMAL;
 			case RESET_VALUE: return RESET;
 		}
 		return null;

@@ -12,7 +12,7 @@ package yawl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link yawl.Arc#getArctype <em>Arctype</em>}</li>
+ *   <li>{@link yawl.Arc#getArcType <em>Arc Type</em>}</li>
  * </ul>
  *
  * @see yawl.YawlPackage#getArc()
@@ -22,28 +22,28 @@ package yawl;
 public interface Arc extends org.pnml.tools.epnk.pnmlcoremodel.Arc {
 
 	/**
-	 * Returns the value of the '<em><b>Arctype</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Arc Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Arctype</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Arc Type</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Arctype</em>' containment reference.
-	 * @see #setArctype(ArcType)
-	 * @see yawl.YawlPackage#getArc_Arctype()
+	 * @return the value of the '<em>Arc Type</em>' containment reference.
+	 * @see #setArcType(ArcType)
+	 * @see yawl.YawlPackage#getArc_ArcType()
 	 * @model containment="true"
 	 * @generated
 	 */
-	ArcType getArctype();
+	ArcType getArcType();
 
 	/**
-	 * Sets the value of the '{@link yawl.Arc#getArctype <em>Arctype</em>}' containment reference.
+	 * Sets the value of the '{@link yawl.Arc#getArcType <em>Arc Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Arctype</em>' containment reference.
-	 * @see #getArctype()
+	 * @param value the new value of the '<em>Arc Type</em>' containment reference.
+	 * @see #getArcType()
 	 * @generated
 	 */
-	void setArctype(ArcType value);
+	void setArcType(ArcType value);
 } // Arc

@@ -3,20 +3,18 @@ package graphics.figures;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.PlaceFigure;
 import org.pnml.tools.epnk.pnmlcoremodel.Place;
 
-import yawl.PType;
-import yawl.functions.YAWLFunctions;
+import yawl.helpers.PlaceType;
+import yawl.helpers.YAWLFunctions;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
-import org.pnml.tools.epnk.gmf.extensions.graphics.figures.TransitionFigure;
-import org.pnml.tools.epnk.pnmlcoremodel.Transition;
 
 public class Group7PlaceFigure extends PlaceFigure {
 
-	private PType placeType;
+	private PlaceType placeType;
 
 	public Group7PlaceFigure(Place place) {
 		super(place);
@@ -29,7 +27,7 @@ public class Group7PlaceFigure extends PlaceFigure {
 	 */
 	@Override
 	public void update() {
-		PType oldType = placeType;
+		PlaceType oldType = placeType;
 		placeType = YAWLFunctions.getType(place);
 		if (oldType != placeType) {
 			this.repaint();
@@ -44,7 +42,7 @@ public class Group7PlaceFigure extends PlaceFigure {
 		int d1 = rect.width / 3;
 		int d2 = rect.height / 3;
 
-		if (placeType.equals(PType.START)) {
+		if (placeType.equals(PlaceType.START)) {
 			// in order to make sure that the changes made to the drawing style
 			// have an effect within the scope of this method only, the state
 			// of the graphics object is pushed here. Note that the state needs
@@ -72,7 +70,7 @@ public class Group7PlaceFigure extends PlaceFigure {
 			// properly paired, this will result in runtime exceptions and the
 			// editor not working properly!
 			graphics.popState();
-		} else if (placeType.equals(PType.END)) {
+		} else if (placeType.equals(PlaceType.END)) {
 			graphics.pushState();
 
 			Display display = Display.getCurrent();
@@ -81,12 +79,6 @@ public class Group7PlaceFigure extends PlaceFigure {
 			graphics.setLineWidth(1);
 			int x1 = rect.x + d1;
 			int y1 = rect.y + d2;
-//			int x2 = rect.x + 2 * d1;
-//			int y2 = y1;
-//			int x3 = x2;
-//			int y3 = rect.height - d2;
-//			int x4 = x1;
-//			int y4 = y3;
 			graphics.fillRectangle(x1, y1, (d1), d2);
 			graphics.drawRectangle(x1, y1, (d1), d2);
 			

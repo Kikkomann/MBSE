@@ -3,12 +3,10 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Gruppe7YAWL/src" modelPluginID="Gruppe7YAWL" modelName="Yawl"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" usedGenPackages="../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel"
-    classNamePattern="" importOrganizing="true">
+    importOrganizing="true">
   <foreignModel>yawl.ecore</foreignModel>
-  <genPackages prefix="Yawl" basePackage="dk.dtu.compute.mbse" disposableProviderFactory="true"
-      ecorePackage="yawl.ecore#/">
+  <genPackages prefix="Yawl" disposableProviderFactory="true" ecorePackage="yawl.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="yawl.ecore#//PType">
-      <genEnumLiterals ecoreEnumLiteral="yawl.ecore#//PType/NORMAL"/>
       <genEnumLiterals ecoreEnumLiteral="yawl.ecore#//PType/START"/>
       <genEnumLiterals ecoreEnumLiteral="yawl.ecore#//PType/END"/>
     </genEnums>
@@ -18,25 +16,24 @@
       <genEnumLiterals ecoreEnumLiteral="yawl.ecore#//TType/XOR"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="yawl.ecore#//AType">
-      <genEnumLiterals ecoreEnumLiteral="yawl.ecore#//AType/NORMAL"/>
       <genEnumLiterals ecoreEnumLiteral="yawl.ecore#//AType/RESET"/>
     </genEnums>
     <genClasses ecoreClass="yawl.ecore#//YAWLNet"/>
     <genClasses ecoreClass="yawl.ecore#//Place">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference yawl.ecore#//Place/placetype"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference yawl.ecore#//Place/placeType"/>
     </genClasses>
     <genClasses ecoreClass="yawl.ecore#//PlaceType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute yawl.ecore#//PlaceType/text"/>
     </genClasses>
     <genClasses ecoreClass="yawl.ecore#//Transition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference yawl.ecore#//Transition/splitTransition"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference yawl.ecore#//Transition/joinTransition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference yawl.ecore#//Transition/splitType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference yawl.ecore#//Transition/joinType"/>
     </genClasses>
     <genClasses ecoreClass="yawl.ecore#//SplitTransition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute yawl.ecore#//SplitTransition/text"/>
     </genClasses>
     <genClasses ecoreClass="yawl.ecore#//Arc">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference yawl.ecore#//Arc/arctype"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference yawl.ecore#//Arc/arcType"/>
     </genClasses>
     <genClasses ecoreClass="yawl.ecore#//ArcType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute yawl.ecore#//ArcType/text"/>

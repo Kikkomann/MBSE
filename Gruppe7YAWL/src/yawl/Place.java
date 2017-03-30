@@ -12,7 +12,7 @@ package yawl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link yawl.Place#getPlacetype <em>Placetype</em>}</li>
+ *   <li>{@link yawl.Place#getPlaceType <em>Place Type</em>}</li>
  * </ul>
  *
  * @see yawl.YawlPackage#getPlace()
@@ -21,29 +21,29 @@ package yawl;
  */
 public interface Place extends org.pnml.tools.epnk.pnmlcoremodel.Place {
 	/**
-	 * Returns the value of the '<em><b>Placetype</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Place Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Placetype</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Place Type</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Placetype</em>' containment reference.
-	 * @see #setPlacetype(PlaceType)
-	 * @see yawl.YawlPackage#getPlace_Placetype()
+	 * @return the value of the '<em>Place Type</em>' containment reference.
+	 * @see #setPlaceType(PlaceType)
+	 * @see yawl.YawlPackage#getPlace_PlaceType()
 	 * @model containment="true"
 	 * @generated
 	 */
-	PlaceType getPlacetype();
+	PlaceType getPlaceType();
 
 	/**
-	 * Sets the value of the '{@link yawl.Place#getPlacetype <em>Placetype</em>}' containment reference.
+	 * Sets the value of the '{@link yawl.Place#getPlaceType <em>Place Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Placetype</em>' containment reference.
-	 * @see #getPlacetype()
+	 * @param value the new value of the '<em>Place Type</em>' containment reference.
+	 * @see #getPlaceType()
 	 * @generated
 	 */
-	void setPlacetype(PlaceType value);
+	void setPlaceType(PlaceType value);
 
 } // Place

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="yawl" nsURI="http://se.compute.dtu.dk/mbse/yawl" nsPrefix="yawl">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="yawl" nsURI="http://group7.dtu.dk/mbse/yawl" nsPrefix="yawl">
   <eClassifiers xsi:type="ecore:EClass" name="YAWLNet" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//PetriNetType"/>
   <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Place">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="placetype" eType="#//PlaceType"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="placeType" eType="#//PlaceType"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PType">
-    <eLiterals name="NORMAL" literal="NORMAL"/>
     <eLiterals name="START" value="1" literal="START"/>
     <eLiterals name="END" value="2" literal="END"/>
   </eClassifiers>
@@ -15,9 +14,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//PType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Transition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="splitTransition" eType="#//SplitTransition"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="splitType" eType="#//SplitTransition"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joinTransition" eType="#//JoinTransition"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joinType" eType="#//JoinTransition"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TType">
@@ -29,11 +28,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//TType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Arc" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Arc">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="arctype" eType="#//ArcType"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arcType" eType="#//ArcType"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AType">
-    <eLiterals name="NORMAL"/>
     <eLiterals name="RESET" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ArcType" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">

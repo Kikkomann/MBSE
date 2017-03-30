@@ -64,8 +64,8 @@ public class TransitionItemProvider extends org.pnml.tools.epnk.pnmlcoremodel.pr
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(YawlPackage.Literals.TRANSITION__SPLIT_TRANSITION);
-			childrenFeatures.add(YawlPackage.Literals.TRANSITION__JOIN_TRANSITION);
+			childrenFeatures.add(YawlPackage.Literals.TRANSITION__SPLIT_TYPE);
+			childrenFeatures.add(YawlPackage.Literals.TRANSITION__JOIN_TYPE);
 		}
 		return childrenFeatures;
 	}
@@ -121,8 +121,8 @@ public class TransitionItemProvider extends org.pnml.tools.epnk.pnmlcoremodel.pr
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Transition.class)) {
-			case YawlPackage.TRANSITION__SPLIT_TRANSITION:
-			case YawlPackage.TRANSITION__JOIN_TRANSITION:
+			case YawlPackage.TRANSITION__SPLIT_TYPE:
+			case YawlPackage.TRANSITION__JOIN_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -142,12 +142,12 @@ public class TransitionItemProvider extends org.pnml.tools.epnk.pnmlcoremodel.pr
 
 		newChildDescriptors.add
 			(createChildParameter
-				(YawlPackage.Literals.TRANSITION__SPLIT_TRANSITION,
+				(YawlPackage.Literals.TRANSITION__SPLIT_TYPE,
 				 YawlFactory.eINSTANCE.createSplitTransition()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(YawlPackage.Literals.TRANSITION__JOIN_TRANSITION,
+				(YawlPackage.Literals.TRANSITION__JOIN_TYPE,
 				 YawlFactory.eINSTANCE.createJoinTransition()));
 	}
 
