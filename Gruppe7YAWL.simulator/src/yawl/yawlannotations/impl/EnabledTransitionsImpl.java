@@ -58,6 +58,9 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * @ordered
 	 */
 	protected SelectArcs inArc;
+	
+	protected static final boolean ENABLED_EDEFAULT = false;
+	protected boolean enabled = ENABLED_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOutArcs() <em>Out Arcs</em>}' reference list.
@@ -197,6 +200,24 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 		}
 		return outArcs;
 	}
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnabled(boolean newEnabled) {
+		boolean oldEnabled = enabled;
+		enabled = newEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, YawlannotationsPackage.ENABLED_TRANSITION__ENABLED, oldEnabled, enabled));
+	}
+	
+	
 
 	/**
 	 * <!-- begin-user-doc -->

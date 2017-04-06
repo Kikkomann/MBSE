@@ -2,8 +2,9 @@
  */
 package yawl.yawlannotations;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 
 /**
@@ -50,6 +51,17 @@ public interface EnabledTransitions extends ObjectAnnotation {
 	 * @generated
 	 */
 	void setResolved(EnabledTransitions value);
+	
+	
+	boolean isEnabled();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	void setEnabled(boolean newEnabled);
+	
 
 	/**
 	 * Returns the value of the '<em><b>In Arc</b></em>' reference.

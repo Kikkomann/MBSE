@@ -16,6 +16,7 @@ import org.pnml.tools.epnk.annotations.netannotations.NetannotationsPackage;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
@@ -39,7 +40,7 @@ public interface YawlannotationsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://group7.dtu.dk/mbse/yawl";
+	String eNS_URI = "http://group7.dtu.dk/mbse/yawl/simulator";
 
 	/**
 	 * The package namespace name.
@@ -104,6 +105,33 @@ public interface YawlannotationsPackage extends EPackage {
 	int MARKING_FEATURE_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Get Description</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MARKING___GET_DESCRIPTION = NetannotationsPackage.OBJECT_ANNOTATION___GET_DESCRIPTION;
+
+	/**
+	 * The operation id for the '<em>Get Annotation Attribute</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MARKING___GET_ANNOTATION_ATTRIBUTE = NetannotationsPackage.OBJECT_ANNOTATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Marking</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MARKING_OPERATION_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_OPERATION_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link yawl.yawlannotations.impl.EnabledTransitionsImpl <em>Enabled Transitions</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -166,6 +194,24 @@ public interface YawlannotationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENABLED_TRANSITIONS_FEATURE_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get Description</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENABLED_TRANSITIONS___GET_DESCRIPTION = NetannotationsPackage.OBJECT_ANNOTATION___GET_DESCRIPTION;
+
+	/**
+	 * The number of operations of the '<em>Enabled Transitions</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENABLED_TRANSITIONS_OPERATION_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link yawl.yawlannotations.impl.SelectArcsImpl <em>Select Arcs</em>}' class.
@@ -239,6 +285,24 @@ public interface YawlannotationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SELECT_ARCS_FEATURE_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Get Description</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_ARCS___GET_DESCRIPTION = NetannotationsPackage.OBJECT_ANNOTATION___GET_DESCRIPTION;
+
+	/**
+	 * The number of operations of the '<em>Select Arcs</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_ARCS_OPERATION_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_OPERATION_COUNT + 0;
 
 
 	/**
@@ -374,6 +438,7 @@ public interface YawlannotationsPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>

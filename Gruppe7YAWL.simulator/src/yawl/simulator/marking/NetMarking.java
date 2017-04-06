@@ -53,39 +53,39 @@ public class NetMarking {
 	/**
 	 * Returns the marking of a given condition. 
 	 */
-	public int getMarking(Place condition) {
-		return marking.getOrDefault(condition,0);
+	public int getMarking(Place place) {
+		return marking.getOrDefault(place,0);
 	}
 
 	/**
 	 * Increments the marking of a given condition by a given increment. 
 	 */
-	public void incrementMarkingBy(Place condition, int increment) {
+	public void incrementMarkingBy(Place place, int increment) {
 		Assert.isLegal(increment >= 0, "The incrememt must be greater or equal than 0");
-		setMarking((Place) condition, getMarking((Place) condition) + increment);
+		setMarking((Place) place, getMarking((Place) place) + increment);
 	}
 	
 	/**
 	 * Decrements the marking of a given condition by a given decrement. 
 	 */
-	public void decrementMarkingBy(Place condition, int decrement) {
+	public void decrementMarkingBy(Place place, int decrement) {
 		Assert.isLegal(decrement >= 0, "The decrememt must be greater or equal than 0");
-		Assert.isLegal(getMarking((Place) condition) >= decrement,
+		Assert.isLegal(getMarking((Place) place) >= decrement,
 				"Marking of condition must be greater than the decrement");
-		setMarking((Place) condition, getMarking((Place) condition) - decrement);
+		setMarking((Place) place, getMarking((Place) place) - decrement);
 	}
 	
 	/**
 	 * Adds marking2 to this marking
 	 */
 	public void add(NetMarking marking2) {
-		for (Place condition: marking2.marking.keySet()) {
-			int m1 = marking.getOrDefault(condition,0);
-			int m2 = marking2.marking.getOrDefault(condition, 0);
+		for (Place place: marking2.marking.keySet()) {
+			int m1 = marking.getOrDefault(place,0);
+			int m2 = marking2.marking.getOrDefault(place, 0);
 			if (m1 + m2 > 0) {
-				marking.put(condition, m1 + m2);
+				marking.put(place, m1 + m2);
 			} else {
-				marking.remove(condition);
+				marking.remove(place);
 			}
 		}
 	}
@@ -97,13 +97,13 @@ public class NetMarking {
 		Assert.isLegal(this.isGreaterOrEqual(marking2), 
 				"Subtraction the marking does not result in a marking again");
 		
-		for (Place condition: marking2.marking.keySet()) {
-			int m1 = marking.getOrDefault(condition,0);
-			int m2 = marking2.marking.getOrDefault(condition, 0);
+		for (Place place: marking2.marking.keySet()) {
+			int m1 = marking.getOrDefault(place,0);
+			int m2 = marking2.marking.getOrDefault(place, 0);
 			if (m1 - m2 > 0) {
-				marking.put(condition, m1 - m2);
+				marking.put(place, m1 - m2);
 			} else {
-				marking.remove(condition);
+				marking.remove(place);
 			}
 		}
 	}
@@ -112,9 +112,9 @@ public class NetMarking {
 	 * Checks whether this marking is greater or equal than marking2.
 	 */
 	public boolean isGreaterOrEqual(NetMarking marking2) {
-		for (Place condition: marking2.marking.keySet()) {
-			int m1 = marking.getOrDefault(condition,0);
-			int m2 = marking2.marking.getOrDefault(condition, 0);
+		for (Place place: marking2.marking.keySet()) {
+			int m1 = marking.getOrDefault(place,0);
+			int m2 = marking2.marking.getOrDefault(place, 0);
 			if (m1 < m2) {
 				return false;
 			}

@@ -2,12 +2,19 @@
  */
 package yawl.yawlannotations.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.pnml.tools.epnk.annotations.netannotations.NetannotationsPackage;
+import org.pnml.tools.epnk.annotations.netannotations.TextualAnnotation;
 
 import org.pnml.tools.epnk.annotations.netannotations.impl.ObjectAnnotationImpl;
 
@@ -91,23 +98,10 @@ public class MarkingImpl extends ObjectAnnotationImpl implements Marking {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EAttribute getAnnotationAttribute() {
-		EClass eClass = this.eClass();
-		Object feature = eClass.getEStructuralFeature("text");
-		if (feature instanceof EAttribute) {
-			return (EAttribute) feature;
-		}
-		feature = eClass.getEStructuralFeature("value");
-		if (feature instanceof EAttribute) {
-			return (EAttribute) feature;
-		}
-				
-		for (EAttribute attribute: eClass.getEAllAttributes()) {
-			return attribute;
-		}
-		return null;
+		return YawlannotationsPackage.eINSTANCE.getMarking_Value();
 	}
 
 	/**
@@ -167,6 +161,36 @@ public class MarkingImpl extends ObjectAnnotationImpl implements Marking {
 		}
 		return super.eIsSet(featureID);
 	}
+
+//	/**
+//	 * <!-- begin-user-doc -->
+//	 * <!-- end-user-doc -->
+//	 * @generated
+//	 */
+//	@Override
+//	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+//		if (baseClass == TextualAnnotation.class) {
+//			switch (baseOperationID) {
+//				case NetannotationsPackage.TEXTUAL_ANNOTATION___GET_ANNOTATION_ATTRIBUTE: return YawlannotationsPackage.MARKING___GET_ANNOTATION_ATTRIBUTE;
+//				default: return -1;
+//			}
+//		}
+//		return super.eDerivedOperationID(baseOperationID, baseClass);
+//	}
+
+//	/**
+//	 * <!-- begin-user-doc -->
+//	 * <!-- end-user-doc -->
+//	 * @generated
+//	 */
+//	@Override
+//	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+//		switch (operationID) {
+//			case YawlannotationsPackage.MARKING___GET_ANNOTATION_ATTRIBUTE:
+//				return getAnnotationAttribute();
+//		}
+//		return super.eInvoke(operationID, arguments);
+//	}
 
 	/**
 	 * <!-- begin-user-doc -->

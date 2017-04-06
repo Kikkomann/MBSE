@@ -287,7 +287,7 @@ public class YawlannotationsPackageImpl extends EPackageImpl implements Yawlanno
 		enabledTransitionsEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
 		selectArcsEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(markingEClass, Marking.class, "Marking", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMarking_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Marking.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

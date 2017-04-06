@@ -383,5 +383,4 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 		result.append(')');
 		return result.toString();
 	}
-
 } //SelectArcsImpl
