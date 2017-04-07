@@ -10,8 +10,8 @@ import org.pnml.tools.epnk.gmf.extensions.graphics.figures.ArcFigure;
 import org.pnml.tools.epnk.pnmlcoremodel.Arc;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 
-import yawl.helpers.ArcType;
-import yawl.helpers.YAWLFunctions;
+import dk.dtu.mbse.group7.yawl.helpers.ArcType;
+import dk.dtu.mbse.group7.yawl.helpers.YAWLFunctions;
 
 /**
  * The figure defining implementing the graphical appearance of arcs in the

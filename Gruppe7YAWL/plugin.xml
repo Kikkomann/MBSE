@@ -11,7 +11,7 @@
 		name="YAWL Nets"
     	point="org.pnml.tools.epnk.pntd">
     	<type
-			class="yawl.impl.YAWLNetImpl"
+			class="dk.dtu.mbse.group7.yawl.impl.YAWLNetImpl"
     	    description="YAWL Nets" />
 	</extension>
 
@@ -74,7 +74,7 @@
             
             <constraint
                   lang="Java"
-                  class="yawl.constraints.StartEndCondition"
+                  class="dk.dtu.mbse.group7.yawl.constraints.StartEndCondition"
                   severity="ERROR"
                   mode="Batch"
                   name="One start and end place"

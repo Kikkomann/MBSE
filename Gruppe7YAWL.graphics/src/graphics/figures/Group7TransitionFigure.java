@@ -5,8 +5,8 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.TransitionFigure;
 import org.pnml.tools.epnk.pnmlcoremodel.Transition;
 
-import yawl.helpers.TransitionType;
-import yawl.helpers.YAWLFunctions;
+import dk.dtu.mbse.group7.yawl.helpers.TransitionType;
+import dk.dtu.mbse.group7.yawl.helpers.YAWLFunctions;
 
 public class Group7TransitionFigure extends TransitionFigure {
 

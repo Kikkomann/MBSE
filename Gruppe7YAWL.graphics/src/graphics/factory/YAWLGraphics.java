@@ -11,10 +11,10 @@ import org.pnml.tools.epnk.pnmlcoremodel.Arc;
 import org.pnml.tools.epnk.pnmlcoremodel.Place;
 import org.pnml.tools.epnk.pnmlcoremodel.Transition;
 
+import dk.dtu.mbse.group7.yawl.YawlPackage;
 import graphics.figures.Group7ArcFigure;
 import graphics.figures.Group7PlaceFigure;
 import graphics.figures.Group7TransitionFigure;
-import yawl.YawlPackage;
 
 /**
  * The graphical extension the the Technical Net extension. This is
@@ -50,7 +50,7 @@ public class YAWLGraphics extends GraphicalExtension {
 
 	@Override
 	public IArcFigure createArcFigure(Arc arc) {
-		if (arc instanceof yawl.Arc) {
+		if (arc instanceof dk.dtu.mbse.group7.yawl.Arc) {
 			return new Group7ArcFigure(arc);
 		}
 		return null;
@@ -58,7 +58,7 @@ public class YAWLGraphics extends GraphicalExtension {
 
 	@Override
 	public IUpdateableFigure createPlaceFigure(Place place) {
-		if (place instanceof yawl.Place) {
+		if (place instanceof dk.dtu.mbse.group7.yawl.Place) {
 			return new Group7PlaceFigure(place);
 		}
 		return null;
@@ -67,7 +67,7 @@ public class YAWLGraphics extends GraphicalExtension {
 
 	@Override
 	public IUpdateableFigure createTransitionFigure(Transition transition) {
-		if (transition instanceof yawl.Transition) {
+		if (transition instanceof dk.dtu.mbse.group7.yawl.Transition) {
 			return new Group7TransitionFigure(transition);
 		}
 		return null;

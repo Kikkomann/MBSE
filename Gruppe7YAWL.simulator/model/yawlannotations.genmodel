@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Gruppe7YAWL.simulator/src" modelPluginID="Gruppe7YAWL.simulator"
-    modelName="Yawlannotations" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
-    usedGenPackages="../../org.pnml.tools.epnk.annotations/model/NetAnnotations.genmodel#//netannotations ../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel"
-    operationReflection="true" importOrganizing="true">
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dk.dtu.mbse.group7.yawl.simulator.generated/src"
+    modelPluginID="dk.dtu.mbse.group7.yawl.simulator.generated" modelName="Yawlannotations"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    copyrightFields="false" usedGenPackages="../../org.pnml.tools.epnk.annotations/model/NetAnnotations.genmodel#//netannotations ../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel"
+    importOrganizing="true">
   <foreignModel>yawlannotations.ecore</foreignModel>
-  <genPackages prefix="Yawlannotations" disposableProviderFactory="true" ecorePackage="yawlannotations.ecore#/">
+  <genPackages prefix="Yawlannotations" basePackage="dk.dtu.mbse.group7.yawl" disposableProviderFactory="true"
+      ecorePackage="yawlannotations.ecore#/">
     <genClasses ecoreClass="yawlannotations.ecore#//Marking">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute yawlannotations.ecore#//Marking/value"/>
     </genClasses>

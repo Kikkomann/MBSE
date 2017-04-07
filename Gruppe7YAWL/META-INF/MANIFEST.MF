@@ -1,16 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: Gruppe7YAWL;singleton:=true
+Bundle-SymbolicName: dk.dtu.mbse.group7.yawl;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: yawl,
- yawl.helpers,
- yawl.impl,
- yawl.util
+Export-Package: dk.dtu.mbse.group7.yawl,
+ dk.dtu.mbse.group7.yawl.helpers,
+ dk.dtu.mbse.group7.yawl.impl,
+ dk.dtu.mbse.group7.yawl.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.pnml.tools.epnk;visibility:=reexport,

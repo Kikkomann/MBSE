@@ -1,20 +1,21 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: Gruppe7YAWL.simulator;singleton:=true
+Bundle-SymbolicName: dk.dtu.mbse.group7.yawl.simulator.generated;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: yawl.yawlannotations,
- yawl.yawlannotations.impl,
- yawl.yawlannotations.util
+Export-Package: dk.dtu.mbse.group7.yawl.yawlannotations,
+ dk.dtu.mbse.group7.yawl.yawlannotations.impl,
+ dk.dtu.mbse.group7.yawl.yawlannotations.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
  org.pnml.tools.epnk.applications;bundle-version="1.1.2",
  org.pnml.tools.epnk.annotations;bundle-version="1.1.0";visibility:=reexport,
  org.pnml.tools.epnk;visibility:=reexport,
- Gruppe7YAWL;bundle-version="0.1.0"
+ dk.dtu.mbse.group7.yawl;bundle-version="0.1.0"
+Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy

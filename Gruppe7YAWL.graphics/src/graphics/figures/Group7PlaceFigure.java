@@ -3,8 +3,8 @@ package graphics.figures;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.PlaceFigure;
 import org.pnml.tools.epnk.pnmlcoremodel.Place;
 
-import yawl.helpers.PlaceType;
-import yawl.helpers.YAWLFunctions;
+import dk.dtu.mbse.group7.yawl.helpers.PlaceType;
+import dk.dtu.mbse.group7.yawl.helpers.YAWLFunctions;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
