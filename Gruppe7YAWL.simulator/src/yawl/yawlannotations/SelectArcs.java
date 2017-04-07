@@ -123,5 +123,4 @@ public interface SelectArcs extends ObjectAnnotation {
 	 * @generated
 	 */
 	void setSelected(boolean value);
-
 } // SelectArcs

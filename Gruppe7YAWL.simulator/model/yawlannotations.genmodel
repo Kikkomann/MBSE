@@ -4,10 +4,9 @@
     modelName="Yawlannotations" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     usedGenPackages="../../org.pnml.tools.epnk.annotations/model/NetAnnotations.genmodel#//netannotations ../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel"
-    importOrganizing="true">
+    operationReflection="true" importOrganizing="true">
   <foreignModel>yawlannotations.ecore</foreignModel>
-  <genPackages prefix="Yawlannotations" basePackage="yawl" disposableProviderFactory="true"
-      ecorePackage="yawlannotations.ecore#/">
+  <genPackages prefix="Yawlannotations" disposableProviderFactory="true" ecorePackage="yawlannotations.ecore#/">
     <genClasses ecoreClass="yawlannotations.ecore#//Marking">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute yawlannotations.ecore#//Marking/value"/>
     </genClasses>

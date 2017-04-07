@@ -9,9 +9,19 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated yawlannotations -->
       <package
-            uri="http://group7.dtu.dk/mbse/yawl"
+            uri="http://group7.dtu.dk/mbse/yawl/simulator"
             class="yawl.yawlannotations.YawlannotationsPackage"
             genModel="model/yawlannotations.genmodel"/>
+   </extension>
+   
+   <extension
+         id="yawl.simulator"
+         name="YAWL simulator"
+         point="org.pnml.tools.epnk.applications.applicationfactory">
+       <applicationfactory
+             class="yawl.simulator.application.YAWLSimulatorFactory"
+             description="The first YAWL simulator for group 7">
+       </applicationfactory>
    </extension>
 
 </plugin>

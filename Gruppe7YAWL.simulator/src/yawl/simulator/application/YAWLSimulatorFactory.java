@@ -21,12 +21,12 @@ public class YAWLSimulatorFactory extends ApplicationFactory {
 
 	@Override
 	public String getName() {
-		return "First YAWL Simulator";
+		return "YAWL Simulator";
 	}
 
 	@Override
 	public String getDescription() {
-		return "A quick adaptation of the technical simulator to a YAWL simulator";
+		return "A simple simulator for the YAWL nets";
 	}
 
 	@Override
