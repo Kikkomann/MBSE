@@ -1,6 +1,6 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations;
+package dk.dtu.mbse.group7.yawl.simulator.yawlannotations;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -20,7 +20,7 @@ import org.pnml.tools.epnk.annotations.netannotations.NetannotationsPackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsFactory
+ * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsFactory
  * @model kind="package"
  * @generated
  */
@@ -55,14 +55,14 @@ public interface YawlannotationsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	YawlannotationsPackage eINSTANCE = dk.dtu.mbse.group7.yawl.yawlannotations.impl.YawlannotationsPackageImpl.init();
+	YawlannotationsPackage eINSTANCE = dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.YawlannotationsPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.MarkingImpl <em>Marking</em>}' class.
+	 * The meta object id for the '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.MarkingImpl <em>Marking</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.MarkingImpl
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.YawlannotationsPackageImpl#getMarking()
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.MarkingImpl
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.YawlannotationsPackageImpl#getMarking()
 	 * @generated
 	 */
 	int MARKING = 0;
@@ -104,11 +104,11 @@ public interface YawlannotationsPackage extends EPackage {
 	int MARKING_FEATURE_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.EnabledTransitionsImpl <em>Enabled Transitions</em>}' class.
+	 * The meta object id for the '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.EnabledTransitionsImpl <em>Enabled Transitions</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.EnabledTransitionsImpl
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.YawlannotationsPackageImpl#getEnabledTransitions()
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.EnabledTransitionsImpl
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.YawlannotationsPackageImpl#getEnabledTransitions()
 	 * @generated
 	 */
 	int ENABLED_TRANSITIONS = 1;
@@ -141,7 +141,7 @@ public interface YawlannotationsPackage extends EPackage {
 	int ENABLED_TRANSITIONS__RESOLVED = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>In Arc</b></em>' reference.
+	 * The feature id for the '<em><b>In Arc</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -168,11 +168,11 @@ public interface YawlannotationsPackage extends EPackage {
 	int ENABLED_TRANSITIONS_FEATURE_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.SelectArcsImpl <em>Select Arcs</em>}' class.
+	 * The meta object id for the '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.SelectArcsImpl <em>Select Arcs</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.SelectArcsImpl
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.YawlannotationsPackageImpl#getSelectArcs()
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.SelectArcsImpl
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.YawlannotationsPackageImpl#getSelectArcs()
 	 * @generated
 	 */
 	int SELECT_ARCS = 2;
@@ -196,7 +196,7 @@ public interface YawlannotationsPackage extends EPackage {
 	int SELECT_ARCS__OBJECT = NetannotationsPackage.OBJECT_ANNOTATION__OBJECT;
 
 	/**
-	 * The feature id for the '<em><b>Target Transition</b></em>' reference list.
+	 * The feature id for the '<em><b>Target Transition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -242,118 +242,118 @@ public interface YawlannotationsPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.mbse.group7.yawl.yawlannotations.Marking <em>Marking</em>}'.
+	 * Returns the meta object for class '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking <em>Marking</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Marking</em>'.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.Marking
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking
 	 * @generated
 	 */
 	EClass getMarking();
 
 	/**
-	 * Returns the meta object for the attribute '{@link dk.dtu.mbse.group7.yawl.yawlannotations.Marking#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.Marking#getValue()
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking#getValue()
 	 * @see #getMarking()
 	 * @generated
 	 */
 	EAttribute getMarking_Value();
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions <em>Enabled Transitions</em>}'.
+	 * Returns the meta object for class '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions <em>Enabled Transitions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Enabled Transitions</em>'.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions
 	 * @generated
 	 */
 	EClass getEnabledTransitions();
 
 	/**
-	 * Returns the meta object for the reference '{@link dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions#getResolved <em>Resolved</em>}'.
+	 * Returns the meta object for the reference '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions#getResolved <em>Resolved</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Resolved</em>'.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions#getResolved()
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions#getResolved()
 	 * @see #getEnabledTransitions()
 	 * @generated
 	 */
 	EReference getEnabledTransitions_Resolved();
 
 	/**
-	 * Returns the meta object for the reference '{@link dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions#getInArc <em>In Arc</em>}'.
+	 * Returns the meta object for the reference list '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions#getInArc <em>In Arc</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>In Arc</em>'.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions#getInArc()
+	 * @return the meta object for the reference list '<em>In Arc</em>'.
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions#getInArc()
 	 * @see #getEnabledTransitions()
 	 * @generated
 	 */
 	EReference getEnabledTransitions_InArc();
 
 	/**
-	 * Returns the meta object for the reference list '{@link dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions#getOutArcs <em>Out Arcs</em>}'.
+	 * Returns the meta object for the reference list '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions#getOutArcs <em>Out Arcs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Out Arcs</em>'.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions#getOutArcs()
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions#getOutArcs()
 	 * @see #getEnabledTransitions()
 	 * @generated
 	 */
 	EReference getEnabledTransitions_OutArcs();
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs <em>Select Arcs</em>}'.
+	 * Returns the meta object for class '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs <em>Select Arcs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Select Arcs</em>'.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs
 	 * @generated
 	 */
 	EClass getSelectArcs();
 
 	/**
-	 * Returns the meta object for the reference list '{@link dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs#getTargetTransition <em>Target Transition</em>}'.
+	 * Returns the meta object for the reference '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs#getTargetTransition <em>Target Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Target Transition</em>'.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs#getTargetTransition()
+	 * @return the meta object for the reference '<em>Target Transition</em>'.
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs#getTargetTransition()
 	 * @see #getSelectArcs()
 	 * @generated
 	 */
 	EReference getSelectArcs_TargetTransition();
 
 	/**
-	 * Returns the meta object for the reference '{@link dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs#getSourceTransition <em>Source Transition</em>}'.
+	 * Returns the meta object for the reference '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs#getSourceTransition <em>Source Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Source Transition</em>'.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs#getSourceTransition()
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs#getSourceTransition()
 	 * @see #getSelectArcs()
 	 * @generated
 	 */
 	EReference getSelectArcs_SourceTransition();
 
 	/**
-	 * Returns the meta object for the reference '{@link dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs#getSourceMarking <em>Source Marking</em>}'.
+	 * Returns the meta object for the reference '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs#getSourceMarking <em>Source Marking</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Source Marking</em>'.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs#getSourceMarking()
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs#getSourceMarking()
 	 * @see #getSelectArcs()
 	 * @generated
 	 */
 	EReference getSelectArcs_SourceMarking();
 
 	/**
-	 * Returns the meta object for the attribute '{@link dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs#isSelected <em>Selected</em>}'.
+	 * Returns the meta object for the attribute '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs#isSelected <em>Selected</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Selected</em>'.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs#isSelected()
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs#isSelected()
 	 * @see #getSelectArcs()
 	 * @generated
 	 */
@@ -382,11 +382,11 @@ public interface YawlannotationsPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.MarkingImpl <em>Marking</em>}' class.
+		 * The meta object literal for the '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.MarkingImpl <em>Marking</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.MarkingImpl
-		 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.YawlannotationsPackageImpl#getMarking()
+		 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.MarkingImpl
+		 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.YawlannotationsPackageImpl#getMarking()
 		 * @generated
 		 */
 		EClass MARKING = eINSTANCE.getMarking();
@@ -400,11 +400,11 @@ public interface YawlannotationsPackage extends EPackage {
 		EAttribute MARKING__VALUE = eINSTANCE.getMarking_Value();
 
 		/**
-		 * The meta object literal for the '{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.EnabledTransitionsImpl <em>Enabled Transitions</em>}' class.
+		 * The meta object literal for the '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.EnabledTransitionsImpl <em>Enabled Transitions</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.EnabledTransitionsImpl
-		 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.YawlannotationsPackageImpl#getEnabledTransitions()
+		 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.EnabledTransitionsImpl
+		 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.YawlannotationsPackageImpl#getEnabledTransitions()
 		 * @generated
 		 */
 		EClass ENABLED_TRANSITIONS = eINSTANCE.getEnabledTransitions();
@@ -418,7 +418,7 @@ public interface YawlannotationsPackage extends EPackage {
 		EReference ENABLED_TRANSITIONS__RESOLVED = eINSTANCE.getEnabledTransitions_Resolved();
 
 		/**
-		 * The meta object literal for the '<em><b>In Arc</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>In Arc</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -434,17 +434,17 @@ public interface YawlannotationsPackage extends EPackage {
 		EReference ENABLED_TRANSITIONS__OUT_ARCS = eINSTANCE.getEnabledTransitions_OutArcs();
 
 		/**
-		 * The meta object literal for the '{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.SelectArcsImpl <em>Select Arcs</em>}' class.
+		 * The meta object literal for the '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.SelectArcsImpl <em>Select Arcs</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.SelectArcsImpl
-		 * @see dk.dtu.mbse.group7.yawl.yawlannotations.impl.YawlannotationsPackageImpl#getSelectArcs()
+		 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.SelectArcsImpl
+		 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.YawlannotationsPackageImpl#getSelectArcs()
 		 * @generated
 		 */
 		EClass SELECT_ARCS = eINSTANCE.getSelectArcs();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Transition</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Target Transition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

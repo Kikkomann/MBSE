@@ -1,10 +1,11 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations.impl;
+package dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl;
 
-import dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions;
-import dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs;
-import dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsPackage;
+import dk.dtu.mbse.group7.yawl.Transition;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage;
 
 import java.util.Collection;
 
@@ -31,9 +32,9 @@ import org.pnml.tools.epnk.annotations.netannotations.impl.ObjectAnnotationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.EnabledTransitionsImpl#getResolved <em>Resolved</em>}</li>
- *   <li>{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.EnabledTransitionsImpl#getInArc <em>In Arc</em>}</li>
- *   <li>{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.EnabledTransitionsImpl#getOutArcs <em>Out Arcs</em>}</li>
+ *   <li>{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.EnabledTransitionsImpl#getResolved <em>Resolved</em>}</li>
+ *   <li>{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.EnabledTransitionsImpl#getInArc <em>In Arc</em>}</li>
+ *   <li>{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.EnabledTransitionsImpl#getOutArcs <em>Out Arcs</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,16 +49,21 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * @ordered
 	 */
 	protected EnabledTransitions resolved;
+	
+	/**
+	 * @generated NOT
+	 */
+	protected boolean enabled = false;
 
 	/**
-	 * The cached value of the '{@link #getInArc() <em>In Arc</em>}' reference.
+	 * The cached value of the '{@link #getInArc() <em>In Arc</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInArc()
 	 * @generated
 	 * @ordered
 	 */
-	protected SelectArcs inArc;
+	protected EList<SelectArcs> inArc;
 
 	/**
 	 * The cached value of the '{@link #getOutArcs() <em>Out Arcs</em>}' reference list.
@@ -67,7 +73,7 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * @generated
 	 * @ordered
 	 */
-	protected EList outArcs;
+	protected EList<SelectArcs> outArcs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -83,6 +89,7 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return YawlannotationsPackage.Literals.ENABLED_TRANSITIONS;
 	}
@@ -130,14 +137,9 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SelectArcs getInArc() {
-		if (inArc != null && inArc.eIsProxy()) {
-			InternalEObject oldInArc = (InternalEObject)inArc;
-			inArc = (SelectArcs)eResolveProxy(oldInArc);
-			if (inArc != oldInArc) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC, oldInArc, inArc));
-			}
+	public EList<SelectArcs> getInArc() {
+		if (inArc == null) {
+			inArc = new EObjectWithInverseResolvingEList<SelectArcs>(SelectArcs.class, this, YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC, YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION);
 		}
 		return inArc;
 	}
@@ -147,52 +149,9 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SelectArcs basicGetInArc() {
-		return inArc;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetInArc(SelectArcs newInArc, NotificationChain msgs) {
-		SelectArcs oldInArc = inArc;
-		inArc = newInArc;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC, oldInArc, newInArc);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInArc(SelectArcs newInArc) {
-		if (newInArc != inArc) {
-			NotificationChain msgs = null;
-			if (inArc != null)
-				msgs = ((InternalEObject)inArc).eInverseRemove(this, YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION, SelectArcs.class, msgs);
-			if (newInArc != null)
-				msgs = ((InternalEObject)newInArc).eInverseAdd(this, YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION, SelectArcs.class, msgs);
-			msgs = basicSetInArc(newInArc, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC, newInArc, newInArc));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOutArcs() {
+	public EList<SelectArcs> getOutArcs() {
 		if (outArcs == null) {
-			outArcs = new EObjectWithInverseResolvingEList(SelectArcs.class, this, YawlannotationsPackage.ENABLED_TRANSITIONS__OUT_ARCS, YawlannotationsPackage.SELECT_ARCS__SOURCE_TRANSITION);
+			outArcs = new EObjectWithInverseResolvingEList<SelectArcs>(SelectArcs.class, this, YawlannotationsPackage.ENABLED_TRANSITIONS__OUT_ARCS, YawlannotationsPackage.SELECT_ARCS__SOURCE_TRANSITION);
 		}
 		return outArcs;
 	}
@@ -202,14 +161,14 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC:
-				if (inArc != null)
-					msgs = ((InternalEObject)inArc).eInverseRemove(this, YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION, SelectArcs.class, msgs);
-				return basicSetInArc((SelectArcs)otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInArc()).basicAdd(otherEnd, msgs);
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__OUT_ARCS:
-				return ((InternalEList)getOutArcs()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOutArcs()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -219,12 +178,13 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC:
-				return basicSetInArc(null, msgs);
+				return ((InternalEList<?>)getInArc()).basicRemove(otherEnd, msgs);
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__OUT_ARCS:
-				return ((InternalEList)getOutArcs()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getOutArcs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -234,14 +194,14 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__RESOLVED:
 				if (resolve) return getResolved();
 				return basicGetResolved();
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC:
-				if (resolve) return getInArc();
-				return basicGetInArc();
+				return getInArc();
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__OUT_ARCS:
 				return getOutArcs();
 		}
@@ -253,17 +213,20 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__RESOLVED:
 				setResolved((EnabledTransitions)newValue);
 				return;
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC:
-				setInArc((SelectArcs)newValue);
+				getInArc().clear();
+				getInArc().addAll((Collection<? extends SelectArcs>)newValue);
 				return;
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__OUT_ARCS:
 				getOutArcs().clear();
-				getOutArcs().addAll((Collection)newValue);
+				getOutArcs().addAll((Collection<? extends SelectArcs>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -274,13 +237,14 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__RESOLVED:
 				setResolved((EnabledTransitions)null);
 				return;
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC:
-				setInArc((SelectArcs)null);
+				getInArc().clear();
 				return;
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__OUT_ARCS:
 				getOutArcs().clear();
@@ -294,16 +258,43 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__RESOLVED:
 				return resolved != null;
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC:
-				return inArc != null;
+				return inArc != null && !inArc.isEmpty();
 			case YawlannotationsPackage.ENABLED_TRANSITIONS__OUT_ARCS:
 				return outArcs != null && !outArcs.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * @author RuneHou
+	 * @generated NOT
+	 */
+	@Override
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	/**
+	 * @author RuneHou
+	 * @generated NOT
+	 */
+	@Override
+	public void setEnabled(boolean enabled) {
+		enabled = true;
+	}
+	
+	@Override
+	public Transition getTransition() {
+		if (getObject() instanceof Transition) {
+			return (Transition) getObject();
+		}
+		return null;
 	}
 
 } //EnabledTransitionsImpl

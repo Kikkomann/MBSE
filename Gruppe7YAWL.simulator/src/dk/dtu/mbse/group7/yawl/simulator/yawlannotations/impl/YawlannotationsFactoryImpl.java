@@ -1,8 +1,8 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations.impl;
+package dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl;
 
-import dk.dtu.mbse.group7.yawl.yawlannotations.*;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -53,6 +53,7 @@ public class YawlannotationsFactoryImpl extends EFactoryImpl implements Yawlanno
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case YawlannotationsPackage.MARKING: return createMarking();
@@ -108,6 +109,7 @@ public class YawlannotationsFactoryImpl extends EFactoryImpl implements Yawlanno
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static YawlannotationsPackage getPackage() {
 		return YawlannotationsPackage.eINSTANCE;
 	}

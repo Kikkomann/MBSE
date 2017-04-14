@@ -1,7 +1,8 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations.provider;
+package dk.dtu.mbse.group7.yawl.simulator.yawlannotations.provider;
 
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.util.YawlannotationsAdapterFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,8 +22,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.util.YawlannotationsAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -56,7 +55,7 @@ public class YawlannotationsItemProviderAdapterFactory extends YawlannotationsAd
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -73,7 +72,7 @@ public class YawlannotationsItemProviderAdapterFactory extends YawlannotationsAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.mbse.group7.yawl.yawlannotations.Marking} instances.
+	 * This keeps track of the one adapter used for all {@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -81,11 +80,12 @@ public class YawlannotationsItemProviderAdapterFactory extends YawlannotationsAd
 	protected MarkingItemProvider markingItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dk.dtu.mbse.group7.yawl.yawlannotations.Marking}.
+	 * This creates an adapter for a {@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createMarkingAdapter() {
 		if (markingItemProvider == null) {
 			markingItemProvider = new MarkingItemProvider(this);
@@ -95,7 +95,7 @@ public class YawlannotationsItemProviderAdapterFactory extends YawlannotationsAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions} instances.
+	 * This keeps track of the one adapter used for all {@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -103,11 +103,12 @@ public class YawlannotationsItemProviderAdapterFactory extends YawlannotationsAd
 	protected EnabledTransitionsItemProvider enabledTransitionsItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions}.
+	 * This creates an adapter for a {@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createEnabledTransitionsAdapter() {
 		if (enabledTransitionsItemProvider == null) {
 			enabledTransitionsItemProvider = new EnabledTransitionsItemProvider(this);
@@ -117,7 +118,7 @@ public class YawlannotationsItemProviderAdapterFactory extends YawlannotationsAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs} instances.
+	 * This keeps track of the one adapter used for all {@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -125,11 +126,12 @@ public class YawlannotationsItemProviderAdapterFactory extends YawlannotationsAd
 	protected SelectArcsItemProvider selectArcsItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs}.
+	 * This creates an adapter for a {@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSelectArcsAdapter() {
 		if (selectArcsItemProvider == null) {
 			selectArcsItemProvider = new SelectArcsItemProvider(this);
@@ -163,6 +165,7 @@ public class YawlannotationsItemProviderAdapterFactory extends YawlannotationsAd
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -173,6 +176,7 @@ public class YawlannotationsItemProviderAdapterFactory extends YawlannotationsAd
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -182,10 +186,11 @@ public class YawlannotationsItemProviderAdapterFactory extends YawlannotationsAd
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

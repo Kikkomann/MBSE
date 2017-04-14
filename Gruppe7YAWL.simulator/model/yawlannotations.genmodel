@@ -3,11 +3,11 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dk.dtu.mbse.group7.yawl.simulator.generated/src"
     modelPluginID="dk.dtu.mbse.group7.yawl.simulator.generated" modelName="Yawlannotations"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
-    copyrightFields="false" usedGenPackages="../../org.pnml.tools.epnk.annotations/model/NetAnnotations.genmodel#//netannotations ../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel"
+    complianceLevel="8.0" copyrightFields="false" usedGenPackages="../../org.pnml.tools.epnk.annotations/model/NetAnnotations.genmodel#//netannotations ../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel"
     importOrganizing="true">
   <foreignModel>yawlannotations.ecore</foreignModel>
-  <genPackages prefix="Yawlannotations" basePackage="dk.dtu.mbse.group7.yawl" disposableProviderFactory="true"
-      ecorePackage="yawlannotations.ecore#/">
+  <genPackages prefix="Yawlannotations" basePackage="dk.dtu.mbse.group7.yawl.simulator"
+      disposableProviderFactory="true" ecorePackage="yawlannotations.ecore#/">
     <genClasses ecoreClass="yawlannotations.ecore#//Marking">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute yawlannotations.ecore#//Marking/value"/>
     </genClasses>

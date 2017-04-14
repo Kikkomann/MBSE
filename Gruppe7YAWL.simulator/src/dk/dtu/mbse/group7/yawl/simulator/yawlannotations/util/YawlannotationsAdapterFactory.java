@@ -1,8 +1,8 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations.util;
+package dk.dtu.mbse.group7.yawl.simulator.yawlannotations.util;
 
-import dk.dtu.mbse.group7.yawl.yawlannotations.*;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -20,7 +20,7 @@ import org.pnml.tools.epnk.annotations.netannotations.TextualAnnotation;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsPackage
+ * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage
  * @generated
  */
 public class YawlannotationsAdapterFactory extends AdapterFactoryImpl {
@@ -52,6 +52,7 @@ public class YawlannotationsAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,27 +69,34 @@ public class YawlannotationsAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected YawlannotationsSwitch modelSwitch =
-		new YawlannotationsSwitch() {
-			public Object caseMarking(Marking object) {
+	protected YawlannotationsSwitch<Adapter> modelSwitch =
+		new YawlannotationsSwitch<Adapter>() {
+			@Override
+			public Adapter caseMarking(Marking object) {
 				return createMarkingAdapter();
 			}
-			public Object caseEnabledTransitions(EnabledTransitions object) {
+			@Override
+			public Adapter caseEnabledTransitions(EnabledTransitions object) {
 				return createEnabledTransitionsAdapter();
 			}
-			public Object caseSelectArcs(SelectArcs object) {
+			@Override
+			public Adapter caseSelectArcs(SelectArcs object) {
 				return createSelectArcsAdapter();
 			}
-			public Object caseAnnotation(Annotation object) {
+			@Override
+			public Adapter caseAnnotation(Annotation object) {
 				return createAnnotationAdapter();
 			}
-			public Object caseObjectAnnotation(ObjectAnnotation object) {
+			@Override
+			public Adapter caseObjectAnnotation(ObjectAnnotation object) {
 				return createObjectAnnotationAdapter();
 			}
-			public Object caseTextualAnnotation(TextualAnnotation object) {
+			@Override
+			public Adapter caseTextualAnnotation(TextualAnnotation object) {
 				return createTextualAnnotationAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -101,19 +109,20 @@ public class YawlannotationsAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.group7.yawl.yawlannotations.Marking <em>Marking</em>}'.
+	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking <em>Marking</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.Marking
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking
 	 * @generated
 	 */
 	public Adapter createMarkingAdapter() {
@@ -121,13 +130,13 @@ public class YawlannotationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions <em>Enabled Transitions</em>}'.
+	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions <em>Enabled Transitions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions
 	 * @generated
 	 */
 	public Adapter createEnabledTransitionsAdapter() {
@@ -135,13 +144,13 @@ public class YawlannotationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs <em>Select Arcs</em>}'.
+	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs <em>Select Arcs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs
 	 * @generated
 	 */
 	public Adapter createSelectArcsAdapter() {

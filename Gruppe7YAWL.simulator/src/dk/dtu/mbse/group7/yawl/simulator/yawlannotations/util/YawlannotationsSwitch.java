@@ -1,13 +1,13 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations.util;
+package dk.dtu.mbse.group7.yawl.simulator.yawlannotations.util;
 
-import dk.dtu.mbse.group7.yawl.yawlannotations.*;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.*;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+
+import org.eclipse.emf.ecore.util.Switch;
 
 import org.pnml.tools.epnk.annotations.netannotations.Annotation;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
@@ -23,10 +23,10 @@ import org.pnml.tools.epnk.annotations.netannotations.TextualAnnotation;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsPackage
+ * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage
  * @generated
  */
-public class YawlannotationsSwitch {
+public class YawlannotationsSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -48,14 +48,16 @@ public class YawlannotationsSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @param ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -65,31 +67,12 @@ public class YawlannotationsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	@Override
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case YawlannotationsPackage.MARKING: {
 				Marking marking = (Marking)theEObject;
-				Object result = caseMarking(marking);
+				T result = caseMarking(marking);
 				if (result == null) result = caseObjectAnnotation(marking);
 				if (result == null) result = caseTextualAnnotation(marking);
 				if (result == null) result = caseAnnotation(marking);
@@ -98,7 +81,7 @@ public class YawlannotationsSwitch {
 			}
 			case YawlannotationsPackage.ENABLED_TRANSITIONS: {
 				EnabledTransitions enabledTransitions = (EnabledTransitions)theEObject;
-				Object result = caseEnabledTransitions(enabledTransitions);
+				T result = caseEnabledTransitions(enabledTransitions);
 				if (result == null) result = caseObjectAnnotation(enabledTransitions);
 				if (result == null) result = caseAnnotation(enabledTransitions);
 				if (result == null) result = defaultCase(theEObject);
@@ -106,7 +89,7 @@ public class YawlannotationsSwitch {
 			}
 			case YawlannotationsPackage.SELECT_ARCS: {
 				SelectArcs selectArcs = (SelectArcs)theEObject;
-				Object result = caseSelectArcs(selectArcs);
+				T result = caseSelectArcs(selectArcs);
 				if (result == null) result = caseObjectAnnotation(selectArcs);
 				if (result == null) result = caseAnnotation(selectArcs);
 				if (result == null) result = defaultCase(theEObject);
@@ -127,7 +110,7 @@ public class YawlannotationsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMarking(Marking object) {
+	public T caseMarking(Marking object) {
 		return null;
 	}
 
@@ -142,7 +125,7 @@ public class YawlannotationsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEnabledTransitions(EnabledTransitions object) {
+	public T caseEnabledTransitions(EnabledTransitions object) {
 		return null;
 	}
 
@@ -157,7 +140,7 @@ public class YawlannotationsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSelectArcs(SelectArcs object) {
+	public T caseSelectArcs(SelectArcs object) {
 		return null;
 	}
 
@@ -172,7 +155,7 @@ public class YawlannotationsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAnnotation(Annotation object) {
+	public T caseAnnotation(Annotation object) {
 		return null;
 	}
 
@@ -187,7 +170,7 @@ public class YawlannotationsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseObjectAnnotation(ObjectAnnotation object) {
+	public T caseObjectAnnotation(ObjectAnnotation object) {
 		return null;
 	}
 
@@ -202,7 +185,7 @@ public class YawlannotationsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTextualAnnotation(TextualAnnotation object) {
+	public T caseTextualAnnotation(TextualAnnotation object) {
 		return null;
 	}
 
@@ -217,7 +200,8 @@ public class YawlannotationsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	@Override
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

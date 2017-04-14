@@ -1,9 +1,9 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations.impl;
+package dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl;
 
-import dk.dtu.mbse.group7.yawl.yawlannotations.Marking;
-import dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsPackage;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -22,7 +22,7 @@ import org.pnml.tools.epnk.annotations.netannotations.impl.ObjectAnnotationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.MarkingImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.MarkingImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -62,6 +62,7 @@ public class MarkingImpl extends ObjectAnnotationImpl implements Marking {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return YawlannotationsPackage.Literals.MARKING;
 	}
@@ -90,23 +91,10 @@ public class MarkingImpl extends ObjectAnnotationImpl implements Marking {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EAttribute getAnnotationAttribute() {
-		EClass eClass = this.eClass();
-		Object feature = eClass.getEStructuralFeature("text");
-		if (feature instanceof EAttribute) {
-			return (EAttribute) feature;
-		}
-		feature = eClass.getEStructuralFeature("value");
-		if (feature instanceof EAttribute) {
-			return (EAttribute) feature;
-		}
-				
-		for (EAttribute attribute: eClass.getEAllAttributes()) {
-			return attribute;
-		}
-		return null;
+		return YawlannotationsPackage.eINSTANCE.getMarking_Value();
 	}
 
 	/**
@@ -114,10 +102,11 @@ public class MarkingImpl extends ObjectAnnotationImpl implements Marking {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case YawlannotationsPackage.MARKING__VALUE:
-				return new Integer(getValue());
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -127,10 +116,11 @@ public class MarkingImpl extends ObjectAnnotationImpl implements Marking {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case YawlannotationsPackage.MARKING__VALUE:
-				setValue(((Integer)newValue).intValue());
+				setValue((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -141,6 +131,7 @@ public class MarkingImpl extends ObjectAnnotationImpl implements Marking {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case YawlannotationsPackage.MARKING__VALUE:
@@ -155,6 +146,7 @@ public class MarkingImpl extends ObjectAnnotationImpl implements Marking {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case YawlannotationsPackage.MARKING__VALUE:
@@ -168,6 +160,7 @@ public class MarkingImpl extends ObjectAnnotationImpl implements Marking {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

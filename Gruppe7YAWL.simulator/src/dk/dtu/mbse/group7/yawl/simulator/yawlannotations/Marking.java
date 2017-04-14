@@ -1,6 +1,6 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations;
+package dk.dtu.mbse.group7.yawl.simulator.yawlannotations;
 
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 import org.pnml.tools.epnk.annotations.netannotations.TextualAnnotation;
@@ -14,10 +14,10 @@ import org.pnml.tools.epnk.annotations.netannotations.TextualAnnotation;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link dk.dtu.mbse.group7.yawl.yawlannotations.Marking#getValue <em>Value</em>}</li>
+ *   <li>{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsPackage#getMarking()
+ * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage#getMarking()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface Marking extends ObjectAnnotation, TextualAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(int)
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsPackage#getMarking_Value()
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage#getMarking_Value()
 	 * @model
 	 * @generated
 	 */
 	int getValue();
 
 	/**
-	 * Sets the value of the '{@link dk.dtu.mbse.group7.yawl.yawlannotations.Marking#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.

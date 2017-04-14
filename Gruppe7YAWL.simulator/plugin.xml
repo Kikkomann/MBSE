@@ -7,20 +7,22 @@
 <plugin>
 
    <extension
-         id="yawl.simulator"
+         id="dk.dtu.mbse.group7.yawl.simulator"
          name="YAWL simulator"
          point="org.pnml.tools.epnk.applications.applicationfactory">
        <applicationfactory
-             class="yawl.simulator.application.YAWLSimulatorFactory"
+             class="dk.dtu.mbse.group7.yawl.simulator.application.YAWLSimulatorFactory"
              description="The first YAWL simulator for group 7">
        </applicationfactory>
    </extension>
+
+  
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated yawlannotations -->
       <package
             uri="http://group7.dtu.dk/mbse/yawl/simulator"
-            class="dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsPackage"
+            class="dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage"
             genModel="model/yawlannotations.genmodel"/>
    </extension>
 

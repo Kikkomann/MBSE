@@ -1,26 +1,19 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations.impl;
+package dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl;
 
-import dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions;
-import dk.dtu.mbse.group7.yawl.yawlannotations.Marking;
-import dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs;
-import dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsPackage;
-
-import java.util.Collection;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.pnml.tools.epnk.annotations.netannotations.impl.ObjectAnnotationImpl;
 
@@ -32,24 +25,24 @@ import org.pnml.tools.epnk.annotations.netannotations.impl.ObjectAnnotationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.SelectArcsImpl#getTargetTransition <em>Target Transition</em>}</li>
- *   <li>{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.SelectArcsImpl#getSourceTransition <em>Source Transition</em>}</li>
- *   <li>{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.SelectArcsImpl#getSourceMarking <em>Source Marking</em>}</li>
- *   <li>{@link dk.dtu.mbse.group7.yawl.yawlannotations.impl.SelectArcsImpl#isSelected <em>Selected</em>}</li>
+ *   <li>{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.SelectArcsImpl#getTargetTransition <em>Target Transition</em>}</li>
+ *   <li>{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.SelectArcsImpl#getSourceTransition <em>Source Transition</em>}</li>
+ *   <li>{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.SelectArcsImpl#getSourceMarking <em>Source Marking</em>}</li>
+ *   <li>{@link dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.SelectArcsImpl#isSelected <em>Selected</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	/**
-	 * The cached value of the '{@link #getTargetTransition() <em>Target Transition</em>}' reference list.
+	 * The cached value of the '{@link #getTargetTransition() <em>Target Transition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTargetTransition()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList targetTransition;
+	protected EnabledTransitions targetTransition;
 
 	/**
 	 * The cached value of the '{@link #getSourceTransition() <em>Source Transition</em>}' reference.
@@ -105,6 +98,7 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return YawlannotationsPackage.Literals.SELECT_ARCS;
 	}
@@ -114,11 +108,59 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargetTransition() {
-		if (targetTransition == null) {
-			targetTransition = new EObjectWithInverseResolvingEList(EnabledTransitions.class, this, YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION, YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC);
+	public EnabledTransitions getTargetTransition() {
+		if (targetTransition != null && targetTransition.eIsProxy()) {
+			InternalEObject oldTargetTransition = (InternalEObject)targetTransition;
+			targetTransition = (EnabledTransitions)eResolveProxy(oldTargetTransition);
+			if (targetTransition != oldTargetTransition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION, oldTargetTransition, targetTransition));
+			}
 		}
 		return targetTransition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EnabledTransitions basicGetTargetTransition() {
+		return targetTransition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTargetTransition(EnabledTransitions newTargetTransition, NotificationChain msgs) {
+		EnabledTransitions oldTargetTransition = targetTransition;
+		targetTransition = newTargetTransition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION, oldTargetTransition, newTargetTransition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTargetTransition(EnabledTransitions newTargetTransition) {
+		if (newTargetTransition != targetTransition) {
+			NotificationChain msgs = null;
+			if (targetTransition != null)
+				msgs = ((InternalEObject)targetTransition).eInverseRemove(this, YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC, EnabledTransitions.class, msgs);
+			if (newTargetTransition != null)
+				msgs = ((InternalEObject)newTargetTransition).eInverseAdd(this, YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC, EnabledTransitions.class, msgs);
+			msgs = basicSetTargetTransition(newTargetTransition, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION, newTargetTransition, newTargetTransition));
 	}
 
 	/**
@@ -245,10 +287,13 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION:
-				return ((InternalEList)getTargetTransition()).basicAdd(otherEnd, msgs);
+				if (targetTransition != null)
+					msgs = ((InternalEObject)targetTransition).eInverseRemove(this, YawlannotationsPackage.ENABLED_TRANSITIONS__IN_ARC, EnabledTransitions.class, msgs);
+				return basicSetTargetTransition((EnabledTransitions)otherEnd, msgs);
 			case YawlannotationsPackage.SELECT_ARCS__SOURCE_TRANSITION:
 				if (sourceTransition != null)
 					msgs = ((InternalEObject)sourceTransition).eInverseRemove(this, YawlannotationsPackage.ENABLED_TRANSITIONS__OUT_ARCS, EnabledTransitions.class, msgs);
@@ -262,10 +307,11 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION:
-				return ((InternalEList)getTargetTransition()).basicRemove(otherEnd, msgs);
+				return basicSetTargetTransition(null, msgs);
 			case YawlannotationsPackage.SELECT_ARCS__SOURCE_TRANSITION:
 				return basicSetSourceTransition(null, msgs);
 		}
@@ -277,10 +323,12 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION:
-				return getTargetTransition();
+				if (resolve) return getTargetTransition();
+				return basicGetTargetTransition();
 			case YawlannotationsPackage.SELECT_ARCS__SOURCE_TRANSITION:
 				if (resolve) return getSourceTransition();
 				return basicGetSourceTransition();
@@ -288,7 +336,7 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 				if (resolve) return getSourceMarking();
 				return basicGetSourceMarking();
 			case YawlannotationsPackage.SELECT_ARCS__SELECTED:
-				return isSelected() ? Boolean.TRUE : Boolean.FALSE;
+				return isSelected();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -298,11 +346,11 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION:
-				getTargetTransition().clear();
-				getTargetTransition().addAll((Collection)newValue);
+				setTargetTransition((EnabledTransitions)newValue);
 				return;
 			case YawlannotationsPackage.SELECT_ARCS__SOURCE_TRANSITION:
 				setSourceTransition((EnabledTransitions)newValue);
@@ -311,7 +359,7 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 				setSourceMarking((Marking)newValue);
 				return;
 			case YawlannotationsPackage.SELECT_ARCS__SELECTED:
-				setSelected(((Boolean)newValue).booleanValue());
+				setSelected((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -322,10 +370,11 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION:
-				getTargetTransition().clear();
+				setTargetTransition((EnabledTransitions)null);
 				return;
 			case YawlannotationsPackage.SELECT_ARCS__SOURCE_TRANSITION:
 				setSourceTransition((EnabledTransitions)null);
@@ -345,10 +394,11 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case YawlannotationsPackage.SELECT_ARCS__TARGET_TRANSITION:
-				return targetTransition != null && !targetTransition.isEmpty();
+				return targetTransition != null;
 			case YawlannotationsPackage.SELECT_ARCS__SOURCE_TRANSITION:
 				return sourceTransition != null;
 			case YawlannotationsPackage.SELECT_ARCS__SOURCE_MARKING:
@@ -364,6 +414,7 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

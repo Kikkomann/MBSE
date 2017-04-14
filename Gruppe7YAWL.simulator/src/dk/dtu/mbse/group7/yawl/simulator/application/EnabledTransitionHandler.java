@@ -15,8 +15,8 @@ import org.pnml.tools.epnk.pnmlcoremodel.TransitionNode;
 import dk.dtu.mbse.group7.yawl.Arc;
 import dk.dtu.mbse.group7.yawl.Transition;
 import dk.dtu.mbse.group7.yawl.simulator.marking.NetMarking;
-import dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions;
-import dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
 
 /**
  * Action handler dealing with mouse clicks on EnableTransition annotations.
@@ -49,7 +49,7 @@ public class EnabledTransitionHandler implements IActionHandler {
 				Transition transition = (Transition) object;
 				NetMarking marking1 = application.computeMarking();
 				if (application.enabled(flatNet, marking1, transition)) {
-					NetMarking marking2 = application.fireTransition(flatNet, marking1, selectedInArc((EnabledTransitions) annotation), transition, selectedOutArcs((EnabledTransitions) annotation));
+					NetMarking marking2 = application.fireTransition(flatNet, marking1, (Arc) selectedInArc((EnabledTransitions) annotation), transition, selectedOutArcs((EnabledTransitions) annotation));
 					NetAnnotation netAnnotation = application.computeAnnotation(marking2);
 					netAnnotation.setNet(application.getPetrinet());
 					
@@ -106,7 +106,7 @@ public class EnabledTransitionHandler implements IActionHandler {
 		if (resolved == null) {
 			resolved = enabledTransitions;
 		}
-		for (SelectArcs selectArc : resolved.getInArcs()) {
+		for (SelectArcs selectArc : resolved.getInArc()) {
 			if (selectArc.isSelected()) {
 				Object result = selectArc.getObject();
 				if (result instanceof Arc) {
@@ -114,6 +114,7 @@ public class EnabledTransitionHandler implements IActionHandler {
 				}
 			}
 		}
+		return null;
 	}
 	
 	private Collection<Arc> selectedOutArcs(EnabledTransitions enabledTransitions) {

@@ -12,8 +12,8 @@ import org.pnml.tools.epnk.applications.ui.figures.RectangleOverlay;
 import org.pnml.tools.epnk.pnmlcoremodel.TransitionNode;
 
 import dk.dtu.mbse.group7.yawl.Arc;
-import dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions;
-import dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
 
 public class YAWLAnnotationsPresentationHandler implements IPresentationHandler {
 

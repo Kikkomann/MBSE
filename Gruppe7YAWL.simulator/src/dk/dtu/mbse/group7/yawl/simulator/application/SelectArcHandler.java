@@ -7,9 +7,9 @@ import org.pnml.tools.epnk.applications.ui.IActionHandler;
 import dk.dtu.mbse.group7.yawl.Transition;
 import dk.dtu.mbse.group7.yawl.helpers.TransitionType;
 import dk.dtu.mbse.group7.yawl.helpers.YAWLFunctions;
-import dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions;
-import dk.dtu.mbse.group7.yawl.yawlannotations.Marking;
-import dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
 
 public class SelectArcHandler implements IActionHandler {
 
@@ -29,15 +29,17 @@ public class SelectArcHandler implements IActionHandler {
 	public boolean mousePressed(MouseEvent arg0, ObjectAnnotation annotation) {
 		if (annotation instanceof SelectArcs) {
 			SelectArcs selectArcs = (SelectArcs) annotation;
-			EnabledTransitions targetAction = selectArcs.getTargetTransition();
-			EnabledTransitions sourceAction = selectArcs.getSourceTransition();
+			//One of these should be true (Der er enten en sourceTrans eller targetTrans)
+			EnabledTransitions targetTransition = selectArcs.getTargetTransition();
+			EnabledTransitions sourceTransition = selectArcs.getSourceTransition();
+			//TODO not relevant siger Ekkart
 			Marking sourceMarking = selectArcs.getSourceMarking();
 
-			if (targetAction != null) {
+			if (targetTransition != null) {
 				if (!selectArcs.isSelected() && sourceMarking != null && sourceMarking.getValue() > 0) {
-					Transition transition = targetAction.getTransition();
+					Transition transition = targetTransition.getTransition();
 					if (YAWLFunctions.getJoinType(transition).equals(TransitionType.XOR)) {
-						for (SelectArcs s_arc : targetAction.getInArc()) {
+						for (SelectArcs s_arc : targetTransition.getInArc()) {
 							s_arc.setSelected(false);
 						}
 						selectArcs.setSelected(true);
@@ -45,11 +47,11 @@ public class SelectArcHandler implements IActionHandler {
 						return true;
 					}
 				}
-			} else if (sourceAction != null) {
-				Transition transition = sourceAction.getTransition();
+			} else if (sourceTransition != null) {
+				Transition transition = sourceTransition.getTransition();
 				TransitionType tType = YAWLFunctions.getSplitType(transition);
 				if (tType.equals(TransitionType.XOR)) {
-					for (SelectArcs s_arc : sourceAction.getOutArcs()) {
+					for (SelectArcs s_arc : sourceTransition.getOutArcs()) {
 						s_arc.setSelected(false);
 					}
 					selectArcs.setSelected(true);
@@ -58,14 +60,14 @@ public class SelectArcHandler implements IActionHandler {
 				} else if (tType.equals(TransitionType.OR)) {
 					selectArcs.setSelected(!selectArcs.isSelected());
 					boolean notEmpty = false;
-					for (SelectArcs s_arc : sourceAction.getOutArcs()) {
+					for (SelectArcs s_arc : sourceTransition.getOutArcs()) {
 						if (s_arc.isSelected()) {
 							notEmpty = true;
 							break;
 						}
 					}
 					if (!notEmpty) {
-						for (SelectArcs s_arc : sourceAction.getOutArcs()) {
+						for (SelectArcs s_arc : sourceTransition.getOutArcs()) {
 							if (s_arc != selectArcs) {
 								s_arc.setSelected(true);
 								break;

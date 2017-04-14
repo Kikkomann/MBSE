@@ -4,10 +4,13 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: dk.dtu.mbse.group7.yawl.simulator.generated.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: dk.dtu.mbse.group7.yawl.yawlannotations.provider.YawlannotationsEditPlugin$Implementation
+Bundle-Activator: dk.dtu.mbse.group7.yawl.simulator.yawlannotations.provider.YawlannotationsEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: dk.dtu.mbse.group7.yawl.yawlannotations.provider
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: dk.dtu.mbse.group7.yawl.yawlannotations.provider,
+ yawlannotations.provider,
+ dk.dtu.mbse.group7.yawl.simulator.yawlannotations.provider
 Require-Bundle: org.eclipse.core.runtime,
  dk.dtu.mbse.group7.yawl.simulator.generated;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
@@ -17,3 +20,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.pnml.tools.epnk.edit;visibility:=reexport
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
+Import-Package: dk.dtu.mbse.group7.yawl.simulator.yawlannotations,
+ dk.dtu.mbse.group7.yawl.simulator.yawlannotations.util

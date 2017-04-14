@@ -7,14 +7,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EnabledTransitions" eSuperTypes="../../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//ObjectAnnotation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="resolved" eType="#//EnabledTransitions"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inArc" eType="#//SelectArcs"
-        eOpposite="#//SelectArcs/targetTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inArc" upperBound="-1"
+        eType="#//SelectArcs" eOpposite="#//SelectArcs/targetTransition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outArcs" upperBound="-1"
         eType="#//SelectArcs" eOpposite="#//SelectArcs/sourceTransition"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SelectArcs" eSuperTypes="../../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//ObjectAnnotation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetTransition" upperBound="-1"
-        eType="#//EnabledTransitions" eOpposite="#//EnabledTransitions/inArc"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetTransition" eType="#//EnabledTransitions"
+        eOpposite="#//EnabledTransitions/inArc"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTransition" eType="#//EnabledTransitions"
         eOpposite="#//EnabledTransitions/outArcs"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceMarking" eType="#//Marking"/>

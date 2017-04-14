@@ -1,7 +1,6 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations.provider;
-
+package yawlannotations.provider;
 
 
 import java.util.Collection;
@@ -13,6 +12,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -21,8 +21,9 @@ import org.pnml.tools.epnk.annotations.netannotations.provider.ObjectAnnotationI
 import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking;
 import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage;
 
+
 /**
- * This is the item provider adapter for a {@link dk.dtu.mbse.group7.yawl.yawlannotations.Marking} object.
+ * This is the item provider adapter for a {@link yawlannotations.Marking} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -44,7 +45,8 @@ public class MarkingItemProvider extends ObjectAnnotationItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -81,6 +83,7 @@ public class MarkingItemProvider extends ObjectAnnotationItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/Marking"));
 	}
@@ -91,6 +94,7 @@ public class MarkingItemProvider extends ObjectAnnotationItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		Marking marking = (Marking)object;
 		return getString("_UI_Marking_type") + " " + marking.getValue();
@@ -104,6 +108,7 @@ public class MarkingItemProvider extends ObjectAnnotationItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -122,7 +127,8 @@ public class MarkingItemProvider extends ObjectAnnotationItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -132,6 +138,7 @@ public class MarkingItemProvider extends ObjectAnnotationItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return YawlannotationsEditPlugin.INSTANCE;
 	}

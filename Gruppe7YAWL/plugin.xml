@@ -89,6 +89,79 @@
                </message>
             </constraint>
             
+            <constraint
+                  lang="Java"
+                  class="dk.dtu.mbse.group7.yawl.constraints.NoArcToStart"
+                  severity="ERROR"
+                  mode="Live"
+                  name="No arc to start and no arc from end"
+                  id="Group7YAWL.validation.no-arc-to-start"
+                  statusCode="402">
+               <target class="YAWLNet:http://group7.dtu.dk/mbse/yawl"/>
+               <description>
+                  A start place can't have an incoming arc and an end place can't have an outgoing arc.
+               </description>
+               <message>
+                  The YAWL net {0} A start place can't have an incoming arc
+               </message>
+               
+               
+               <target
+                     class="Arc:http://group7.dtu.dk/mbse/yawl">
+                  <!-- since this is a live constraint, you need to tell the
+                       validator when to check the constraint: in terms of events here
+                       we use set events on the following features -->
+                  <event
+                        name="Set">
+                     <feature
+                           name="target">
+                     </feature>
+                  </event>
+               </target>
+               
+               
+            </constraint>
+            
+             <constraint
+                  lang="Java"
+                  class="dk.dtu.mbse.group7.yawl.constraints.NoArcFromEnd"
+                  severity="ERROR"
+                  mode="Live"
+                  name="No arc from end"
+                  id="Group7YAWL.validation.no-arc-from-end"
+                  statusCode="402">
+               <target class="YAWLNet:http://group7.dtu.dk/mbse/yawl"/>
+               <description>
+                  An end place can't have an outgoing arc.
+               </description>
+               <message>
+                  The YAWL net {0} An end place can't have an outgoing arc
+               </message>
+               
+                <!-- TODO the class the constraint refers to: the Arc of your YWAL Ecore model,
+                    the class name and the URI of the packake separated by a colon -->
+               <target
+                     class="Arc:http://group7.dtu.dk/mbse/yawl">
+                  <!-- since this is a live constraint, you need to tell the
+                       validator when to check the constraint: in terms of events here
+                       we use set events on the following features -->
+                  <event
+                        name="Set">
+                     <feature
+                           name="source">
+                     </feature>
+                     <feature
+                           name="target">
+                     </feature>
+                     <!-- TODO the feature "type" is the reference to the Attribute defining the type
+                          of the arc) -->
+                     <feature
+                           name="placeType">
+                     </feature>
+                  </event>
+               </target>
+            </constraint>
+            
             </constraints>
             
          </constraintProvider>

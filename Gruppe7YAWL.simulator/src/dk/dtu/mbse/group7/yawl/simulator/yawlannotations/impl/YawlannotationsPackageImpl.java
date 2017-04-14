@@ -1,12 +1,12 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations.impl;
+package dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl;
 
-import dk.dtu.mbse.group7.yawl.yawlannotations.EnabledTransitions;
-import dk.dtu.mbse.group7.yawl.yawlannotations.Marking;
-import dk.dtu.mbse.group7.yawl.yawlannotations.SelectArcs;
-import dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsFactory;
-import dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsPackage;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsFactory;
+import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -56,7 +56,7 @@ public class YawlannotationsPackageImpl extends EPackageImpl implements Yawlanno
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsPackage#eNS_URI
+	 * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -277,6 +277,10 @@ public class YawlannotationsPackageImpl extends EPackageImpl implements Yawlanno
 		// Obtain other dependent packages
 		NetannotationsPackage theNetannotationsPackage = (NetannotationsPackage)EPackage.Registry.INSTANCE.getEPackage(NetannotationsPackage.eNS_URI);
 
+		// Create type parameters
+
+		// Set bounds for type parameters
+
 		// Add supertypes to classes
 		markingEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
 		markingEClass.getESuperTypes().add(theNetannotationsPackage.getTextualAnnotation());
@@ -289,11 +293,11 @@ public class YawlannotationsPackageImpl extends EPackageImpl implements Yawlanno
 
 		initEClass(enabledTransitionsEClass, EnabledTransitions.class, "EnabledTransitions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEnabledTransitions_Resolved(), this.getEnabledTransitions(), null, "resolved", null, 0, 1, EnabledTransitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEnabledTransitions_InArc(), this.getSelectArcs(), this.getSelectArcs_TargetTransition(), "inArc", null, 0, 1, EnabledTransitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEnabledTransitions_InArc(), this.getSelectArcs(), this.getSelectArcs_TargetTransition(), "inArc", null, 0, -1, EnabledTransitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEnabledTransitions_OutArcs(), this.getSelectArcs(), this.getSelectArcs_SourceTransition(), "outArcs", null, 0, -1, EnabledTransitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(selectArcsEClass, SelectArcs.class, "SelectArcs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSelectArcs_TargetTransition(), this.getEnabledTransitions(), this.getEnabledTransitions_InArc(), "targetTransition", null, 0, -1, SelectArcs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSelectArcs_TargetTransition(), this.getEnabledTransitions(), this.getEnabledTransitions_InArc(), "targetTransition", null, 0, 1, SelectArcs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSelectArcs_SourceTransition(), this.getEnabledTransitions(), this.getEnabledTransitions_OutArcs(), "sourceTransition", null, 0, 1, SelectArcs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSelectArcs_SourceMarking(), this.getMarking(), null, "sourceMarking", null, 0, 1, SelectArcs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSelectArcs_Selected(), ecorePackage.getEBoolean(), "selected", null, 1, 1, SelectArcs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

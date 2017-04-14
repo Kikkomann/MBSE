@@ -1,6 +1,6 @@
 /**
  */
-package dk.dtu.mbse.group7.yawl.yawlannotations;
+package dk.dtu.mbse.group7.yawl.simulator.yawlannotations;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see dk.dtu.mbse.group7.yawl.yawlannotations.YawlannotationsPackage
+ * @see dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage
  * @generated
  */
 public interface YawlannotationsFactory extends EFactory {
@@ -19,7 +19,7 @@ public interface YawlannotationsFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	YawlannotationsFactory eINSTANCE = dk.dtu.mbse.group7.yawl.yawlannotations.impl.YawlannotationsFactoryImpl.init();
+	YawlannotationsFactory eINSTANCE = dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl.YawlannotationsFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Marking</em>'.
