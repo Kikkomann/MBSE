@@ -33,19 +33,19 @@ public class NetMarking {
 	 */
 	public NetMarking(NetMarking marking) {
 		this();
-		for (Place condition: marking.getSupport()) {
-			this.setMarking(condition, marking.getMarking(condition));
+		for (Place place: marking.getSupport()) {
+			this.setMarking(place, marking.getMarking(place));
 		}
 	}
 
 	/**
 	 * Sets the marking of a given condition to the given value. 
 	 */
-	public void setMarking(Place condition, int value) {
+	public void setMarking(Place place, int value) {
 		if (value > 0) {
-			marking.put(condition, value);
+			marking.put(place, value);
 		} else {
-			marking.remove(condition);
+			marking.remove(place);
 		}
 	}
 

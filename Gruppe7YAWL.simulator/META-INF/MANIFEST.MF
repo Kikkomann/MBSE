@@ -13,9 +13,7 @@ Export-Package: dk.dtu.mbse.group7.yawl.simulator.yawlannotations,
 Require-Bundle: org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
  org.pnml.tools.epnk.applications;bundle-version="1.1.2",
  dk.dtu.mbse.group7.yawl;bundle-version="0.1.0",
- org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.pnml.tools.epnk.annotations;bundle-version="1.1.0";visibility:=reexport,
- org.pnml.tools.epnk;visibility:=reexport
+ org.pnml.tools.epnk.annotations;bundle-version="1.1.0";visibility:=reexport
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
+Import-Package: dk.dtu.mbse.group7.yawl.simulator.yawlannotations

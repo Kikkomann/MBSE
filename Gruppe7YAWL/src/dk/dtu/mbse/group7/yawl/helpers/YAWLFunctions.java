@@ -62,7 +62,7 @@ public class YAWLFunctions {
 			for (org.pnml.tools.epnk.pnmlcoremodel.Arc a : flat.getIn(YAWLTransition)) {
 				if (a instanceof Arc) {
 					Arc arc = (Arc) a;
-					if (arc.getArcType() == null || arc.getArcType().equals(dk.dtu.mbse.group7.yawl.helpers.ArcType.NORMAL)) {
+					if (arc.getArcType() == null || arc.getArcType().equals(dk.dtu.mbse.group7.yawl.helpers.ArcType.NORMAL) || arc.getArcType().equals(null)) {
 						count++;
 					}
 				}
