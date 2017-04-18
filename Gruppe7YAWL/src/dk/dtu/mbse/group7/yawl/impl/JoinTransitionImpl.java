@@ -2,6 +2,10 @@
  */
 package dk.dtu.mbse.group7.yawl.impl;
 
+import dk.dtu.mbse.group7.yawl.JoinTransition;
+import dk.dtu.mbse.group7.yawl.TType;
+import dk.dtu.mbse.group7.yawl.YawlPackage;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -9,10 +13,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.pnml.tools.epnk.pnmlcoremodel.impl.AttributeImpl;
-
-import dk.dtu.mbse.group7.yawl.JoinTransition;
-import dk.dtu.mbse.group7.yawl.TType;
-import dk.dtu.mbse.group7.yawl.YawlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +36,7 @@ public class JoinTransitionImpl extends AttributeImpl implements JoinTransition 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final TType TEXT_EDEFAULT = TType.AND;
+	protected static final TType TEXT_EDEFAULT = TType.OR;
 
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.

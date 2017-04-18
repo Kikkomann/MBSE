@@ -20,7 +20,7 @@ import graphics.figures.Group7TransitionFigure;
  * The graphical extension the the Technical Net extension. This is
  * the class plugged in to the ePNK  (see plugin.xml).
  * 
- * @author ekki@dtu.dk
+ * @author The group
  *
  */
 public class YAWLGraphics extends GraphicalExtension {

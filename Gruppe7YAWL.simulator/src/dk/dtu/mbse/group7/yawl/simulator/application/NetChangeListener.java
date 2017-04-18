@@ -13,8 +13,7 @@ import org.pnml.tools.epnk.helpers.FlatAccess;
  * in the simulator. It will notify the end user when the underlying net
  * is changed while the application is running and ask the end user whether
  * to shut down the simulator (continuing would not be save).
- * 
- * @author ekki@dtu.dk
+ * @author The group
  *
  */
 public class NetChangeListener implements Adapter {

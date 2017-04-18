@@ -52,6 +52,7 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	
 	/**
 	 * @generated NOT
+	 * @author s150157
 	 */
 	protected boolean enabled = false;
 
@@ -272,23 +273,9 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	}
 
 	/**
-	 * @author RuneHou
 	 * @generated NOT
+	 *  @author s150157
 	 */
-	@Override
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	/**
-	 * @author RuneHou
-	 * @generated NOT
-	 */
-	@Override
-	public void setEnabled(boolean enabled) {
-		enabled = true;
-	}
-	
 	@Override
 	public Transition getTransition() {
 		if (getObject() instanceof Transition) {

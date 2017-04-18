@@ -24,6 +24,7 @@ public class Group7PlaceFigure extends PlaceFigure {
 	/**
 	 * This method is called whenever some attribute of the transition which
 	 * might influence the graphical appearance of the transition changes.
+	 * @author s150157
 	 */
 	@Override
 	public void update() {
@@ -34,6 +35,9 @@ public class Group7PlaceFigure extends PlaceFigure {
 		}
 	}
 
+	/**
+	 * @author s150157
+	 */
 	@Override
 	protected void fillShape(Graphics graphics) {
 		super.fillShape(graphics);
@@ -82,6 +86,16 @@ public class Group7PlaceFigure extends PlaceFigure {
 			graphics.fillRectangle(x1, y1, (d1), d2);
 			graphics.drawRectangle(x1, y1, (d1), d2);
 			
+			graphics.popState();
+		}
+		
+		if (placeType.equals(PlaceType.INVALID)) {
+			graphics.pushState();
+			graphics.setLineWidth(3);
+			
+			graphics.drawLine((rect.x), (rect.y + rect.height), (rect.x + rect.width), rect.y);
+			graphics.drawLine((rect.x + rect.width), (rect.y + rect.height), (rect.x), rect.y);
+
 			graphics.popState();
 		}
 	}

@@ -2,6 +2,8 @@
  */
 package dk.dtu.mbse.group7.yawl.impl;
 
+import dk.dtu.mbse.group7.yawl.*;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -10,8 +12,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import dk.dtu.mbse.group7.yawl.*;
 
 /**
  * <!-- begin-user-doc -->

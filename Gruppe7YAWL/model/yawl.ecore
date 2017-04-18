@@ -7,8 +7,8 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PType">
-    <eLiterals name="START" value="1" literal="START"/>
-    <eLiterals name="END" value="2" literal="END"/>
+    <eLiterals name="START" value="1"/>
+    <eLiterals name="END" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PlaceType" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//PType"/>
@@ -20,9 +20,9 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TType">
-    <eLiterals name="AND"/>
     <eLiterals name="OR" value="1"/>
     <eLiterals name="XOR" value="2"/>
+    <eLiterals name="AND" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SplitTransition" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//TType"/>

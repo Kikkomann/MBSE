@@ -13,12 +13,18 @@ public class Group7TransitionFigure extends TransitionFigure {
 	private TransitionType joinType;
 	private TransitionType splitType;
 
+	/**
+	 * @author s150157
+	 */
 	public Group7TransitionFigure(Transition transition) {
 		super(transition);
 		joinType = YAWLFunctions.getJoinType(transition);
 		splitType = YAWLFunctions.getSplitType(transition);
 	}
 
+	/**
+	 * @author s150157
+	 */
 	@Override
 	public void update() {
 		TransitionType oldJoinType = joinType;
@@ -30,6 +36,9 @@ public class Group7TransitionFigure extends TransitionFigure {
 		}
 	}
 
+	/**
+	 * @author s150157
+	 */
 	@Override
 	protected void fillShape(Graphics graphics) {
 		super.fillShape(graphics);
@@ -150,6 +159,16 @@ public class Group7TransitionFigure extends TransitionFigure {
 			int points[] = { x1, y1, x2, y2, x3, y3 };
 			graphics.fillPolygon(points);
 			graphics.drawPolygon(points);
+
+			graphics.popState();
+		}
+		
+		if (joinType.equals(TransitionType.INVALID) || splitType.equals(TransitionType.INVALID)) {
+			graphics.pushState();
+			graphics.setLineWidth(3);
+
+			graphics.drawLine((rect.x), (rect.y + rect.height), (rect.x + rect.width), rect.y);
+			graphics.drawLine((rect.x + rect.width), (rect.y + rect.height), (rect.x), rect.y);
 
 			graphics.popState();
 		}

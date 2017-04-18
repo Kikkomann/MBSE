@@ -17,6 +17,9 @@ import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
 
 public class YAWLAnnotationsPresentationHandler implements IPresentationHandler {
 
+	/**
+	 * @author s150157
+	 */
 	@Override
 	public IFigure handle(ObjectAnnotation annotation, AbstractGraphicalEditPart editPart) {
 		if (annotation instanceof EnabledTransitions) {

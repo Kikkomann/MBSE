@@ -9,7 +9,6 @@ import org.pnml.tools.epnk.annotations.netannotations.NetAnnotations;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 import org.pnml.tools.epnk.applications.ui.IActionHandler;
 import org.pnml.tools.epnk.helpers.FlatAccess;
-import org.pnml.tools.epnk.helpers.NetFunctions;
 import org.pnml.tools.epnk.pnmlcoremodel.TransitionNode;
 
 import dk.dtu.mbse.group7.yawl.Arc;
@@ -21,9 +20,6 @@ import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
 /**
  * Action handler dealing with mouse clicks on EnableTransition annotations.
  * It will fire the transition, if it is enabled.
- * 
- * @author ekki@dtu.dk
- *
  */
 public class EnabledTransitionHandler implements IActionHandler {
 
@@ -34,6 +30,9 @@ public class EnabledTransitionHandler implements IActionHandler {
 		this.application = application;	
 	}
 
+	/**
+	 * @author s150157
+	 */
 	@Override
 	public boolean mouseDoubleClicked(MouseEvent arg0, ObjectAnnotation annotation) {
 		NetAnnotations netAnnotations = application.getNetAnnotations();
@@ -64,33 +63,6 @@ public class EnabledTransitionHandler implements IActionHandler {
 		return false;
 	}
 	
-//	@Override
-//	public boolean mouseDoubleClicked(MouseEvent arg0, ObjectAnnotation annotation) {
-//		NetAnnotations netAnnotations = application.getNetAnnotations();
-//		NetAnnotation current = netAnnotations.getCurrent();
-//		if (current.getObjectAnnotations().contains(annotation)) {
-//			Object object = annotation.getObject();
-//			if (object instanceof TransitionNode) {
-//				object = NetFunctions.resolve((TransitionNode) object);
-//			}
-//			if (object instanceof Transition && annotation instanceof EnabledTransitions) {
-//				Transition transition = (Transition) object;
-//				EnabledTransitions enabledTransition = (EnabledTransitions) annotation;
-//				
-//				if (enabledTransition.isEnabled()) {
-//					
-//					// TODO eventually, you need to compute the selected arcs for
-//					//      XOR-joins and XOR-splits and OR-splits so that the
-//					//      tokens are produced and consumed on the respective arcs
-//					//      (see project org.pnml.tools.epnk.tutorials.app.simulator)
-//
-//					return application.fireTransition(transition);
-//				}
-//			}
-//		}
-//		return false;
-//	}
-
 	@Override
 	public boolean mousePressed(MouseEvent arg0, ObjectAnnotation annotation) {
 		return false; 
@@ -101,6 +73,9 @@ public class EnabledTransitionHandler implements IActionHandler {
 		return false;
 	}
 	
+	/**
+	 * @author s150157
+	 */
 	private Arc selectedInArc(EnabledTransitions enabledTransitions) {
 		EnabledTransitions resolved = enabledTransitions.getResolved();
 		if (resolved == null) {
@@ -117,6 +92,9 @@ public class EnabledTransitionHandler implements IActionHandler {
 		return null;
 	}
 	
+	/**
+	 * @author s150157
+	 */
 	private Collection<Arc> selectedOutArcs(EnabledTransitions enabledTransitions) {
 		EnabledTransitions resolved = enabledTransitions.getResolved();
 		if (resolved == null) {

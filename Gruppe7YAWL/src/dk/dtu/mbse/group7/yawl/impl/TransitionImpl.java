@@ -2,6 +2,11 @@
  */
 package dk.dtu.mbse.group7.yawl.impl;
 
+import dk.dtu.mbse.group7.yawl.JoinTransition;
+import dk.dtu.mbse.group7.yawl.SplitTransition;
+import dk.dtu.mbse.group7.yawl.Transition;
+import dk.dtu.mbse.group7.yawl.YawlPackage;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -9,11 +14,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import dk.dtu.mbse.group7.yawl.JoinTransition;
-import dk.dtu.mbse.group7.yawl.SplitTransition;
-import dk.dtu.mbse.group7.yawl.Transition;
-import dk.dtu.mbse.group7.yawl.YawlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,6 +39,7 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * @ordered
 	 */
 	protected SplitTransition splitType;
+
 	/**
 	 * The cached value of the '{@link #getJoinType() <em>Join Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -48,6 +49,7 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * @ordered
 	 */
 	protected JoinTransition joinType;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

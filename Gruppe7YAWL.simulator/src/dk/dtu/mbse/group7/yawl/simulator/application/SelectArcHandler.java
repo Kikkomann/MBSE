@@ -25,6 +25,9 @@ public class SelectArcHandler implements IActionHandler {
 		return false;
 	}
 
+	/**
+	 * @author s150157
+	 */
 	@Override
 	public boolean mousePressed(MouseEvent arg0, ObjectAnnotation annotation) {
 		if (annotation instanceof SelectArcs) {
@@ -32,11 +35,10 @@ public class SelectArcHandler implements IActionHandler {
 			//One of these should be true (Der er enten en sourceTrans eller targetTrans)
 			EnabledTransitions targetTransition = selectArcs.getTargetTransition();
 			EnabledTransitions sourceTransition = selectArcs.getSourceTransition();
-			//TODO not relevant siger Ekkart
 			Marking sourceMarking = selectArcs.getSourceMarking();
 
 			if (targetTransition != null) {
-				if (!selectArcs.isSelected() && sourceMarking != null && sourceMarking.getValue() > 0) {
+				if (!selectArcs.isSelected() && sourceMarking != null  && sourceMarking.getValue() > 0) {
 					Transition transition = targetTransition.getTransition();
 					if (YAWLFunctions.getJoinType(transition).equals(TransitionType.XOR)) {
 						for (SelectArcs s_arc : targetTransition.getInArc()) {

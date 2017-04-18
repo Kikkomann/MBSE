@@ -2,12 +2,12 @@
  */
 package dk.dtu.mbse.group7.yawl.impl;
 
+import dk.dtu.mbse.group7.yawl.YAWLNet;
+import dk.dtu.mbse.group7.yawl.YawlPackage;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.pnml.tools.epnk.pnmlcoremodel.impl.PetriNetTypeImpl;
-
-import dk.dtu.mbse.group7.yawl.YAWLNet;
-import dk.dtu.mbse.group7.yawl.YawlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,7 @@ public class YAWLNetImpl extends PetriNetTypeImpl implements YAWLNet {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
-	 * put author tag if generated NOT is set
+	 * @author The group
 	 */
 	public YAWLNetImpl() {
 		super();
@@ -37,9 +37,12 @@ public class YAWLNetImpl extends PetriNetTypeImpl implements YAWLNet {
 		return YawlPackage.Literals.YAWL_NET;
 	}
 
+	/**
+	 * @generated NOT
+	 * @author The group
+	 */
 	@Override
 	public String toString() {
-		//TODO gamle URI: return "http://se.compute.dtu.dk/mbse/yawl";
 		return "http://group7.dtu.dk/mbse/yawl";
 	}
 

@@ -17,19 +17,23 @@ import dk.dtu.mbse.group7.yawl.helpers.YAWLFunctions;
  * The figure defining implementing the graphical appearance of arcs in the
  * Technical Net Type.
  * 
- * @author 
- * 
  */
 public class Group7ArcFigure extends ArcFigure {
 
 	private ArcType arcType;
 	
+	/**
+	 * @author s150157
+	 */
 	public Group7ArcFigure(Arc arc) {
 		super(arc);
 		arcType = YAWLFunctions.getType(arc);
 		setGraphics();
 	}
-
+	
+	/**
+	 * @author s150157
+	 */
 	@Override
 	public void update() {
 		ArcType oldArcType = arcType;
@@ -45,6 +49,9 @@ public class Group7ArcFigure extends ArcFigure {
 		}
 	}
 
+	/**
+	 * @author s150157
+	 */
 	private void setGraphics() {
 		if (arcType == ArcType.NORMAL) {
 			this.setTargetDecoration(new ArrowHeadDecoration());

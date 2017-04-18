@@ -89,10 +89,10 @@ public interface EnabledTransitions extends ObjectAnnotation {
 	 */
 	EList<SelectArcs> getOutArcs();
 	
-	boolean isEnabled();
-	
-	void setEnabled(boolean enabled);
-	
+	/**
+	 * @generated NOT
+	 * @author s150157
+	 */
 	Transition getTransition();
 
 } // EnabledTransitions

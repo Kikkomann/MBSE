@@ -2,6 +2,8 @@
  */
 package dk.dtu.mbse.group7.yawl.util;
 
+import dk.dtu.mbse.group7.yawl.*;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -16,8 +18,6 @@ import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetType;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 import org.pnml.tools.epnk.pnmlcoremodel.TransitionNode;
-
-import dk.dtu.mbse.group7.yawl.*;
 
 /**
  * <!-- begin-user-doc -->

@@ -94,12 +94,12 @@
                   class="dk.dtu.mbse.group7.yawl.constraints.NoArcToStart"
                   severity="ERROR"
                   mode="Live"
-                  name="No arc to start and no arc from end"
+                  name="No arc to start"
                   id="Group7YAWL.validation.no-arc-to-start"
                   statusCode="402">
                <target class="YAWLNet:http://group7.dtu.dk/mbse/yawl"/>
                <description>
-                  A start place can't have an incoming arc and an end place can't have an outgoing arc.
+                  A start place can't have an incoming arc.
                </description>
                <message>
                   The YAWL net {0} A start place can't have an incoming arc
@@ -118,11 +118,9 @@
                      </feature>
                   </event>
                </target>
-               
-               
             </constraint>
-            
-             <constraint
+ 
+ 			<constraint
                   lang="Java"
                   class="dk.dtu.mbse.group7.yawl.constraints.NoArcFromEnd"
                   severity="ERROR"
@@ -161,6 +159,63 @@
                   </event>
                </target>
             </constraint>
+ 
+            
+             <!--
+            <constraint
+                  id="Group7YAWL.validation.no-arc-from-end-OCL"
+                  lang="OCL"
+                  mode="Live"
+                  name="No arc from end"
+                  severity="ERROR"
+                  statusCode="401">
+               <description>
+                  An end place can't have an outgoing arc.
+               </description>
+               <message>
+                  The YAWL net {0} An end place can't have an outgoing arc
+               </message>
+               <target
+                     class="Arc:http://group7.dtu.dk/mbse/yawl">
+                  <event
+                        name="Set">
+                     <feature
+                           name="source">
+                     </feature>
+                     
+                     <feature
+                           name="placeType">
+                     </feature>
+                  
+                  </event>
+               </target>
+              <![CDATA[
+               ( self.source.oclIsKindOf(pnmlcoremodel::PlaceNode) and
+                   self.target.oclIsKindOf(pnmlcoremodel::TransitionNode) and
+                   (not (self.source.oclAsType(Place).placeType.oclIsUndefined())) and 
+                   ((self.source.oclAsType(Place).placeType.text = PType::END)) 
+               )
+               ]]>
+            </constraint>
+               -->
+            
+            
+            <constraint
+                  lang="Java"
+                  class="dk.dtu.mbse.group7.yawl.constraints.NoNodesWithoutArcs"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="No Nodes Without Arcs"
+                  id="Group7YAWL.validation.no-nodes-without-arcs"
+                  statusCode="402">
+               <target class="YAWLNet:http://group7.dtu.dk/mbse/yawl"/>
+               <description>
+                  Nodes must have at least one arc (if a Place).
+               </description>
+               <message>
+                  The Node {0} may not exist with no arcs.
+               </message>
+            </constraint>
             
             </constraints>
             
@@ -171,7 +226,7 @@
       <!-- @generated yawl -->
       <package
             uri="http://group7.dtu.dk/mbse/yawl"
-            class="yawl.YawlPackage"
+            class="dk.dtu.mbse.group7.yawl.YawlPackage"
             genModel="model/yawl.genmodel"/>
    </extension>
 

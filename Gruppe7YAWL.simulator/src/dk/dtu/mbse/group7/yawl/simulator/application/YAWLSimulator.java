@@ -31,29 +31,24 @@ import dk.dtu.mbse.group7.yawl.Place;
 
 /**
  * A first simulator application for YAWL nets.
- * 
- * TODO Note that this simulator does not yet take split and join types into
- * account; neither does it take reset arcs into account. Moreover, the user can
- * not select arcs yet. This needs to be extended!
- * 
- * @author ekki@dtu.dk
- *
  */
 public class YAWLSimulator extends ApplicationWithUIManager {
 
 	private FlatAccess flatAccess;
 	private NetChangeListener adapter;
 
+	/**
+	 * @author s150157
+	 */
 	public YAWLSimulator(PetriNet petrinet) {
 		super(petrinet);
-//		flatAccess = FlatAccess.getFlatAccess(this.getPetrinet());
 
 		getNetAnnotations().setName("A simple YAWL simulator from Group 7");
 		ApplicationUIManager manager = this.getPresentationManager();
 		manager.addActionHandler(new EnabledTransitionHandler(this));
 		manager.addActionHandler(new SelectArcHandler(this));
 		manager.addPresentationHandler(new YAWLAnnotationsPresentationHandler());
-		
+
 		flatAccess = FlatAccess.getFlatAccess(petrinet);
 		adapter = new NetChangeListener(this);
 		flatAccess.addInvalidationListener(adapter);
@@ -63,6 +58,9 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 		return flatAccess;
 	}
 
+	/**
+	 * @author s150157
+	 */
 	@Override
 	protected void initializeContents() {
 		// Sætter start place til at starte med en token
@@ -77,17 +75,16 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 	}
 
 	/**
-	 * @author RuneHou
+	 * @author s150157
 	 */
-	// TODO: Lavet selv, men præcis det samme som Ekkart's (bortset fra else'en)
 	private NetMarking computeInitialMarking() {
 		NetMarking marking = new NetMarking();
-		for (org.pnml.tools.epnk.pnmlcoremodel.Place place : this.getFlatAccess().getPlaces()) {
-			if (place instanceof Place) {
+		for (org.pnml.tools.epnk.pnmlcoremodel.Place place : flatAccess.getPlaces()) {
+			if (place instanceof Place || YAWLFunctions.getType(place) == PlaceType.START) {
 				if (YAWLFunctions.getType(place) == PlaceType.START) {
 					marking.setMarking((Place) place, 1);
 				} else {
-					//Sørger for at det kun er start place der har en token
+					// Sørger for at det kun er start place der har en token
 					marking.setMarking((Place) place, 0);
 				}
 			}
@@ -95,7 +92,9 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 		return marking;
 	}
 
-	// TODO Kopieret Ekkart's
+	/**
+	 * @author s150157
+	 */
 	public NetMarking computeMarking() {
 		NetMarking marking = new NetMarking();
 		for (ObjectAnnotation annotation : this.getNetAnnotations().getCurrent().getObjectAnnotations()) {
@@ -113,113 +112,53 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 	}
 
 	/**
-	 * @author RuneHou
+	 * @author s150157
 	 */
 	public NetAnnotation computeAnnotation(NetMarking marking) {
-		// TODO fjern denne?
-		FlatAccess flatAccess = getFlatAccess();
 		NetAnnotation annotation = NetannotationsFactory.eINSTANCE.createNetAnnotation();
 		annotation.setNet(getPetrinet());
 		Map<Object, Marking> place2MarkingAnnotation = new HashMap<Object, Marking>();
 		// For hvert place der har en marking > 0, laves der en annotation
-				// marking
-				for (Place place : marking.getSupport()) {
-					int m = marking.getMarking(place);
-					if (m > 0) {
-						Marking markingAnnotation = YawlannotationsFactory.eINSTANCE.createMarking();
-						markingAnnotation.setObject(place);
-						markingAnnotation.setValue(m);
-						annotation.getObjectAnnotations().add(markingAnnotation);
-						place2MarkingAnnotation.put(place, markingAnnotation);
-					}
-					for (RefPlace refPlace : getFlatAccess().getRefPlaces(place)) {
-						Marking markingAnnotation = YawlannotationsFactory.eINSTANCE.createMarking();
-						markingAnnotation.setObject(refPlace);
-						markingAnnotation.setValue(m);
-						annotation.getObjectAnnotations().add(markingAnnotation);
-					}
-				}
-			
-				//TODO duplicate af det nedenunder
-//		for (Object object : getFlatAccess().getTransitions()) {
-//			if (object instanceof Transition) {
-//				Transition transition = (Transition) object;
-//				// TODO Skal den rykkes længere ned? Skal dette ske lige meget
-//				// om enabled eller ej?
-//				if (enabled(flatAccess, marking, transition)) {
-//					EnabledTransitions enabledTransition = YawlannotationsFactory.eINSTANCE.createEnabledTransitions();
-//					enabledTransition.setObject(transition);
-//					annotation.getObjectAnnotations().add(enabledTransition);
-//					enabledTransition.setEnabled(true);
-//
-//					for (RefTransition refTransition : getFlatAccess().getRefTransitions(transition)) {
-//						EnabledTransitions enabledTransition2 = YawlannotationsFactory.eINSTANCE
-//								.createEnabledTransitions();
-//						enabledTransition2.setObject(refTransition);
-//						enabledTransition2.setResolved(enabledTransition);
-//						enabledTransition2.setEnabled(enabledTransition.isEnabled());
-//						annotation.getObjectAnnotations().add(enabledTransition2);
-//					}
-//				}
-//			}
-//		}
+		// marking
+		for (Place place : marking.getSupport()) {
+			int m = marking.getMarking(place);
+			if (m > 0) {
+				Marking markingAnnotation = YawlannotationsFactory.eINSTANCE.createMarking();
+				markingAnnotation.setObject(place);
+				markingAnnotation.setValue(m);
+				annotation.getObjectAnnotations().add(markingAnnotation);
+				place2MarkingAnnotation.put(place, markingAnnotation);
+			}
+			for (RefPlace refPlace : flatAccess.getRefPlaces(place)) {
+				Marking markingAnnotation = YawlannotationsFactory.eINSTANCE.createMarking();
+				markingAnnotation.setObject(refPlace);
+				markingAnnotation.setValue(m);
+				annotation.getObjectAnnotations().add(markingAnnotation);
+			}
 
-		
+			for (Object object : flatAccess.getTransitions()) {
+				if (object instanceof Transition) {
+					Transition transition = (Transition) object;
+					if (enabled(flatAccess, marking, transition)) {
+						EnabledTransitions transitionAnnotations = YawlannotationsFactory.eINSTANCE
+								.createEnabledTransitions();
+						transitionAnnotations.setObject(transition);
+						annotation.getObjectAnnotations().add(transitionAnnotations);
 
-		for (Object object : flatAccess.getTransitions()) {
-			if (object instanceof Transition) {
-				Transition transition = (Transition) object;
-				if (enabled(flatAccess, marking, transition)) {
-					EnabledTransitions transitionAnnotations = YawlannotationsFactory.eINSTANCE.createEnabledTransitions();
-					transitionAnnotations.setObject(transition);
-					annotation.getObjectAnnotations().add(transitionAnnotations);
-					// TODO Skal denne linje være her?
-					transitionAnnotations.setEnabled(true);
-					// TODO Skal jeg have disse? Mikkel har dem (flere steder)
-					// enabledTransition.getOutArcs().add(arcAnnotation);
+						for (RefTransition refTrans : flatAccess.getRefTransitions(transition)) {
+							EnabledTransitions refTransitionAnnotations = YawlannotationsFactory.eINSTANCE
+									.createEnabledTransitions();
+							refTransitionAnnotations.setObject(refTrans);
+							annotation.getObjectAnnotations().add(refTransitionAnnotations);
+						}
 
-					for (RefTransition refTrans : getFlatAccess().getRefTransitions(transition)) {
-						EnabledTransitions refTransitionAnnotations = YawlannotationsFactory.eINSTANCE.createEnabledTransitions();
-						transitionAnnotations.setObject(refTrans);
-						annotation.getObjectAnnotations().add(refTransitionAnnotations);
-					}
-
-					if (YAWLFunctions.getJoinType(transition).equals(TransitionType.XOR)) {
-						boolean firstArc = true;
-						for (Object in : flatAccess.getIn(transition)) {
-							if (in instanceof Arc) {
-								if (!YAWLFunctions.isResetArc((Arc) in)) {
+						if (YAWLFunctions.getJoinType(transition).equals(TransitionType.SINGLE)) {
+							for (Object in : flatAccess.getIn(transition)) {
+								if (in instanceof Arc) {
 									Marking sourceMarking = place2MarkingAnnotation.get(((Arc) in).getSource());
-									if (sourceMarking != null) {
+									if (marking.getMarking((Place) ((Arc) in).getSource()) > 0) {
 										SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
 										arcAnnotation.setObject(((Arc) in));
-										arcAnnotation.setSourceMarking(sourceMarking);
-										arcAnnotation.setTargetTransition(transitionAnnotations);
-										if (firstArc) {
-											arcAnnotation.setSelected(true);
-											firstArc = false;
-										} else {
-											arcAnnotation.setSelected(false);
-										}
-										if(((Arc) in).getSource() instanceof Place) {
-											annotation.getObjectAnnotations().add(arcAnnotation);
-											transitionAnnotations.getInArc().add(arcAnnotation);
-										}
-									}
-								}
-							}
-						}
-					}
-
-					if (YAWLFunctions.getJoinType(transition).equals(TransitionType.OR)) {
-						for (Object in : flatAccess.getIn(transition)) {
-							if (in instanceof Arc) {
-								Arc inArc = (Arc) in;
-								if (!YAWLFunctions.isResetArc(inArc)) {
-									Marking sourceMarking = place2MarkingAnnotation.get(((Arc) inArc).getSource());
-									if (sourceMarking != null) {
-										SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
-										arcAnnotation.setObject(((Arc) inArc));
 										arcAnnotation.setSourceMarking(sourceMarking);
 										arcAnnotation.setTargetTransition(transitionAnnotations);
 										arcAnnotation.setSelected(true);
@@ -228,37 +167,143 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 								}
 							}
 						}
-					}
-
-					// Makes sure outgoing arcs are selected and attached to the
-					// corresponding Transition:
-					if (YAWLFunctions.getSplitType(transition).equals(TransitionType.XOR)) {
-						boolean first = true;
-						for (Object out : flatAccess.getOut(transition)) {
-							if (out instanceof Arc) {
-								SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
-								arcAnnotation.setObject(((Arc) out));
-								arcAnnotation.setSourceTransition(transitionAnnotations);
-								if (first) {
-									arcAnnotation.setSelected(true);
-									first = false;
-								} else {
-									arcAnnotation.setSelected(false);
+						
+						//Compares the total number of in arcs with the number of arcs with a source place with at least one token
+						if (YAWLFunctions.getJoinType(transition).equals(TransitionType.AND)) {
+							int inCount = flatAccess.getIn(transition).size();
+							int count = 0;
+							for (Object in : flatAccess.getIn(transition)) {
+								if (in instanceof Arc) {
+									if (marking.getMarking((Place) ((Arc) in).getSource()) > 0) {
+										count++;
+									}
 								}
-								annotation.getObjectAnnotations().add(arcAnnotation);
+							}
+							for (Object in : flatAccess.getIn(transition)) {
+								if (in instanceof Arc) {
+									Marking sourceMarking = place2MarkingAnnotation.get(((Arc) in).getSource());
+									if (count == inCount) {
+										SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
+										arcAnnotation.setObject(((Arc) in));
+										arcAnnotation.setSourceMarking(sourceMarking);
+										arcAnnotation.setTargetTransition(transitionAnnotations);
+										arcAnnotation.setSelected(true);
+										annotation.getObjectAnnotations().add(arcAnnotation);
+									}
+								}
 							}
 						}
-					}
 
-					// Same as above, but here more arcs can be selected:
-					if (YAWLFunctions.getSplitType(transition).equals(TransitionType.OR)) {
-						for (Object out : flatAccess.getOut(transition)) {
-							if (out instanceof Arc) {
-								SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
-								arcAnnotation.setObject(((Arc) out));
-								arcAnnotation.setSourceTransition(transitionAnnotations);
-								arcAnnotation.setSelected(true);
-								annotation.getObjectAnnotations().add(arcAnnotation);
+						if (YAWLFunctions.getJoinType(transition).equals(TransitionType.XOR)) {
+							boolean firstArc = true;
+							for (Object in : flatAccess.getIn(transition)) {
+								if (in instanceof Arc) {
+									if (!YAWLFunctions.isResetArc((Arc) in)) {
+										Marking sourceMarking = place2MarkingAnnotation.get(((Arc) in).getSource());
+										if (sourceMarking != null) {
+											SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE
+													.createSelectArcs();
+											arcAnnotation.setObject(((Arc) in));
+											arcAnnotation.setSourceMarking(sourceMarking);
+											arcAnnotation.setTargetTransition(transitionAnnotations);
+											if (firstArc) {
+												arcAnnotation.setSelected(true);
+												firstArc = false;
+											} else {
+												arcAnnotation.setSelected(false);
+											}
+											annotation.getObjectAnnotations().add(arcAnnotation);
+										}
+									}
+								}
+							}
+						}
+
+						if (YAWLFunctions.getJoinType(transition).equals(TransitionType.OR)) {
+							for (Object in : flatAccess.getIn(transition)) {
+								if (in instanceof Arc) {
+									Marking sourceMarking = place2MarkingAnnotation.get(((Arc) in).getSource());
+									if (marking.getMarking((Place) ((Arc) in).getSource()) > 0) {
+										SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
+										arcAnnotation.setObject(((Arc) in));
+										arcAnnotation.setSourceMarking(sourceMarking);
+										arcAnnotation.setTargetTransition(transitionAnnotations);
+										arcAnnotation.setSelected(true);
+										annotation.getObjectAnnotations().add(arcAnnotation);
+									}
+								}
+							}
+						}
+
+						// Makes sure outgoing arcs are selected and attached to
+						// the
+						// corresponding Transition:
+						if (YAWLFunctions.getSplitType(transition).equals(TransitionType.XOR)) {
+							boolean first = true;
+							for (Object out : flatAccess.getOut(transition)) {
+								if (out instanceof Arc) {
+									SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
+									arcAnnotation.setObject(((Arc) out));
+									arcAnnotation.setSourceTransition(transitionAnnotations);
+									if (first) {
+										arcAnnotation.setSelected(true);
+										first = false;
+									} else {
+										arcAnnotation.setSelected(false);
+									}
+									annotation.getObjectAnnotations().add(arcAnnotation);
+									// TODO added
+									transitionAnnotations.getOutArcs().add(arcAnnotation);
+								}
+							}
+						}
+
+						// Same as above, but here more arcs can be selected:
+						if (YAWLFunctions.getSplitType(transition).equals(TransitionType.OR)) {
+							for (Object out : flatAccess.getOut(transition)) {
+								if (out instanceof Arc) {
+									SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
+									arcAnnotation.setObject(((Arc) out));
+									arcAnnotation.setSourceTransition(transitionAnnotations);
+									arcAnnotation.setSelected(true);
+									annotation.getObjectAnnotations().add(arcAnnotation);
+								}
+							}
+						}
+						
+						if (YAWLFunctions.getSplitType(transition).equals(TransitionType.SINGLE)) {
+							for (Object out : flatAccess.getIn(transition)) {
+								if (out instanceof Arc) {
+										SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
+										arcAnnotation.setObject(((Arc) out));
+										arcAnnotation.setSourceTransition(transitionAnnotations);
+										arcAnnotation.setSelected(true);
+										annotation.getObjectAnnotations().add(arcAnnotation);
+								}
+							}
+						}
+						
+						//Compares the total number of in arcs with the number of arcs with a source place with at least one token
+						if (YAWLFunctions.getSplitType(transition).equals(TransitionType.AND)) {
+							int outCount = flatAccess.getOut(transition).size();
+							int count = 0;
+							for (Object out : flatAccess.getOut(transition)) {
+								if (out instanceof Arc) {
+									if (marking.getMarking((Place) ((Arc) out).getTarget()) > 0) {
+										count++;
+									}
+								}
+							}
+							for (Object out : flatAccess.getIn(transition)) {
+								if (out instanceof Arc) {
+									if (count == outCount) {
+										SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
+										arcAnnotation.setObject(((Arc) out));
+										arcAnnotation.setSourceTransition(transitionAnnotations);
+										arcAnnotation.setSelected(true);
+										annotation.getObjectAnnotations().add(arcAnnotation);
+									}
+								}
 							}
 						}
 					}
@@ -268,9 +313,12 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 		return annotation;
 	}
 
+	/**
+	 * @author s150157
+	 */
 	boolean fireTransition(Transition transition, Arc inArc, Collection<Arc> outArcs) {
 		NetMarking marking1 = this.computeMarking();
-		FlatAccess flatAccess = getFlatAccess();
+		// FlatAccess flatAccess = getFlatAccess();
 
 		if (this.enabled(flatAccess, marking1, transition)) {
 			NetMarking marking2 = this.fireTransition(flatAccess, marking1, inArc, transition, outArcs);
@@ -284,6 +332,9 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 		return false;
 	}
 
+	/**
+	 * @author s150157
+	 */
 	NetMarking fireTransition(FlatAccess flatNet, NetMarking marking1, Arc selectedInArc, Transition transition,
 			Collection<Arc> selectedOutArcs) {
 		NetMarking marking2 = new NetMarking(marking1);
@@ -395,31 +446,39 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 	}
 
 	/**
-	 * @author RuneHou
+	 * @author s150157
 	 */
 	public boolean enabled(FlatAccess flatNet, NetMarking marking, Transition transition) {
 		TransitionType joinType = YAWLFunctions.getJoinType(transition);
+		// Transitions must have in and out arcs
+		if (joinType.equals(TransitionType.INVALID)) {
+			return false;
+		}
+		if (YAWLFunctions.getJoinType(transition).equals(TransitionType.INVALID)) {
+			return false;
+		}
 		if (joinType.equals(TransitionType.AND) || joinType.equals(TransitionType.SINGLE)) {
 			for (Object in : flatNet.getIn(transition)) {
 				if (in instanceof Arc) {
 					Arc inArc = (Arc) in;
 					if (!YAWLFunctions.isResetArc(inArc)) {
-						Node source = inArc.getSource();
+						Object source = inArc.getSource();
 						if (source instanceof PlaceNode) {
 							source = flatNet.resolve((PlaceNode) source);
-							if (source instanceof Place || (marking.getMarking((Place) source) < 1)) {
+							if (source instanceof Place) {
+								if (marking.getMarking((Place) source) < 1) {
+									return false;
+								}
+							} else {
+								// Source skal være en place
 								return false;
 							}
 						} else {
-							// Source skal være en place
+							// Kan ikke bruge reset arcs
 							return false;
 						}
-					} else {
-						// Kan ikke bruge reset arcs
-						return false;
 					}
 				}
-
 			}
 			return true;
 		} else if (joinType.equals(TransitionType.OR) || joinType.equals(TransitionType.XOR)) {
@@ -427,8 +486,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 				if (in instanceof Arc) {
 					Arc inArc = (Arc) in;
 					if (!YAWLFunctions.isResetArc(inArc)) {
-						// TODO Havde Node i stedet for Object
-						Object source = inArc.getSource();
+						Node source = inArc.getSource();
 						if (source instanceof PlaceNode) {
 							source = flatNet.resolve((PlaceNode) source);
 							if (source instanceof Place) {
@@ -439,71 +497,13 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 						}
 					}
 				}
-
 			}
-			// Hvis der ikke er nogle in-places med en token.
 			return false;
 		}
+		// Hvis der ikke er nogle in-places med en token.
 		return false;
 	}
 
-	// TODO Fjern, hvis simulator fungerer uden
-	// /**
-	// * @author RuneHou
-	// */
-	// private NetMarking consumes(Transition transition) {
-	// NetMarking consumes = new NetMarking();
-	//
-	// for (Arc arc : getFlatAccess().getIn(transition)) {
-	//
-	// if (arc instanceof Arc && YAWLFunctions.getType(arc) == ArcType.NORMAL) {
-	// Node source = arc.getSource();
-	// // TODO Havde ikke selv fundet ud af det.
-	// if (source instanceof PlaceNode) {
-	// source = getFlatAccess().resolve((PlaceNode) source);
-	// if (source instanceof Place) {
-	// consumes.incrementMarkingBy((Place) source, 1);
-	// }
-	// }
-	//
-	// // TODO compute for each source place the tokens needed
-	// // (consumed) for firing the transition
-	//
-	// // TODO account for reset arcs
-	//
-	// }
-	// }
-	//
-	// return consumes;
-	// }
-	//
-	// /**
-	// * @author RuneHou
-	// */
-	// private NetMarking produces(Transition transition) {
-	// NetMarking produces = new NetMarking();
-	// for (org.pnml.tools.epnk.pnmlcoremodel.Arc arc :
-	// getFlatAccess().getOut(transition)) {
-	// if (arc instanceof Arc && YAWLFunctions.getType(arc) == ArcType.NORMAL) {
-	// Node target = arc.getTarget();
-	// if (target instanceof PlaceNode) {
-	// target = getFlatAccess().resolve((PlaceNode) target);
-	// if (target instanceof Place) {
-	// produces.incrementMarkingBy((Place) target, 1);
-	// }
-	// }
-	// // TODO account for reset arcs
-	// }
-	//
-	// }
-	// return produces;
-	// }
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.pnml.tools.epnk.applications.Application#shutDown()
-	 */
 	@Override
 	protected void shutDown() {
 		super.shutDown();
@@ -513,5 +513,4 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 			adapter = null;
 		}
 	}
-
 }

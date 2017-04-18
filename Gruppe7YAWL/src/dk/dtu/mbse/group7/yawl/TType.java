@@ -19,14 +19,6 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum TType implements Enumerator {
 	/**
-	 * The '<em><b>AND</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #AND_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	AND(0, "AND", "AND"), /**
 	 * The '<em><b>OR</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -42,22 +34,15 @@ public enum TType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	XOR(2, "XOR", "XOR");
-
-	/**
-	 * The '<em><b>AND</b></em>' literal value.
+	XOR(2, "XOR", "XOR"), /**
+	 * The '<em><b>AND</b></em>' literal object.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>AND</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #AND
-	 * @model
+	 * @see #AND_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	public static final int AND_VALUE = 0;
+	AND(3, "AND", "AND");
 
 	/**
 	 * The '<em><b>OR</b></em>' literal value.
@@ -90,6 +75,21 @@ public enum TType implements Enumerator {
 	public static final int XOR_VALUE = 2;
 
 	/**
+	 * The '<em><b>AND</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>AND</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #AND
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AND_VALUE = 3;
+
+	/**
 	 * An array of all the '<em><b>TType</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -97,9 +97,9 @@ public enum TType implements Enumerator {
 	 */
 	private static final TType[] VALUES_ARRAY =
 		new TType[] {
-			AND,
 			OR,
 			XOR,
+			AND,
 		};
 
 	/**
@@ -156,9 +156,9 @@ public enum TType implements Enumerator {
 	 */
 	public static TType get(int value) {
 		switch (value) {
-			case AND_VALUE: return AND;
 			case OR_VALUE: return OR;
 			case XOR_VALUE: return XOR;
+			case AND_VALUE: return AND;
 		}
 		return null;
 	}

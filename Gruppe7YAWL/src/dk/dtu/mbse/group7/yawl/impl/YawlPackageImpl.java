@@ -2,16 +2,6 @@
  */
 package dk.dtu.mbse.group7.yawl.impl;
 
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
-
 import dk.dtu.mbse.group7.yawl.AType;
 import dk.dtu.mbse.group7.yawl.Arc;
 import dk.dtu.mbse.group7.yawl.ArcType;
@@ -25,6 +15,16 @@ import dk.dtu.mbse.group7.yawl.Transition;
 import dk.dtu.mbse.group7.yawl.YAWLNet;
 import dk.dtu.mbse.group7.yawl.YawlFactory;
 import dk.dtu.mbse.group7.yawl.YawlPackage;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -474,9 +474,9 @@ public class YawlPackageImpl extends EPackageImpl implements YawlPackage {
 		addEEnumLiteral(pTypeEEnum, PType.END);
 
 		initEEnum(tTypeEEnum, TType.class, "TType");
-		addEEnumLiteral(tTypeEEnum, TType.AND);
 		addEEnumLiteral(tTypeEEnum, TType.OR);
 		addEEnumLiteral(tTypeEEnum, TType.XOR);
+		addEEnumLiteral(tTypeEEnum, TType.AND);
 
 		initEEnum(aTypeEEnum, AType.class, "AType");
 		addEEnumLiteral(aTypeEEnum, AType.RESET);

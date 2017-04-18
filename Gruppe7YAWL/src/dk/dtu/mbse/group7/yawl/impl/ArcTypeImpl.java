@@ -2,6 +2,10 @@
  */
 package dk.dtu.mbse.group7.yawl.impl;
 
+import dk.dtu.mbse.group7.yawl.AType;
+import dk.dtu.mbse.group7.yawl.ArcType;
+import dk.dtu.mbse.group7.yawl.YawlPackage;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -9,10 +13,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.pnml.tools.epnk.pnmlcoremodel.impl.AttributeImpl;
-
-import dk.dtu.mbse.group7.yawl.AType;
-import dk.dtu.mbse.group7.yawl.ArcType;
-import dk.dtu.mbse.group7.yawl.YawlPackage;
 
 /**
  * <!-- begin-user-doc -->
