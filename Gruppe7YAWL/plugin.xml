@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 
-<!--
--->
-
 <plugin>
 
 	<extension
@@ -19,7 +16,6 @@
          point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider
             cache="true">
-         <!-- TODO this should be refering to the URI of your YAWL net model -->
          <package
                namespaceUri="http://group7.dtu.dk/mbse/yawl">
          </package>
@@ -39,13 +35,8 @@
                   between two transitions. Only arcs between a place and a transition may have
                   a type! 
                </description>
-               <!-- TODO the class the constraint refers to: the Arc of your YWAL Ecore model,
-                    the class name and the URI of the packake separated by a colon -->
                <target
                      class="Arc:http://group7.dtu.dk/mbse/yawl">
-                  <!-- since this is a live constraint, you need to tell the
-                       validator when to check the constraint: in terms of events here
-                       we use set events on the following features -->
                   <event
                         name="Set">
                      <feature
@@ -54,14 +45,11 @@
                      <feature
                            name="target">
                      </feature>
-                     <!-- TODO the feature "type" is the reference to the Attribute defining the type
-                          of the arc) -->
                      <feature
                            name="arcType">
                      </feature>
                   </event>
                </target>
-               <!-- The actual OCL constraint follows -->
               <![CDATA[
                  ( self.source.oclIsKindOf(pnmlcoremodel::PlaceNode) and
                    self.target.oclIsKindOf(pnmlcoremodel::TransitionNode) )
@@ -97,20 +85,16 @@
                   name="No arc to start"
                   id="Group7YAWL.validation.no-arc-to-start"
                   statusCode="402">
-               <target class="YAWLNet:http://group7.dtu.dk/mbse/yawl"/>
+               <target class="Place:http://group7.dtu.dk/mbse/yawl"/>
                <description>
                   A start place can't have an incoming arc.
                </description>
                <message>
-                  The YAWL net {0} A start place can't have an incoming arc
+                  The Place {0} can't have an incoming arc
                </message>
-               
                
                <target
                      class="Arc:http://group7.dtu.dk/mbse/yawl">
-                  <!-- since this is a live constraint, you need to tell the
-                       validator when to check the constraint: in terms of events here
-                       we use set events on the following features -->
                   <event
                         name="Set">
                      <feature
@@ -128,21 +112,15 @@
                   name="No arc from end"
                   id="Group7YAWL.validation.no-arc-from-end"
                   statusCode="402">
-               <target class="YAWLNet:http://group7.dtu.dk/mbse/yawl"/>
+               <target class="Place:http://group7.dtu.dk/mbse/yawl"/>
                <description>
                   An end place can't have an outgoing arc.
                </description>
                <message>
-                  The YAWL net {0} An end place can't have an outgoing arc
+                  The Place{0} can't have an outgoing arc
                </message>
-               
-                <!-- TODO the class the constraint refers to: the Arc of your YWAL Ecore model,
-                    the class name and the URI of the packake separated by a colon -->
                <target
                      class="Arc:http://group7.dtu.dk/mbse/yawl">
-                  <!-- since this is a live constraint, you need to tell the
-                       validator when to check the constraint: in terms of events here
-                       we use set events on the following features -->
                   <event
                         name="Set">
                      <feature
@@ -151,29 +129,27 @@
                      <feature
                            name="target">
                      </feature>
-                     <!-- TODO the feature "type" is the reference to the Attribute defining the type
-                          of the arc) -->
                      <feature
                            name="placeType">
                      </feature>
                   </event>
                </target>
             </constraint>
- 
             
-             <!--
             <constraint
-                  id="Group7YAWL.validation.no-arc-from-end-OCL"
-                  lang="OCL"
-                  mode="Live"
-                  name="No arc from end"
+                  lang="Java"
+                  class="dk.dtu.mbse.group7.yawl.constraints.NoDuplicateArcs"
                   severity="ERROR"
-                  statusCode="401">
+                  mode="Live"
+                  name="No duplicate arcs"
+                  id="Group7YAWL.validation.no-duplicate-arcs"
+                  statusCode="402">
+               <target class="Arc:http://group7.dtu.dk/mbse/yawl"/>
                <description>
-                  An end place can't have an outgoing arc.
+                  Can't have arcs from same node to same node.
                </description>
                <message>
-                  The YAWL net {0} An end place can't have an outgoing arc
+                  The Arc {0} Is a duplicate of another arc.
                </message>
                <target
                      class="Arc:http://group7.dtu.dk/mbse/yawl">
@@ -182,33 +158,39 @@
                      <feature
                            name="source">
                      </feature>
-                     
                      <feature
-                           name="placeType">
+                           name="target">
                      </feature>
-                  
                   </event>
                </target>
-              <![CDATA[
-               ( self.source.oclIsKindOf(pnmlcoremodel::PlaceNode) and
-                   self.target.oclIsKindOf(pnmlcoremodel::TransitionNode) and
-                   (not (self.source.oclAsType(Place).placeType.oclIsUndefined())) and 
-                   ((self.source.oclAsType(Place).placeType.text = PType::END)) 
-               )
-               ]]>
             </constraint>
-               -->
-            
             
             <constraint
                   lang="Java"
-                  class="dk.dtu.mbse.group7.yawl.constraints.NoNodesWithoutArcs"
+                  class="dk.dtu.mbse.group7.yawl.constraints.NoTransitionWithoutArcs"
                   severity="ERROR"
                   mode="Batch"
                   name="No Nodes Without Arcs"
-                  id="Group7YAWL.validation.no-nodes-without-arcs"
+                  id="Group7YAWL.validation.no-transition-without-arcs"
                   statusCode="402">
-               <target class="YAWLNet:http://group7.dtu.dk/mbse/yawl"/>
+               <target class="Transition:http://group7.dtu.dk/mbse/yawl"/>
+               <description>
+                  Nodes must have at least one arc (if a Place).
+               </description>
+               <message>
+                  The Node {0} may not exist with no arcs.
+               </message>
+            </constraint>
+            
+            <constraint
+                  lang="Java"
+                  class="dk.dtu.mbse.group7.yawl.constraints.NoPlaceWithoutArcs"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="No Nodes Without Arcs"
+                  id="Group7YAWL.validation.no-place-without-arcs"
+                  statusCode="402">
+               <target class="Place:http://group7.dtu.dk/mbse/yawl"/>
                <description>
                   Nodes must have at least one arc (if a Place).
                </description>

@@ -31,7 +31,7 @@ public class EnabledTransitionHandler implements IActionHandler {
 	}
 
 	/**
-	 * @author s150157
+	 * @author Magnus Haakonsson - s153947
 	 */
 	@Override
 	public boolean mouseDoubleClicked(MouseEvent arg0, ObjectAnnotation annotation) {
@@ -59,7 +59,7 @@ public class EnabledTransitionHandler implements IActionHandler {
 				
 			}
 		}
-		// this should not happen. Could do something to fix it.
+		//TODO this should not happen. Could do something to fix it.
 		return false;
 	}
 	
@@ -74,7 +74,7 @@ public class EnabledTransitionHandler implements IActionHandler {
 	}
 	
 	/**
-	 * @author s150157
+	 * @author Sebastian Hoppe - s154306
 	 */
 	private Arc selectedInArc(EnabledTransitions enabledTransitions) {
 		EnabledTransitions resolved = enabledTransitions.getResolved();
@@ -93,7 +93,7 @@ public class EnabledTransitionHandler implements IActionHandler {
 	}
 	
 	/**
-	 * @author s150157
+	 * @author Sebastian Hoppe - s154306
 	 */
 	private Collection<Arc> selectedOutArcs(EnabledTransitions enabledTransitions) {
 		EnabledTransitions resolved = enabledTransitions.getResolved();

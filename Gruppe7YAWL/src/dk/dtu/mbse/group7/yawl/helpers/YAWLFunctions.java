@@ -14,11 +14,11 @@ import dk.dtu.mbse.group7.yawl.SplitTransition;
 import dk.dtu.mbse.group7.yawl.TType;
 import dk.dtu.mbse.group7.yawl.Transition;
 
-
+/**
+ * @author Rune Hou Thode - s150157
+ */
 public class YAWLFunctions {
-	/**
-	 * @author s150157
-	 */
+
 	public static dk.dtu.mbse.group7.yawl.helpers.PlaceType getType(org.pnml.tools.epnk.pnmlcoremodel.Place place) {
 		if (place instanceof Place) {
 			Place YAWLplace = (Place) place;
@@ -30,18 +30,12 @@ public class YAWLFunctions {
 					return dk.dtu.mbse.group7.yawl.helpers.PlaceType.END;
 				}
 			} else {
-				if (YAWLplace.getIn().isEmpty() && YAWLplace.getOut().isEmpty()) {
-					return dk.dtu.mbse.group7.yawl.helpers.PlaceType.INVALID;
-				}
 				return dk.dtu.mbse.group7.yawl.helpers.PlaceType.NORMAL;
 			}
 		}
 		return dk.dtu.mbse.group7.yawl.helpers.PlaceType.NORMAL;
 	}
 
-	/**
-	 * @author s150157
-	 */
 	public static dk.dtu.mbse.group7.yawl.helpers.ArcType getType(org.pnml.tools.epnk.pnmlcoremodel.Arc arc) {
 		if (arc instanceof Arc) {
 			Arc YAWLArc = (Arc) arc;
@@ -57,26 +51,30 @@ public class YAWLFunctions {
 		return dk.dtu.mbse.group7.yawl.helpers.ArcType.NORMAL;
 	}
 
-	/**
-	 * @author s150157
-	 */
+//	public static boolean isWarningArc(Arc arc) {
+//			if (arc.getSource() instanceof Transition) {
+//				Transition source = (Transition) arc.getSource();
+//			} else if (arc.getSource() instanceof Place) {
+//				Place source = (Place) arc.getSource();
+//				Marking sourceMarking = place2MarkingAnnotation.get(source);
+//				if (source.get)
+//			}
+//	}
+
 	public static boolean isResetArc(org.pnml.tools.epnk.pnmlcoremodel.Arc arc) {
 		return getType(arc).equals(dk.dtu.mbse.group7.yawl.helpers.ArcType.RESET);
 	}
 
-	/**
-	 * @author s150157
-	 */
 	public static TransitionType getJoinType(org.pnml.tools.epnk.pnmlcoremodel.Transition transition) {
 		FlatAccess flat = FlatAccess.getFlatAccess(NetFunctions.getPetriNet(transition));
 		if (transition instanceof Transition) {
 			Transition YAWLTransition = (Transition) transition;
 			int count = 0;
-			int totalCount = 0;
 			for (org.pnml.tools.epnk.pnmlcoremodel.Arc a : flat.getIn(YAWLTransition)) {
 				if (a instanceof Arc) {
 					Arc arc = (Arc) a;
-					if (arc.getArcType() == null || arc.getArcType().equals(dk.dtu.mbse.group7.yawl.helpers.ArcType.NORMAL)) {
+					if (arc.getArcType() == null
+							|| arc.getArcType().equals(dk.dtu.mbse.group7.yawl.helpers.ArcType.NORMAL)) {
 						count++;
 					}
 				}
@@ -95,16 +93,11 @@ public class YAWLFunctions {
 					}
 				}
 				return TransitionType.AND;
-			} else if (flat.getIn(YAWLTransition).size() < 1) {
-				return TransitionType.INVALID;
 			}
-		} 
+		}
 		return TransitionType.SINGLE;
 	}
 
-	/**
-	 * @author s150157
-	 */
 	public static TransitionType getSplitType(org.pnml.tools.epnk.pnmlcoremodel.Transition transition) {
 		FlatAccess flat = FlatAccess.getFlatAccess(NetFunctions.getPetriNet(transition));
 		if (transition instanceof Transition) {
@@ -113,7 +106,8 @@ public class YAWLFunctions {
 			for (org.pnml.tools.epnk.pnmlcoremodel.Arc a : flat.getOut(YAWLTransition)) {
 				if (a instanceof Arc) {
 					Arc arc = (Arc) a;
-					if (arc.getArcType() == null || arc.getArcType().equals(dk.dtu.mbse.group7.yawl.helpers.ArcType.NORMAL)) {
+					if (arc.getArcType() == null
+							|| arc.getArcType().equals(dk.dtu.mbse.group7.yawl.helpers.ArcType.NORMAL)) {
 						count++;
 					}
 				}
@@ -132,8 +126,6 @@ public class YAWLFunctions {
 					}
 				}
 				return TransitionType.AND;
-			} else if (flat.getIn(YAWLTransition).size() < 1) {
-				return TransitionType.INVALID;
 			}
 		}
 		return TransitionType.SINGLE;

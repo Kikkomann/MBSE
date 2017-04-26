@@ -18,7 +18,7 @@ import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
 public class YAWLAnnotationsPresentationHandler implements IPresentationHandler {
 
 	/**
-	 * @author s150157
+	 * @author Magnus Haakonsson - s153947
 	 */
 	@Override
 	public IFigure handle(ObjectAnnotation annotation, AbstractGraphicalEditPart editPart) {
@@ -26,12 +26,14 @@ public class YAWLAnnotationsPresentationHandler implements IPresentationHandler 
 			if (editPart instanceof GraphicalEditPart) {
 				GraphicalEditPart graphicalEditPart = (GraphicalEditPart) editPart;
 				Object modelObject = graphicalEditPart.resolveSemanticElement();
+				RectangleOverlay overlay = new RectangleOverlay(graphicalEditPart);
 				if (modelObject instanceof TransitionNode) {
-					RectangleOverlay overlay = new RectangleOverlay(graphicalEditPart);
+					
 					overlay.setForegroundColor(ColorConstants.blue);
-					overlay.setBackgroundColor(ColorConstants.blue);
-					return overlay;
+					overlay.setBackgroundColor(ColorConstants.lightBlue);
+					
 				}
+				return overlay;
 			}
 		} else if (annotation instanceof SelectArcs) {
 			SelectArcs selectArc = (SelectArcs) annotation;
@@ -41,11 +43,15 @@ public class YAWLAnnotationsPresentationHandler implements IPresentationHandler 
 				if (modelObject instanceof Arc) {
 					PolylineOverlay overlay = new PolylineOverlay(connectionEditPart);
 					if (!selectArc.isSelected()) {
-						overlay.setForegroundColor(ColorConstants.lightGray);
-						overlay.setBackgroundColor(ColorConstants.lightGray);
+						overlay.setForegroundColor(ColorConstants.gray);
+						overlay.setBackgroundColor(ColorConstants.gray);
 					} else {
 						overlay.setForegroundColor(ColorConstants.blue);
 						overlay.setBackgroundColor(ColorConstants.blue);
+					}
+					if (selectArc.isWarning()) {
+						overlay.setForegroundColor(ColorConstants.red);
+						overlay.setBackgroundColor(ColorConstants.red);
 					}
 					return overlay;
 				}

@@ -7,6 +7,7 @@ import org.pnml.tools.epnk.applications.ui.IActionHandler;
 import dk.dtu.mbse.group7.yawl.Transition;
 import dk.dtu.mbse.group7.yawl.helpers.TransitionType;
 import dk.dtu.mbse.group7.yawl.helpers.YAWLFunctions;
+import dk.dtu.mbse.group7.yawl.simulator.exceptions.WrongTypeException;
 import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions;
 import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking;
 import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
@@ -26,7 +27,7 @@ public class SelectArcHandler implements IActionHandler {
 	}
 
 	/**
-	 * @author s150157
+	 * @author Lukas Nyboe Bek - s153475
 	 */
 	@Override
 	public boolean mousePressed(MouseEvent arg0, ObjectAnnotation annotation) {
@@ -38,46 +39,62 @@ public class SelectArcHandler implements IActionHandler {
 			Marking sourceMarking = selectArcs.getSourceMarking();
 
 			if (targetTransition != null) {
-				if (!selectArcs.isSelected() && sourceMarking != null  && sourceMarking.getValue() > 0) {
-					Transition transition = targetTransition.getTransition();
-					if (YAWLFunctions.getJoinType(transition).equals(TransitionType.XOR)) {
-						for (SelectArcs s_arc : targetTransition.getInArc()) {
+				try {
+					if (!selectArcs.isSelected() && sourceMarking != null  && sourceMarking.getValue() > 0) {
+						Transition transition = targetTransition.getTransition();
+						if (YAWLFunctions.getJoinType(transition).equals(TransitionType.XOR)) {
+							for (SelectArcs s_arc : targetTransition.getInArc()) {
+								s_arc.setSelected(false);
+							}
+							selectArcs.setSelected(true);
+							application.update();
+							return true;
+						}
+						if (YAWLFunctions.getJoinType(transition).equals(TransitionType.OR)) {
+							for (SelectArcs s_arc : targetTransition.getInArc()) {
+								s_arc.setSelected(false);
+							}
+							selectArcs.setSelected(true);
+							application.update();
+							return true;
+						}
+					}
+				} catch (WrongTypeException e) {
+					e.printStackTrace();
+				}
+			} else if (sourceTransition != null) {
+				try {
+					Transition transition = sourceTransition.getTransition();
+					TransitionType tType = YAWLFunctions.getSplitType(transition);
+					if (tType.equals(TransitionType.XOR)) {
+						for (SelectArcs s_arc : sourceTransition.getOutArcs()) {
 							s_arc.setSelected(false);
 						}
 						selectArcs.setSelected(true);
 						application.update();
 						return true;
-					}
-				}
-			} else if (sourceTransition != null) {
-				Transition transition = sourceTransition.getTransition();
-				TransitionType tType = YAWLFunctions.getSplitType(transition);
-				if (tType.equals(TransitionType.XOR)) {
-					for (SelectArcs s_arc : sourceTransition.getOutArcs()) {
-						s_arc.setSelected(false);
-					}
-					selectArcs.setSelected(true);
-					application.update();
-					return true;
-				} else if (tType.equals(TransitionType.OR)) {
-					selectArcs.setSelected(!selectArcs.isSelected());
-					boolean notEmpty = false;
-					for (SelectArcs s_arc : sourceTransition.getOutArcs()) {
-						if (s_arc.isSelected()) {
-							notEmpty = true;
-							break;
-						}
-					}
-					if (!notEmpty) {
+					} else if (tType.equals(TransitionType.OR)) {
+						selectArcs.setSelected(!selectArcs.isSelected());
+						boolean notEmpty = false;
 						for (SelectArcs s_arc : sourceTransition.getOutArcs()) {
-							if (s_arc != selectArcs) {
-								s_arc.setSelected(true);
+							if (s_arc.isSelected()) {
+								notEmpty = true;
 								break;
 							}
 						}
+						if (!notEmpty) {
+							for (SelectArcs s_arc : sourceTransition.getOutArcs()) {
+								if (s_arc != selectArcs) {
+									s_arc.setSelected(true);
+									break;
+								}
+							}
+						}
+						application.update();
+						return true;
 					}
-					application.update();
-					return true;
+				} catch (WrongTypeException e) {
+					e.printStackTrace();
 				}
 			}
 		}

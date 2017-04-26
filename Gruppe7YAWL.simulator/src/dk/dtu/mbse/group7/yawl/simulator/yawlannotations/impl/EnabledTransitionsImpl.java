@@ -3,6 +3,7 @@
 package dk.dtu.mbse.group7.yawl.simulator.yawlannotations.impl;
 
 import dk.dtu.mbse.group7.yawl.Transition;
+import dk.dtu.mbse.group7.yawl.simulator.exceptions.WrongTypeException;
 import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions;
 import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
 import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.YawlannotationsPackage;
@@ -52,7 +53,7 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 	
 	/**
 	 * @generated NOT
-	 * @author s150157
+	 * @author Magnus Haakonsson - s153947
 	 */
 	protected boolean enabled = false;
 
@@ -274,14 +275,15 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 
 	/**
 	 * @generated NOT
-	 *  @author s150157
+	 *  @author Magnus Haakonsson - s153947
+	 * @throws WrongTypeException 
 	 */
 	@Override
-	public Transition getTransition() {
+	public Transition getTransition() throws WrongTypeException {
 		if (getObject() instanceof Transition) {
 			return (Transition) getObject();
-		}
-		return null;
+		} else
+			throw new WrongTypeException();
 	}
 
 } //EnabledTransitionsImpl

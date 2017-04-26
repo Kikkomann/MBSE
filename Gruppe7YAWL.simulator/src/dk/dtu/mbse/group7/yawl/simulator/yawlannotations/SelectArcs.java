@@ -2,6 +2,8 @@
  */
 package dk.dtu.mbse.group7.yawl.simulator.yawlannotations;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 
 /**
@@ -131,5 +133,17 @@ public interface SelectArcs extends ObjectAnnotation {
 	 * @generated
 	 */
 	void setSelected(boolean value);
+	
+	/**
+	 * @author Sebastian Hoppe - s154306
+	 * @generated NOT
+	 */
+	public boolean isWarning();
+	
+	/**
+	 * @author Sebastian Hoppe - s154306
+	 * @generated NOT
+	 */
+	public void setWarning(boolean newWarning);
 
 } // SelectArcs

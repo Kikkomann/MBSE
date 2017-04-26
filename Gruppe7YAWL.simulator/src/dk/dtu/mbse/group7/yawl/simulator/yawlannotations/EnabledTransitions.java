@@ -7,6 +7,7 @@ import org.eclipse.emf.common.util.EList;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 
 import dk.dtu.mbse.group7.yawl.Transition;
+import dk.dtu.mbse.group7.yawl.simulator.exceptions.WrongTypeException;
 
 /**
  * <!-- begin-user-doc -->
@@ -91,8 +92,8 @@ public interface EnabledTransitions extends ObjectAnnotation {
 	
 	/**
 	 * @generated NOT
-	 * @author s150157
+	 * @author Magnus Haakonsson - s153947
 	 */
-	Transition getTransition();
+	Transition getTransition() throws WrongTypeException;
 
 } // EnabledTransitions

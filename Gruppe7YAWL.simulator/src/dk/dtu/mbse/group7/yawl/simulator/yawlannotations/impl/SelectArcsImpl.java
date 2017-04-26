@@ -73,6 +73,12 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	 * @ordered
 	 */
 	protected static final boolean SELECTED_EDEFAULT = false;
+	
+	/**
+	 * @author Sebastian Hoppe - s154306
+	 * @generated NOT
+	 */
+	protected static final boolean WARNING_EDEFAULT = false;
 
 	/**
 	 * The cached value of the '{@link #isSelected() <em>Selected</em>}' attribute.
@@ -83,6 +89,8 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	 * @ordered
 	 */
 	protected boolean selected = SELECTED_EDEFAULT;
+	
+	protected boolean warning = WARNING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -269,7 +277,7 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 	public boolean isSelected() {
 		return selected;
 	}
-
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -280,6 +288,25 @@ public class SelectArcsImpl extends ObjectAnnotationImpl implements SelectArcs {
 		selected = newSelected;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, YawlannotationsPackage.SELECT_ARCS__SELECTED, oldSelected, selected));
+	}
+	
+	/**
+	 * @author Sebastian Hoppe - s154306
+	 * @generated NOT
+	 */
+	public boolean isWarning() {
+		return warning;
+	}
+	
+	/**
+	 * @author Sebastian Hoppe - s154306
+	 * @generated NOT
+	 */
+	public void setWarning(boolean newWarning) {
+		boolean oldWarning = selected;
+		selected = newWarning;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, YawlannotationsPackage.SELECT_ARCS__SELECTED, oldWarning, selected));
 	}
 
 	/**

@@ -92,7 +92,7 @@ public class MarkingImpl extends ObjectAnnotationImpl implements Marking {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
-	 * @author s150157
+	 * @author The group
 	 */
 	public EAttribute getAnnotationAttribute() {
 		return YawlannotationsPackage.eINSTANCE.getMarking_Value();
