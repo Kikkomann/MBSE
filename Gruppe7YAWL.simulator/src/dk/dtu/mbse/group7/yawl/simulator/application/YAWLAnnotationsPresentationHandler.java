@@ -26,14 +26,17 @@ public class YAWLAnnotationsPresentationHandler implements IPresentationHandler 
 			if (editPart instanceof GraphicalEditPart) {
 				GraphicalEditPart graphicalEditPart = (GraphicalEditPart) editPart;
 				Object modelObject = graphicalEditPart.resolveSemanticElement();
-				RectangleOverlay overlay = new RectangleOverlay(graphicalEditPart);
 				if (modelObject instanceof TransitionNode) {
-					
-					overlay.setForegroundColor(ColorConstants.blue);
-					overlay.setBackgroundColor(ColorConstants.lightBlue);
-					
+					RectangleOverlay overlay = new RectangleOverlay(graphicalEditPart);
+					if (((EnabledTransitions) annotation).getEnabled()) {
+						overlay.setForegroundColor(ColorConstants.blue);
+						overlay.setBackgroundColor(ColorConstants.buttonLightest);
+					} else {
+						overlay.setForegroundColor(ColorConstants.black);
+						overlay.setBackgroundColor(ColorConstants.black);
+					}
+					return overlay;
 				}
-				return overlay;
 			}
 		} else if (annotation instanceof SelectArcs) {
 			SelectArcs selectArc = (SelectArcs) annotation;

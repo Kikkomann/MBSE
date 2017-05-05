@@ -56,10 +56,8 @@ public class EnabledTransitionHandler implements IActionHandler {
 					application.addNetAnnotationAsCurrent(netAnnotation);
 					return true;
 				}
-				
 			}
 		}
-		//TODO this should not happen. Could do something to fix it.
 		return false;
 	}
 	

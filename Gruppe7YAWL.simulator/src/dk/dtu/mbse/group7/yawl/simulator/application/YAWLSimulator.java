@@ -1,8 +1,12 @@
 package dk.dtu.mbse.group7.yawl.simulator.application;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.pnml.tools.epnk.annotations.netannotations.NetAnnotation;
 import org.pnml.tools.epnk.annotations.netannotations.NetannotationsFactory;
@@ -16,6 +20,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 import org.pnml.tools.epnk.pnmlcoremodel.RefPlace;
 import org.pnml.tools.epnk.pnmlcoremodel.RefTransition;
 import org.pnml.tools.epnk.pnmlcoremodel.TransitionNode;
+import org.pnml.tools.epnk.pnmlcoremodel.Object;
 
 import dk.dtu.mbse.group7.yawl.Arc;
 import dk.dtu.mbse.group7.yawl.Transition;
@@ -122,8 +127,6 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 		// marking
 		for (Place place : marking.getSupport()) {
 			int m = marking.getMarking(place);
-			// TODO behøves denne? Finder getSupport ikke alle dem med markings
-			// > 0?
 			if (m > 0) {
 				Marking markingAnnotation = YawlannotationsFactory.eINSTANCE.createMarking();
 				markingAnnotation.setObject(place);
@@ -146,6 +149,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 								.createEnabledTransitions();
 						transitionAnnotations.setObject(transition);
 						annotation.getObjectAnnotations().add(transitionAnnotations);
+						transitionAnnotations.setEnabled(true);
 
 						for (RefTransition refTrans : flatAccess.getRefTransitions(transition)) {
 							EnabledTransitions refTransitionAnnotations = YawlannotationsFactory.eINSTANCE
@@ -164,15 +168,8 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 										arcAnnotation.setSourceMarking(sourceMarking);
 										arcAnnotation.setTargetTransition(transitionAnnotations);
 										arcAnnotation.setSelected(true);
-										if (isWarningArc((Arc) in, marking)) {
-											arcAnnotation.setWarning(true);
-										}
 										annotation.getObjectAnnotations().add(arcAnnotation);
 									}
-									// else if (isWarningArc((Arc) in, marking))
-									// {
-									//
-									// }
 								}
 							}
 						}
@@ -197,7 +194,6 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 										arcAnnotation.setObject(((Arc) in));
 										arcAnnotation.setSourceMarking(sourceMarking);
 										arcAnnotation.setTargetTransition(transitionAnnotations);
-										arcAnnotation.setSelected(true);
 										annotation.getObjectAnnotations().add(arcAnnotation);
 									}
 								}
@@ -239,6 +235,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 										arcAnnotation.setSourceMarking(sourceMarking);
 										arcAnnotation.setTargetTransition(transitionAnnotations);
 										arcAnnotation.setSelected(true);
+//										isWarningArc(transition, marking, arcAnnotation);
 										annotation.getObjectAnnotations().add(arcAnnotation);
 									}
 								}
@@ -459,8 +456,6 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 	 */
 	public boolean enabled(FlatAccess flatNet, NetMarking marking, Transition transition) {
 		TransitionType joinType = YAWLFunctions.getJoinType(transition);
-		// TODO Transitions must have in and out arcs. Behøves den, når der er
-		// en constraint
 		if (flatNet.getIn(transition).size() < 1 || flatNet.getOut(transition).size() < 1) {
 			return false;
 		}
@@ -505,43 +500,115 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 					}
 				}
 			}
+			// TODO hvis der kun er reset arcs ind
 			return false;
 		}
 		// Hvis der ikke er nogle in-places med en token.
 		return false;
 	}
 
-	//TODO Få styr på den
-	private boolean isWarningArc(Arc arc, NetMarking marking) {
-		if (arc.getSource() instanceof Transition) {
-			Transition source = (Transition) arc.getSource();
-			for (org.pnml.tools.epnk.pnmlcoremodel.Arc in : source.getIn()) {
-				if (in instanceof Arc) {
-					Arc arc2 = (Arc) in;
-					return isWarningArc(arc2, marking);
-				} else
-					return false;
-
-			}
-		} else if (arc.getSource() instanceof Place) {
-			Place source = (Place) arc.getSource();
-			if (source.getPlaceType() == null) {
-				return false;
-			}
-			if (marking.getMarking(source) > 0) {
-				return true;
-			} else {
-				for (org.pnml.tools.epnk.pnmlcoremodel.Arc in : source.getIn()) {
-					if (in instanceof Arc) {
-						Arc arc2 = (Arc) in;
-						return isWarningArc(arc2, marking);
-					} else
-						return false;
-
+	private void isWarningArc(Transition transition, NetMarking marking, SelectArcs arcAnnotation) {
+		List<org.pnml.tools.epnk.pnmlcoremodel.Transition> enabled = flatAccess.getTransitions();
+		for (org.pnml.tools.epnk.pnmlcoremodel.Transition t : flatAccess.getTransitions()) {
+			if (t instanceof Transition) {
+				Transition trans = (Transition) t;
+				if (enabled(flatAccess, marking, trans)) {
+					System.out.println("\n" + trans.getId() + "\n");
+					enabled.add(trans);
 				}
 			}
 		}
-		return false;
+		Map<Place, Integer> markingMap = new HashMap<Place, Integer>();
+		for (org.pnml.tools.epnk.pnmlcoremodel.Place p : flatAccess.getPlaces()) {
+			if (p instanceof Place) {
+				Place place = (Place) p;
+				int markingCount = marking.getMarking(place); 
+					markingMap.put(place, markingCount);
+			}
+		}
+		
+		List<Object> addedArcs = new ArrayList<Object>();
+		for (org.pnml.tools.epnk.pnmlcoremodel.Arc a : transition.getIn()) {
+			if (a instanceof Arc) {
+				if (a.getSource() instanceof Place) {
+					if (marking.getMarking((Place) a.getSource()) == 0)  {
+						addedArcs.add(a);
+					}
+				}
+			}
+		}
+		
+		List<Object> backward = new ArrayList<Object>();
+		
+		while (!addedArcs.isEmpty()) {
+			Object o = addedArcs.get(0);
+			addedArcs.remove(0);
+			if (!backward.contains(o)) {
+				backward.add(o);
+				if (o instanceof Place) {
+					Place place = (Place) o;
+					if (marking.getMarking(place) == 0) {
+						for (org.pnml.tools.epnk.pnmlcoremodel.Arc a : place.getIn()) {
+							if (a instanceof Arc) {
+								addedArcs.add((Arc) a);
+							}
+						}
+					}
+				}
+				if (o instanceof Transition) {
+					Transition trans = (Transition) o;
+					if (!enabled.contains(o)) {
+						for (org.pnml.tools.epnk.pnmlcoremodel.Arc a : trans.getIn()) {
+							if (a instanceof Arc) {
+								addedArcs.add((Arc) a);
+							}
+						}
+					}
+				}
+				if (o instanceof Arc) {
+					if (!YAWLFunctions.isResetArc((Arc) o)) {
+						addedArcs.add(((Arc) o).getSource());
+					}
+				}
+			}
+		}
+		addedArcs = backward;
+		addedArcs.retainAll(enabled);
+		List<Object> forward = new ArrayList<Object>();
+		
+		while (!addedArcs.isEmpty()) {
+			Object o = addedArcs.get(0);
+			addedArcs.remove(0);
+			if (!forward.contains(o)) {
+				forward.add(o);
+				if (o instanceof Transition) {
+					List<Arc> outArcs = (List) ((Transition) o).getOut();
+					outArcs.retainAll(backward);
+					for (Arc a : outArcs) {
+						if (a instanceof Arc) {
+							addedArcs.add(a);
+						}
+					}
+				}
+				if (o instanceof Place) {
+					List<Arc> outArcs = (List) ((Place) o).getOut();
+					outArcs.retainAll(backward);
+					for (Arc a : outArcs) {
+						if (a instanceof Arc) {
+							addedArcs.add(a);
+						}
+					}
+				}
+				if (o instanceof Arc) {
+					if (backward.contains(o)) {
+						addedArcs.add(((Arc) o).getTarget());
+					}
+				}
+			}
+		}
+		for (Object obj : forward) {
+			//TODO
+		}
 	}
 
 	@Override

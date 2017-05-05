@@ -96,4 +96,16 @@ public interface EnabledTransitions extends ObjectAnnotation {
 	 */
 	Transition getTransition() throws WrongTypeException;
 
+	/**
+	 * @generated NOT
+	 *  @author Nicki Nylin - s153769
+	 */
+	public void setEnabled(boolean enabled);
+	
+	/**
+	 * @generated NOT
+	 *  @author Nicki Nylin - s153769
+	 */
+	public boolean getEnabled();
+	
 } // EnabledTransitions

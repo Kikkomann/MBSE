@@ -285,5 +285,23 @@ public class EnabledTransitionsImpl extends ObjectAnnotationImpl implements Enab
 		} else
 			throw new WrongTypeException();
 	}
+	
+	/**
+	 * @generated NOT
+	 *  @author Nicki Nylin - s153769
+	 */
+	@Override
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
+	/**
+	 * @generated NOT
+	 *  @author Nicki Nylin - s153769
+	 */
+	@Override
+	public boolean getEnabled() {
+		return enabled;
+	}
 
 } //EnabledTransitionsImpl
