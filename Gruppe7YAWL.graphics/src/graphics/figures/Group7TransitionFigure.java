@@ -116,7 +116,6 @@ public class Group7TransitionFigure extends TransitionFigure {
 			x3 = x1 - thirds;
 			y3 = rect.y + halves;
 			int points[] = { x1, y1, x2, y2, x3, y3 };
-			// graphics.fillPolygon(points);
 			graphics.drawLine((rect.x + rect.width - thirds), (rect.y + rect.height), (rect.x + rect.width - thirds),
 					rect.y);
 			graphics.drawPolygon(points);

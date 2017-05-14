@@ -2,8 +2,6 @@
  */
 package dk.dtu.mbse.group7.yawl.simulator.yawlannotations;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 
 /**

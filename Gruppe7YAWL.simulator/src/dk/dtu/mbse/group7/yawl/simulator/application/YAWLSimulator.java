@@ -1,5 +1,6 @@
 package dk.dtu.mbse.group7.yawl.simulator.application;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.Object;
 
 import dk.dtu.mbse.group7.yawl.Arc;
 import dk.dtu.mbse.group7.yawl.Transition;
+import dk.dtu.mbse.group7.yawl.helpers.ArcType;
 import dk.dtu.mbse.group7.yawl.helpers.PlaceType;
 import dk.dtu.mbse.group7.yawl.helpers.TransitionType;
 import dk.dtu.mbse.group7.yawl.helpers.YAWLFunctions;
@@ -41,6 +43,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 
 	private FlatAccess flatAccess;
 	private NetChangeListener adapter;
+	private Set<Transition> enabled = new HashSet<Transition>();
 
 	/**
 	 * @author The group
@@ -145,11 +148,13 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 				if (object instanceof Transition) {
 					Transition transition = (Transition) object;
 					if (enabled(flatAccess, marking, transition)) {
+						
 						EnabledTransitions transitionAnnotations = YawlannotationsFactory.eINSTANCE
 								.createEnabledTransitions();
 						transitionAnnotations.setObject(transition);
 						annotation.getObjectAnnotations().add(transitionAnnotations);
 						transitionAnnotations.setEnabled(true);
+						enabled.add(transition);
 
 						for (RefTransition refTrans : flatAccess.getRefTransitions(transition)) {
 							EnabledTransitions refTransitionAnnotations = YawlannotationsFactory.eINSTANCE
@@ -202,7 +207,8 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 
 						if (YAWLFunctions.getJoinType(transition).equals(TransitionType.XOR)) {
 							boolean firstArc = true;
-							for (Object in : flatAccess.getIn(transition)) {
+							List<org.pnml.tools.epnk.pnmlcoremodel.Arc> list = flatAccess.getIn(transition);
+							for (Object in : list) {
 								if (in instanceof Arc) {
 									if (!YAWLFunctions.isResetArc((Arc) in)) {
 										Marking sourceMarking = place2MarkingAnnotation.get(((Arc) in).getSource());
@@ -224,22 +230,58 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 								}
 							}
 						}
-
+						
 						if (YAWLFunctions.getJoinType(transition).equals(TransitionType.OR)) {
+							List<Object> inArcs = new ArrayList<Object>();
+							for (Object obj : flatAccess.getIn(transition)) {
+								if (marking.getMarking((Place) ((Arc) obj).getSource()) < 1) {
+									inArcs.add(((Arc) obj));
+								}
+							}
+							List<Object> list = isWarningArc(inArcs, marking);
+							
 							for (Object in : flatAccess.getIn(transition)) {
 								if (in instanceof Arc) {
 									Marking sourceMarking = place2MarkingAnnotation.get(((Arc) in).getSource());
-									if (marking.getMarking((Place) ((Arc) in).getSource()) > 0) {
-										SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
-										arcAnnotation.setObject(((Arc) in));
-										arcAnnotation.setSourceMarking(sourceMarking);
-										arcAnnotation.setTargetTransition(transitionAnnotations);
-										arcAnnotation.setSelected(true);
-//										isWarningArc(transition, marking, arcAnnotation);
-										annotation.getObjectAnnotations().add(arcAnnotation);
+//									if (marking.getMarking((Place) ((Arc) in).getSource()) < 1) {
+//										inArcs.add(((Arc) in));
+//									}
+									if (marking.getMarking((Place) ((Arc) in).getSource()) > 0)  {
+										
+//										if (!list.contains(in)) {
+											SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
+											arcAnnotation.setObject(((Arc) in));
+											arcAnnotation.setSourceMarking(sourceMarking);
+											arcAnnotation.setTargetTransition(transitionAnnotations);
+											arcAnnotation.setSelected(true);
+											annotation.getObjectAnnotations().add(arcAnnotation);
+//										}
+										
 									}
 								}
 							}
+							
+//							List<Object> list = isWarningArc(inArcs, marking);
+							for (Object o : list) {
+								if (o instanceof Transition) {
+									if (enabled(flatAccess, marking, (Transition) o)) {
+										continue;
+									}
+								} else if (o instanceof Arc) {
+									if (checkArcSelect(o)) {
+										continue;
+									}
+								} else if (o instanceof Place) {
+									if (marking.getMarking((Place) o) > 0) {
+										continue;
+									}
+								}
+								ObjectAnnotation objAnnotation = org.pnml.tools.epnk.annotations.netannotations.NetannotationsFactory.eINSTANCE.createObjectAnnotation();
+								objAnnotation.setObject(o);
+								annotation.getObjectAnnotations().add(objAnnotation);
+							}
+							
+							
 						}
 
 						// Makes sure outgoing arcs are selected and attached to
@@ -507,50 +549,29 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 		return false;
 	}
 
-	private void isWarningArc(Transition transition, NetMarking marking, SelectArcs arcAnnotation) {
-		List<org.pnml.tools.epnk.pnmlcoremodel.Transition> enabled = flatAccess.getTransitions();
-		for (org.pnml.tools.epnk.pnmlcoremodel.Transition t : flatAccess.getTransitions()) {
-			if (t instanceof Transition) {
-				Transition trans = (Transition) t;
-				if (enabled(flatAccess, marking, trans)) {
-					System.out.println("\n" + trans.getId() + "\n");
-					enabled.add(trans);
-				}
-			}
-		}
-		Map<Place, Integer> markingMap = new HashMap<Place, Integer>();
-		for (org.pnml.tools.epnk.pnmlcoremodel.Place p : flatAccess.getPlaces()) {
-			if (p instanceof Place) {
-				Place place = (Place) p;
-				int markingCount = marking.getMarking(place); 
-					markingMap.put(place, markingCount);
-			}
-		}
+	private List<Object> isWarningArc(List<Object> inArcs, NetMarking marking) {
+//		Map<Place, Integer> markingMap = new HashMap<Place, Integer>();
+//		for (org.pnml.tools.epnk.pnmlcoremodel.Place p : flatAccess.getPlaces()) {
+//			if (p instanceof Place) {
+//				Place place = (Place) p;
+//				int markingCount = marking.getMarking(place); 
+//					markingMap.put(place, markingCount);
+//			}
+//		}
 		
-		List<Object> addedArcs = new ArrayList<Object>();
-		for (org.pnml.tools.epnk.pnmlcoremodel.Arc a : transition.getIn()) {
-			if (a instanceof Arc) {
-				if (a.getSource() instanceof Place) {
-					if (marking.getMarking((Place) a.getSource()) == 0)  {
-						addedArcs.add(a);
-					}
-				}
-			}
-		}
-		
+		List<Object> added = inArcs;
 		List<Object> backward = new ArrayList<Object>();
 		
-		while (!addedArcs.isEmpty()) {
-			Object o = addedArcs.get(0);
-			addedArcs.remove(0);
+		while (!added.isEmpty()) {
+			Object o = added.get(0);
+			added.remove(0);
 			if (!backward.contains(o)) {
 				backward.add(o);
 				if (o instanceof Place) {
-					Place place = (Place) o;
-					if (marking.getMarking(place) == 0) {
-						for (org.pnml.tools.epnk.pnmlcoremodel.Arc a : place.getIn()) {
+					if (marking.getMarking((Place) o) == 0) {
+						for (org.pnml.tools.epnk.pnmlcoremodel.Arc a : ((Place) o).getIn()) {
 							if (a instanceof Arc) {
-								addedArcs.add((Arc) a);
+								added.add((Arc) a);
 							}
 						}
 					}
@@ -560,55 +581,92 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 					if (!enabled.contains(o)) {
 						for (org.pnml.tools.epnk.pnmlcoremodel.Arc a : trans.getIn()) {
 							if (a instanceof Arc) {
-								addedArcs.add((Arc) a);
+								added.add((Arc) a);
 							}
 						}
 					}
 				}
 				if (o instanceof Arc) {
 					if (!YAWLFunctions.isResetArc((Arc) o)) {
-						addedArcs.add(((Arc) o).getSource());
+						added.add(((Arc) o).getSource());
 					}
 				}
 			}
 		}
-		addedArcs = backward;
-		addedArcs.retainAll(enabled);
+		
+		for (org.pnml.tools.epnk.pnmlcoremodel.Object obj : backward) {
+			if(enabled.contains(obj)){
+				added.add(obj);
+			}
+		}
+		for (org.pnml.tools.epnk.pnmlcoremodel.Object obj : backward) {
+			if(obj instanceof Place){
+				if(marking.getMarking((Place) obj)>0){
+					added.add(obj);
+				}
+			}
+		}
+//		addedArcs = backward;
+		//TODO Duer den? Ellers se Mikkels kode
+//		addedArcs.retainAll(enabled);
 		List<Object> forward = new ArrayList<Object>();
 		
-		while (!addedArcs.isEmpty()) {
-			Object o = addedArcs.get(0);
-			addedArcs.remove(0);
+		while (!added.isEmpty()) {
+			Object o = added.get(0);
+			added.remove(0);
 			if (!forward.contains(o)) {
 				forward.add(o);
 				if (o instanceof Transition) {
-					List<Arc> outArcs = (List) ((Transition) o).getOut();
-					outArcs.retainAll(backward);
-					for (Arc a : outArcs) {
-						if (a instanceof Arc) {
-							addedArcs.add(a);
+//					List<Arc> outArcs = (List) ((Transition) o).getOut();
+//					if (backward.contains(o))
+//					outArcs.retainAll(backward);
+					for (Object a : ((Transition) o).getOut()) {
+						if (backward.contains(a)) {
+							added.add(a);
 						}
 					}
 				}
 				if (o instanceof Place) {
-					List<Arc> outArcs = (List) ((Place) o).getOut();
-					outArcs.retainAll(backward);
-					for (Arc a : outArcs) {
-						if (a instanceof Arc) {
-							addedArcs.add(a);
+//					List<Arc> outArcs = (List) ((Place) o).getOut();
+					//TODO fungerer?
+//					outArcs.retainAll(backward);
+					for (org.pnml.tools.epnk.pnmlcoremodel.Arc a : ((Place) o).getOut()) {
+						if (backward.contains(a)) {
+							added.add(a);
 						}
 					}
 				}
 				if (o instanceof Arc) {
 					if (backward.contains(o)) {
-						addedArcs.add(((Arc) o).getTarget());
+						added.add(((Arc) o).getTarget());
 					}
 				}
 			}
 		}
-		for (Object obj : forward) {
-			//TODO
+		return forward;
+	}
+	
+	private boolean checkArcSelect(org.pnml.tools.epnk.pnmlcoremodel.Object object){
+		if(object instanceof Arc){
+			Arc obj = (Arc) object;
+			if(obj.getSource() instanceof Transition){
+				Transition transition = (Transition) obj.getSource();
+				if(YAWLFunctions.getSplitType(transition).equals(TransitionType.OR) || YAWLFunctions.getSplitType(transition).equals(TransitionType.XOR)){
+					if(enabled.contains(transition)){
+						return true;
+					}
+				}
+			}
+			if(obj.getTarget() instanceof Transition){
+				Transition transition = (Transition) obj.getTarget();
+				if(YAWLFunctions.getJoinType(transition).equals(TransitionType.XOR)){
+					if(enabled.contains(transition)){
+						return true;
+					}
+				}
+			}
 		}
+		return false;
 	}
 
 	@Override
