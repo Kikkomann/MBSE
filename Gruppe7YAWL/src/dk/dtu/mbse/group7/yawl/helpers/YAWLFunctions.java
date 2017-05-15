@@ -51,16 +51,6 @@ public class YAWLFunctions {
 		return dk.dtu.mbse.group7.yawl.helpers.ArcType.NORMAL;
 	}
 
-//	public static boolean isWarningArc(Arc arc) {
-//			if (arc.getSource() instanceof Transition) {
-//				Transition source = (Transition) arc.getSource();
-//			} else if (arc.getSource() instanceof Place) {
-//				Place source = (Place) arc.getSource();
-//				Marking sourceMarking = place2MarkingAnnotation.get(source);
-//				if (source.get)
-//			}
-//	}
-
 	public static boolean isResetArc(org.pnml.tools.epnk.pnmlcoremodel.Arc arc) {
 		return getType(arc).equals(dk.dtu.mbse.group7.yawl.helpers.ArcType.RESET);
 	}

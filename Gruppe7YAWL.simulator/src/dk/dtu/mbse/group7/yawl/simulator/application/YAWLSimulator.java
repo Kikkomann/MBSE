@@ -72,7 +72,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 	 */
 	@Override
 	protected void initializeContents() {
-		// Sï¿½tter start place til at starte med en token
+		// Sætter start place til at starte med en token
 		NetMarking initialMarking = computeInitialMarking();
 		// Viser hvilke transition der er enabled og finder, hvor mange tokens
 		// der er i de forskellige places.
@@ -93,7 +93,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 				if (YAWLFunctions.getType(place) == PlaceType.START) {
 					marking.setMarking((Place) place, 1);
 				} else {
-					// Sï¿½rger for at det kun er start place der har en token
+					// Sørger for at det kun er start place der har en token
 					marking.setMarking((Place) place, 0);
 				}
 			}
@@ -127,8 +127,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 		NetAnnotation annotation = NetannotationsFactory.eINSTANCE.createNetAnnotation();
 		annotation.setNet(getPetrinet());
 		Map<Object, Marking> place2MarkingAnnotation = new HashMap<Object, Marking>();
-		// For hvert place der har en marking > 0, laves der en annotation
-		// marking
+		// For hvert place der har en marking > 0, laves der en annotation marking
 		for (Place place : marking.getSupport()) {
 			int m = marking.getMarking(place);
 			if (m > 0) {
@@ -149,17 +148,6 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 				if (object instanceof Transition) {
 					Transition transition = (Transition) object;
 					if (enabled(flatAccess, marking, transition)) {
-						
-						
-//						List<Object> inArcs = new ArrayList<Object>();
-//						for (Object obj : flatAccess.getIn(transition)) {
-//							if (marking.getMarking((Place) ((Arc) obj).getSource()) < 1) {
-//								inArcs.add(((Arc) obj));
-//							}
-//						}
-//						List<Object> list = isWarningArc(inArcs, marking);
-						
-						
 						EnabledTransitions transitionAnnotations = YawlannotationsFactory.eINSTANCE
 								.createEnabledTransitions();
 						transitionAnnotations.setObject(transition);
@@ -242,56 +230,26 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 							}
 						}
 						
+						// Makes a list of all incoming arcs with a target place that has 0 tokens
 						if (YAWLFunctions.getJoinType(transition).equals(TransitionType.OR)) {
 							for (Object obj : flatAccess.getIn(transition)) {
 								if (marking.getMarking((Place) ((Arc) obj).getSource()) < 1) {
 									inArcs.add(((Arc) obj));
 								}
 							}
-//							List<Object> list = isWarningArc(inArcs, marking);
-							
 							for (Object in : flatAccess.getIn(transition)) {
 								if (in instanceof Arc) {
 									Marking sourceMarking = place2MarkingAnnotation.get(((Arc) in).getSource());
-//									if (marking.getMarking((Place) ((Arc) in).getSource()) < 1) {
-//										inArcs.add(((Arc) in));
-//									}
 									if (marking.getMarking((Place) ((Arc) in).getSource()) > 0)  {
-										
-//										if (!list.contains(in)) {
 											SelectArcs arcAnnotation = YawlannotationsFactory.eINSTANCE.createSelectArcs();
 											arcAnnotation.setObject(((Arc) in));
 											arcAnnotation.setSourceMarking(sourceMarking);
 											arcAnnotation.setTargetTransition(transitionAnnotations);
 											arcAnnotation.setSelected(true);
 											annotation.getObjectAnnotations().add(arcAnnotation);
-//										}
-										
 									}
 								}
 							}
-							
-//							List<Object> list = isWarningArc(inArcs, marking);
-//							for (Object o : list) {
-//								if (o instanceof Transition) {
-//									if (enabled(flatAccess, marking, (Transition) o)) {
-//										continue;
-//									}
-//								} else if (o instanceof Arc) {
-//									if (checkArcSelect(o)) {
-//										continue;
-//									}
-//								} else if (o instanceof Place) {
-//									if (marking.getMarking((Place) o) > 0) {
-//										continue;
-//									}
-//								}
-//								ObjectAnnotation objAnnotation = org.pnml.tools.epnk.annotations.netannotations.NetannotationsFactory.eINSTANCE.createObjectAnnotation();
-//								objAnnotation.setObject(o);
-//								annotation.getObjectAnnotations().add(objAnnotation);
-//							}
-//							
-							
 						}
 
 						// Makes sure outgoing arcs are selected and attached to
@@ -372,14 +330,14 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 					
 					
 				}
-				warningList = isWarningArc(inArcs, marking);
+				warningList = isWarningAnnotation(inArcs, marking);
 				for (Object o : warningList) {
 					if (o instanceof Transition) {
 						if (enabled(flatAccess, marking, (Transition) o)) {
 							continue;
 						}
 					} else if (o instanceof Arc) {
-						if (checkArcSelect(o)) {
+						if (checkSourceTargetTransition(o)) {
 							continue;
 						}
 					} else if (o instanceof Place) {
@@ -549,7 +507,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 									return false;
 								}
 							} else {
-								// Source skal vï¿½re en place
+								// Source skal være en place
 								return false;
 							}
 						} else {
@@ -577,14 +535,13 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 					}
 				}
 			}
-			// TODO hvis der kun er reset arcs ind
 			return false;
 		}
 		// Hvis der ikke er nogle in-places med en token.
 		return false;
 	}
 
-	private List<Object> isWarningArc(List<Object> inArcs, NetMarking marking) {
+	private List<Object> isWarningAnnotation(List<Object> inArcs, NetMarking marking) {
 		List<org.pnml.tools.epnk.pnmlcoremodel.Object> added = inArcs;
 		ArrayList<org.pnml.tools.epnk.pnmlcoremodel.Object> backwards = new ArrayList<org.pnml.tools.epnk.pnmlcoremodel.Object>();
 
@@ -664,7 +621,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 	/**
 	 * @author Sebastian Hoppe
 	 */
-	private boolean checkArcSelect(org.pnml.tools.epnk.pnmlcoremodel.Object object){
+	private boolean checkSourceTargetTransition(Object object){
 		if(object instanceof Arc){
 			Arc obj = (Arc) object;
 			if(obj.getSource() instanceof Transition){

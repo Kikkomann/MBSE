@@ -131,17 +131,5 @@ public interface SelectArcs extends ObjectAnnotation {
 	 * @generated
 	 */
 	void setSelected(boolean value);
-	
-	/**
-	 * @author Sebastian Hoppe - s154306
-	 * @generated NOT
-	 */
-	public boolean isWarning();
-	
-	/**
-	 * @author Sebastian Hoppe - s154306
-	 * @generated NOT
-	 */
-	public void setWarning(boolean newWarning);
 
 } // SelectArcs
