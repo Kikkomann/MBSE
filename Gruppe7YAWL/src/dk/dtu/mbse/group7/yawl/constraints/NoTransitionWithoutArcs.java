@@ -1,5 +1,4 @@
 package dk.dtu.mbse.group7.yawl.constraints;
-
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
@@ -8,6 +7,10 @@ import org.pnml.tools.epnk.helpers.FlatAccess;
 import org.pnml.tools.epnk.helpers.NetFunctions;
 
 import dk.dtu.mbse.group7.yawl.Transition;
+
+/**
+ * @author Sebastian Hoppe
+ */
 
 public class NoTransitionWithoutArcs extends AbstractModelConstraint {
 

@@ -11,6 +11,10 @@ import dk.dtu.mbse.group7.yawl.Place;
 import dk.dtu.mbse.group7.yawl.helpers.PlaceType;
 import dk.dtu.mbse.group7.yawl.helpers.YAWLFunctions;
 
+/**
+ * @author The Magnus Haakonson
+ */
+
 public class NoPlaceWithoutArcs extends AbstractModelConstraint {
 
 	@Override

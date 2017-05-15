@@ -14,7 +14,7 @@ import dk.dtu.mbse.group7.yawl.helpers.PlaceType;
 import dk.dtu.mbse.group7.yawl.helpers.YAWLFunctions;
 
 /**
- * @author The group
+ * @author Sebastian Hoppe
  */
 public class StartEndCondition extends AbstractModelConstraint {
 
