@@ -12,6 +12,11 @@ import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.EnabledTransitions;
 import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.Marking;
 import dk.dtu.mbse.group7.yawl.simulator.yawlannotations.SelectArcs;
 
+
+/**
+ * @author Lukas Nyboe Bek - s153475
+ */
+
 public class SelectArcHandler implements IActionHandler {
 
 	private YAWLSimulator application;
@@ -26,9 +31,7 @@ public class SelectArcHandler implements IActionHandler {
 		return false;
 	}
 
-	/**
-	 * @author Lukas Nyboe Bek - s153475
-	 */
+	
 	@Override
 	public boolean mousePressed(MouseEvent arg0, ObjectAnnotation annotation) {
 		if (annotation instanceof SelectArcs) {

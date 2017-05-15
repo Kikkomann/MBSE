@@ -10,7 +10,7 @@ import dk.dtu.mbse.group7.yawl.YAWLNet;
  * The application factory which is plugged in for registering the YAWL
  * simulator with the ePNK (see plugin.xml).
  * 
- * @author The group
+ * @author Nicki Nylin
  *
  */
 public class YAWLSimulatorFactory extends ApplicationFactory {

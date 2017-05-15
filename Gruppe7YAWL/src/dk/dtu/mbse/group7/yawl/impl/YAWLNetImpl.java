@@ -21,7 +21,7 @@ public class YAWLNetImpl extends PetriNetTypeImpl implements YAWLNet {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
-	 * @author The group
+	 * @author Sebastian Hoppe
 	 */
 	public YAWLNetImpl() {
 		super();
@@ -39,7 +39,7 @@ public class YAWLNetImpl extends PetriNetTypeImpl implements YAWLNet {
 
 	/**
 	 * @generated NOT
-	 * @author The group
+	 * @author Sebastian Hoppe
 	 */
 	@Override
 	public String toString() {

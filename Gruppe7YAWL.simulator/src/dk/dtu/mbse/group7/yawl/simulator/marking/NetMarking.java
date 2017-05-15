@@ -14,7 +14,7 @@ import dk.dtu.mbse.group7.yawl.Place;
  * way of dealing with markings and avoids a lot of redundant code scattered
  * in the simulator.
  * 
- * @author The group
+ * @author Lukas Bek
  *
  */
 public class NetMarking {

@@ -1,5 +1,4 @@
 package dk.dtu.mbse.group7.yawl.constraints;
-
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;

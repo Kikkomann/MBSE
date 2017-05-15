@@ -47,7 +47,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 	private List<Object> warningList = new ArrayList<Object>();
 
 	/**
-	 * @author The group
+	 * @author Magnus Haakonson
 	 */
 	public YAWLSimulator(PetriNet petrinet) {
 		super(petrinet);
@@ -68,11 +68,11 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 	}
 
 	/**
-	 * @author The group
+	 * @author The Magnus Haakonson
 	 */
 	@Override
 	protected void initializeContents() {
-		// Sætter start place til at starte med en token
+		// Sï¿½tter start place til at starte med en token
 		NetMarking initialMarking = computeInitialMarking();
 		// Viser hvilke transition der er enabled og finder, hvor mange tokens
 		// der er i de forskellige places.
@@ -93,7 +93,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 				if (YAWLFunctions.getType(place) == PlaceType.START) {
 					marking.setMarking((Place) place, 1);
 				} else {
-					// Sørger for at det kun er start place der har en token
+					// Sï¿½rger for at det kun er start place der har en token
 					marking.setMarking((Place) place, 0);
 				}
 			}
@@ -549,7 +549,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 									return false;
 								}
 							} else {
-								// Source skal være en place
+								// Source skal vï¿½re en place
 								return false;
 							}
 						} else {
@@ -661,7 +661,9 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 		return forward;
 	}
 	
-	
+	/**
+	 * @author Sebastian Hoppe
+	 */
 	private boolean checkArcSelect(org.pnml.tools.epnk.pnmlcoremodel.Object object){
 		if(object instanceof Arc){
 			Arc obj = (Arc) object;
@@ -685,6 +687,9 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 		return false;
 	}
 
+	/**
+	 * @author Sebastian Hoppe
+	 */
 	@Override
 	protected void shutDown() {
 		super.shutDown();

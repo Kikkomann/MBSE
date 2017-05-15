@@ -9,9 +9,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import dk.dtu.mbse.group7.yawl.Arc;
 
 /**
- * 
  * @author Lukas Nyboe Bek - s153475
- *
  */
 public class NoDuplicateArcs extends AbstractModelConstraint {
 
