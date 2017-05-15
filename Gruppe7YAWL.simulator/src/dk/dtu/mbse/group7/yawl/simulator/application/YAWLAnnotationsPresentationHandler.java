@@ -30,7 +30,7 @@ public class YAWLAnnotationsPresentationHandler implements IPresentationHandler 
 					RectangleOverlay overlay = new RectangleOverlay(graphicalEditPart);
 					if (((EnabledTransitions) annotation).getEnabled()) {
 						overlay.setForegroundColor(ColorConstants.blue);
-						overlay.setBackgroundColor(ColorConstants.lightBlue);
+						overlay.setBackgroundColor(ColorConstants.buttonLightest);
 					} else {
 						overlay.setForegroundColor(ColorConstants.black);
 						overlay.setBackgroundColor(ColorConstants.black);
@@ -60,13 +60,6 @@ public class YAWLAnnotationsPresentationHandler implements IPresentationHandler 
 				}
 			}
 		} 
-//		else if (annotation instanceof ObjectAnnotation) {
-//			GraphicalEditPart graphicalEditPart = (GraphicalEditPart) editPart;
-//				RectangleOverlay overlay = new RectangleOverlay(graphicalEditPart);
-//					overlay.setForegroundColor(ColorConstants.yellow);
-//					overlay.setBackgroundColor(ColorConstants.yellow);
-//				return overlay;
-//		}
 		return null;
 	}
 
