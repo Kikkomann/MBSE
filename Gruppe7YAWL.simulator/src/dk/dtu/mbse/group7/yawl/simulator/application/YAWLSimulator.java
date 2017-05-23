@@ -1,6 +1,5 @@
 package dk.dtu.mbse.group7.yawl.simulator.application;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -43,8 +42,8 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 	private FlatAccess flatAccess;
 	private NetChangeListener adapter;
 	private Set<Transition> enabled = new HashSet<Transition>();
-	private List<Object> inArcs = new ArrayList<Object>();
-	private List<Object> warningList = new ArrayList<Object>();
+	private Set<Object> inArcs = new HashSet<Object>();
+	private Set<Object> warningList = new HashSet<Object>();
 
 	/**
 	 * @author Magnus Haakonson
@@ -230,7 +229,7 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 							}
 						}
 						
-						// Makes a list of all incoming arcs with a target place that has 0 tokens
+						// Makes a list of all incoming arcs with a source place that has 0 tokens
 						if (YAWLFunctions.getJoinType(transition).equals(TransitionType.OR)) {
 							for (Object obj : flatAccess.getIn(transition)) {
 								if (marking.getMarking((Place) ((Arc) obj).getSource()) < 1) {
@@ -541,28 +540,24 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 		return false;
 	}
 
-	private List<Object> isWarningAnnotation(List<Object> inArcs, NetMarking marking) {
-		List<org.pnml.tools.epnk.pnmlcoremodel.Object> added = inArcs;
-		ArrayList<org.pnml.tools.epnk.pnmlcoremodel.Object> backwards = new ArrayList<org.pnml.tools.epnk.pnmlcoremodel.Object>();
+	private Set<Object> isWarningAnnotation(Set<Object> inArcs, NetMarking marking) {
+		Set<Object> added = inArcs;
+		Set<Object> backwards = new HashSet<Object>();
 
 		while(!added.isEmpty()){
-			org.pnml.tools.epnk.pnmlcoremodel.Object obj = added.get(0);
+			Object obj = added.iterator().next();
 			added.remove(obj);
-
+			
 			if(!backwards.contains(obj)){
 				backwards.add(obj);
 				if(obj instanceof Place){
 					if(marking.getMarking((Place) obj) == 0){
-						if(obj instanceof Node){
 							added.addAll(flatAccess.getIn((Node) obj));
-						}
 					}
 				}
 				else if(obj instanceof Transition){
 					if(!enabled.contains(obj)){
-						if(obj instanceof Node){
 							added.addAll(flatAccess.getIn((Node) obj));
-						}
 					}
 				}
 				else if(obj instanceof Arc){
@@ -572,12 +567,12 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 				}
 			}
 		}
-		for (org.pnml.tools.epnk.pnmlcoremodel.Object obj : backwards) {
+		for (Object obj : backwards) {
 			if(enabled.contains(obj)){
 				added.add(obj);
 			}
 		}
-		for (org.pnml.tools.epnk.pnmlcoremodel.Object obj : backwards) {
+		for (Object obj : backwards) {
 			if(obj instanceof Place){
 				if(marking.getMarking((Place) obj)>0){
 					added.add(obj);
@@ -585,22 +580,22 @@ public class YAWLSimulator extends ApplicationWithUIManager {
 			}
 		}
 
-		ArrayList<org.pnml.tools.epnk.pnmlcoremodel.Object> forward = new ArrayList<org.pnml.tools.epnk.pnmlcoremodel.Object>();
+		Set<Object> forward = new HashSet<Object>();
 		while(!added.isEmpty()){
-			org.pnml.tools.epnk.pnmlcoremodel.Object obj = added.get(0);
+			Object obj = added.iterator().next();
 			added.remove(obj);
 
 			if(!forward.contains(obj)){
 				forward.add((obj));
 				if(obj instanceof Place){
-					for (org.pnml.tools.epnk.pnmlcoremodel.Object object : ((Place) obj).getOut()) {
+					for (Object object : ((Place) obj).getOut()) {
 						if(backwards.contains(object)){
 							added.add(object);
 						}
 					}
 				}
 				else if(obj instanceof Transition){
-					for (org.pnml.tools.epnk.pnmlcoremodel.Object object : ((Transition) obj).getOut()) {
+					for (Object object : ((Transition) obj).getOut()) {
 						if(backwards.contains(object)){
 							added.add(object);
 						}
