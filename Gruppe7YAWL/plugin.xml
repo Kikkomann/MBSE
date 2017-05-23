@@ -62,7 +62,7 @@
             
             <constraint
                   lang="Java"
-                  class="dk.dtu.mbse.group7.yawl.constraints.StartEndCondition"
+                  class="dk.dtu.mbse.group7.yawl.constraints.StartEndPlace"
                   severity="ERROR"
                   mode="Batch"
                   name="One start and end place"

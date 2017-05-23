@@ -16,7 +16,7 @@ import dk.dtu.mbse.group7.yawl.helpers.YAWLFunctions;
 /**
  * @author Sebastian Hoppe
  */
-public class StartEndCondition extends AbstractModelConstraint {
+public class StartEndPlace extends AbstractModelConstraint {
 
 	public IStatus validate(IValidationContext ctx) {
 		EObject object = ctx.getTarget();

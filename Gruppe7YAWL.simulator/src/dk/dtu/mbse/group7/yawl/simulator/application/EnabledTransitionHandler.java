@@ -43,20 +43,21 @@ public class EnabledTransitionHandler implements IActionHandler {
 			Object object = annotation.getObject();
 			if (object instanceof TransitionNode) {
 				object = flatNet.resolve((TransitionNode) object);
-			}
-			if (object instanceof Transition && annotation instanceof EnabledTransitions) {
-				Transition transition = (Transition) object;
-				NetMarking marking1 = application.computeMarking();
-				if (application.enabled(flatNet, marking1, transition)) {
-					NetMarking marking2 = application.fireTransition(flatNet, marking1, (Arc) selectedInArc((EnabledTransitions) annotation), transition, selectedOutArcs((EnabledTransitions) annotation));
-					NetAnnotation netAnnotation = application.computeAnnotation(marking2);
-					netAnnotation.setNet(application.getPetrinet());
-					
-					application.deleteNetAnnotationAfterCurrent();
-					application.addNetAnnotationAsCurrent(netAnnotation);
-					return true;
+				if (object instanceof Transition && annotation instanceof EnabledTransitions) {
+					Transition transition = (Transition) object;
+					NetMarking marking1 = application.computeMarking();
+					if (application.enabled(flatNet, marking1, transition)) {
+						NetMarking marking2 = application.fireTransition(flatNet, marking1, (Arc) selectedInArc((EnabledTransitions) annotation), transition, selectedOutArcs((EnabledTransitions) annotation));
+						NetAnnotation netAnnotation = application.computeAnnotation(marking2);
+						netAnnotation.setNet(application.getPetrinet());
+						
+						application.deleteNetAnnotationAfterCurrent();
+						application.addNetAnnotationAsCurrent(netAnnotation);
+						return true;
+					}
 				}
 			}
+			
 		}
 		return false;
 	}

@@ -53,14 +53,6 @@ public class SelectArcHandler implements IActionHandler {
 							application.update();
 							return true;
 						}
-						if (YAWLFunctions.getJoinType(transition).equals(TransitionType.OR)) {
-							for (SelectArcs s_arc : targetTransition.getInArc()) {
-								s_arc.setSelected(false);
-							}
-							selectArcs.setSelected(true);
-							application.update();
-							return true;
-						}
 					}
 				} catch (WrongTypeException e) {
 					e.printStackTrace();
